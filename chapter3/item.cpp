@@ -3,6 +3,8 @@
 template <class T>
 Item<T>::Item()
 {
+    prev = this;
+    next = this;
 }
 
 template <class T>
