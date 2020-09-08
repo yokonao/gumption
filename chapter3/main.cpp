@@ -1,11 +1,11 @@
 #include <iostream>
-#include "linked_list.h"
+#include "item.h"
 
 int main()
 {
-    LL l_dummy;
-    LL l1(1, &l_dummy, &l_dummy);
-    std::cout << l_dummy.data << std::endl;
-    std::cout << l1.data << std::endl;
+    Item<int> dum;
+    Item<int> item(1, &dum, &dum);
+    std::cout << dum.e << std::endl;
+    std::cout << item.e << std::endl;
     return 0;
 }

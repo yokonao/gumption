@@ -1,4 +1,4 @@
 #!/bin/sh
 
-g++ -o exe main.cpp linked_list.cpp
+g++ -o exe main.cpp item.cpp
 ./exe 
