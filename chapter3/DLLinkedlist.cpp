@@ -20,7 +20,7 @@ class Node{
     }
 };
 class List{
-    public:
+    private:
     Node *head;
     int size;
     public:
