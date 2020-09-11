@@ -34,9 +34,18 @@ class List{
     int Size(){
         return size;
     }
-
 };
-
+void splice(Node *a, Node *b, Node *t){
+    Node *ap = a->prev;
+    Node *bp = b->next;
+    Node *tp = t->next;
+    ap->next = bp;
+    bp->prev = ap;
+    a->prev = t;
+    b->next = tp;
+    t->next = a;
+    tp->prev = b;
+}
 int main(){
     List l;
     cout << l.Size() << endl;
