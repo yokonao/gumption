@@ -7,6 +7,7 @@ struct Item
     T e;
     Item *prev;
     Item *next;
+    bool isDummy;
 
     Item();
 

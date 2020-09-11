@@ -9,5 +9,6 @@ int main()
     std::cout << ll.head()->next << std::endl;
     std::cout << ll.head()->prev << std::endl;
     std::cout << ll.isEmpty() << std::endl;
+    std::cout << ll.head()->isDummy << std::endl;
     return 0;
 }
