@@ -4,6 +4,7 @@
 #include <vector>
 #include <algorithm>
 #include <cmath>
+#include <cassert>
 using namespace std;
 #define ll long long
 #define rep(i,n) for(int (i)=0;(i)<(n);(i)++)
@@ -12,6 +13,7 @@ using namespace std;
 class Node{
     public:
     int data;
+    bool isDummy = false;
     Node *prev, *next;
     Node(int x,Node *p, Node *n){
         data = x;
@@ -29,6 +31,7 @@ class List{
         head = new Node(0, NULL, NULL);
         head->prev = head;
         head->next = head;
+        head->isDummy = true;
         size = 0;
     }
     int Size(){
@@ -36,6 +39,15 @@ class List{
     }
 };
 void splice(Node *a, Node *b, Node *t){
+    Node *tmp = a;
+    bool assertion = false;
+    while(!tmp->isDummy || tmp != t || tmp != a){
+        if(tmp == b){
+            assertion = true;
+            break;
+        }
+    }
+    assert(assertion);
     Node *ap = a->prev;
     Node *bp = b->next;
     Node *tp = t->next;
