@@ -3,12 +3,19 @@
 
 void splice(Item *a, Item *b, Item *t)
 {
+    // aがvalidなLinkedListに所属しているか
+    Item *tmp = a->next;
+    while(!tmp->isDummy){
+        assert(tmp != a);
+        tmp = tmp->next;
+    }
+    // 同リスト内に[a...b]が存在し、tが含まれない
     Item *tmp = a;
     while (tmp != b)
     {
         assert(!tmp->isDummy);
         assert(tmp != t);
-        assert(tmp != a);
+        tmp = tmp->next;
     }
 
     Item *ap = a->prev;
