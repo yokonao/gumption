@@ -1,6 +1,8 @@
 #include "item.h"
 #include "linked_list.h"
 #include <cassert>
+#include <iostream>
+#include <string>
 
 LinkedList::LinkedList()
 {
@@ -21,4 +23,24 @@ Item *LinkedList::last()
 {
     assert(!isEmpty());
     return m_head.prev;
+}
+
+void LinkedList::debug()
+{
+    if (isEmpty())
+    {
+        std::cout << "This list is empty" << std::endl;
+    }
+    else
+    {
+        Item *tmp = head()->next;
+        std::string result;
+        while (!tmp->isDummy)
+        {
+            result += std::to_string(tmp->e);
+            result += ',';
+            tmp = tmp->next;
+        }
+        std::cout << result << std::endl;
+    }
 }

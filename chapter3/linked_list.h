@@ -14,6 +14,7 @@ public:
     bool isEmpty();
     Item *first();
     Item *last();
+    void debug();
 };
 
 #endif
