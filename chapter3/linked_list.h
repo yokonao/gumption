@@ -5,12 +5,12 @@
 
 class LinkedList
 {
-    Item<int> m_head;
+    Item m_head;
 
 public:
     LinkedList();
 
-    Item<int> *head();
+    Item *head();
     bool isEmpty();
 
 };

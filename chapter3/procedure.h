@@ -1,3 +1,3 @@
 #include "item.h"
 
-void splice(Item<int> *a, Item<int> *b, Item<int> *t)
+void splice(Item *a, Item *b, Item *t)

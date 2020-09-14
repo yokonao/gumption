@@ -1,9 +1,9 @@
 #include "procedure.h"
 #include <cassert>
 
-void splice(Item<int> *a, Item<int> *b, Item<int> *t)
+void splice(Item *a, Item *b, Item *t)
 {
-    Item<int> *tmp = a;
+    Item *tmp = a;
     while (tmp != b)
     {
         assert(!tmp->isDummy);
@@ -11,12 +11,12 @@ void splice(Item<int> *a, Item<int> *b, Item<int> *t)
         assert(tmp != a);
     }
 
-    Item<int> *ap = a->prev;
-    Item<int> *bp = b->next;
+    Item *ap = a->prev;
+    Item *bp = b->next;
     ap->next = bp;
     bp->prev = ap;
 
-    Item<int> *tp = t->next;
+    Item *tp = t->next;
     b->next = tp;
     a->prev = t;
     t->next = a;
