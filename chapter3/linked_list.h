@@ -12,7 +12,8 @@ public:
 
     Item *head();
     bool isEmpty();
-
+    Item *first();
+    Item *last();
 };
 
 #endif
