@@ -1,8 +1,39 @@
 #include "item.h"
 #include "linked_list.h"
+#include "free_list.h"
 #include <cassert>
 #include <iostream>
 #include <string>
+
+void splice(Item *a, Item *b, Item *t)
+{
+    // aがvalidなLinkedListに所属しているか
+    Item *tmp = a->next;
+    while (!tmp->isDummy)
+    {
+        assert(tmp != a);
+        tmp = tmp->next;
+    }
+    // 同リスト内に[a...b]が存在し、tが含まれない
+    tmp = a;
+    while (tmp != b)
+    {
+        assert(!tmp->isDummy);
+        assert(tmp != t);
+        tmp = tmp->next;
+    }
+
+    Item *ap = a->prev;
+    Item *bp = b->next;
+    ap->next = bp;
+    bp->prev = ap;
+
+    Item *tp = t->next;
+    b->next = tp;    
+    a->prev = t;
+    t->next = a;
+    tp->prev = b;
+};
 
 LinkedList::LinkedList()
 {
@@ -43,4 +74,23 @@ void LinkedList::debug()
         }
         std::cout << result << std::endl;
     }
+}
+
+void LinkedList::moveAfter(Item *b, Item *ap)
+{
+    splice(b, b, ap);
+}
+
+void LinkedList::remove(Item *b)
+{
+    moveAfter(b, FreeList::head());
+}
+
+Item *LinkedList::insertAfter(int x, Item *a)
+{
+    FreeList::check();
+    Item *ap = FreeList::first();
+    moveAfter(ap, a);
+    ap->e = x;
+    return ap;
 }

@@ -16,5 +16,16 @@ int main()
     FreeList::check();
     assert(!FreeList::isEmpty());
     assert(FreeList::head()->next == FreeList::head()->prev);
+
+    assert(ll.isEmpty());
+    Item *one = ll.insertAfter(1, ll.head());
+    assert(ll.first()->e == 1);
+    Item *two = ll.insertAfter(2, one);
+    assert(ll.last()->e == 2 && ll.first()->e == 1);
+    ll.remove(two);
+    assert(ll.first()->e == 1 && ll.last()->e == 1);
+    ll.remove(one);
+    assert(ll.isEmpty());
+    
     return 0;
 }
