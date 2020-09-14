@@ -57,6 +57,7 @@ class List{
     }
 };
 void splice(Node *a, Node *b, Node *t){
+    //assert
     Node *tmp = a;
     bool assertion = false;
     while(!tmp->isDummy || tmp != t || tmp != a){
@@ -66,6 +67,8 @@ void splice(Node *a, Node *b, Node *t){
         }
     }
     assert(assertion);
+
+    //実行部分
     Node *ap = a->prev;
     Node *bp = b->next;
     Node *tp = t->next;
@@ -77,6 +80,7 @@ void splice(Node *a, Node *b, Node *t){
     tp->prev = b;
 }
 //moveAfter
+//moveToFront
 //moveToBack
 
 int main(){
