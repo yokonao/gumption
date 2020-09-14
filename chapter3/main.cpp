@@ -12,7 +12,9 @@ int main()
     assert(ll.head()->isDummy);
     assert(ll.isEmpty());
 
-    std::cout << FreeList::isEmpty() << std::endl;
-    std::cout << FreeList::head() << std::endl;
+    assert(FreeList::isEmpty());
+    FreeList::check();
+    assert(!FreeList::isEmpty());
+    assert(FreeList::head()->next == FreeList::head()->prev);
     return 0;
 }
