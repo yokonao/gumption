@@ -1,14 +1,18 @@
 #include <iostream>
+#include <cassert>
 #include "item.h"
 #include "linked_list.h"
+#include "free_list.h"
 
 int main()
 {
     LinkedList ll;
-    std::cout << ll.head() << std::endl;
-    std::cout << ll.head()->next << std::endl;
-    std::cout << ll.head()->prev << std::endl;
-    std::cout << ll.isEmpty() << std::endl;
-    std::cout << ll.head()->isDummy << std::endl;
+    assert(ll.head() == ll.head()->next);
+    assert(ll.head() == ll.head()->prev);
+    assert(ll.head()->isDummy);
+    assert(ll.isEmpty());
+
+    std::cout << FreeList::isEmpty() << std::endl;
+    std::cout << FreeList::head() << std::endl;
     return 0;
 }
