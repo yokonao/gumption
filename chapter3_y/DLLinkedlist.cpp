@@ -37,6 +37,24 @@ class List{
     int Size(){
         return size;
     }
+    Node head(){
+        return head;
+    }
+    bool isEmpty(){
+        if(head->next == head){
+            return true;
+        }else{
+            return false;
+        }
+    }
+    Node first(){
+        assert(isEmpty());
+        return head->next;
+    }
+    Node last(){
+        assert(isEmpty());
+        return head->prev;
+    }
 };
 void splice(Node *a, Node *b, Node *t){
     Node *tmp = a;
@@ -58,6 +76,9 @@ void splice(Node *a, Node *b, Node *t){
     t->next = a;
     tp->prev = b;
 }
+//moveAfter
+//moveToBack
+
 int main(){
     List l;
     cout << l.Size() << endl;
