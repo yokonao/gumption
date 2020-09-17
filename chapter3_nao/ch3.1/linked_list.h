@@ -2,6 +2,7 @@
 #define Linked_LIST_HPP
 
 #include "item.h"
+#include <string>
 
 class LinkedList
 {
@@ -15,7 +16,8 @@ public:
     Item *first();
     Item *last();
 
-    void debug();
+    // For Debug
+    std::string all();
 
     // Basic Procedures
     void moveAfter(Item *b, Item *ap);

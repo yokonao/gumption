@@ -45,8 +45,9 @@ void testMoveToFront()
     Item *two = ll->insertAfter(2, one);
     Item *three = ll->insertAfter(3, two);
     Item *four = ll->insertAfter(4, three);
+    assert(ll->all() == "1,2,3,4,");
     ll->moveToFront(four);
-    assert(ll->first()->e == 4);
+    assert(ll->all() == "4,1,2,3,") ;
     delete ll;
 }
 void testMoveToBack()

@@ -3,7 +3,6 @@
 #include "free_list.h"
 #include <cassert>
 #include <iostream>
-#include <string>
 
 void splice(Item *a, Item *b, Item *t)
 {
@@ -56,11 +55,11 @@ Item *LinkedList::last()
     return m_head.prev;
 }
 
-void LinkedList::debug()
+std::string LinkedList::all()
 {
     if (isEmpty())
     {
-        std::cout << "This list is empty" << std::endl;
+        return "[]";
     }
     else
     {
@@ -69,10 +68,10 @@ void LinkedList::debug()
         while (!tmp->isDummy)
         {
             result += std::to_string(tmp->e);
-            result += ',';
+            result += ',' ;
             tmp = tmp->next;
         }
-        std::cout << result << std::endl;
+        return result;
     }
 }
 
