@@ -29,7 +29,7 @@ void splice(Item *a, Item *b, Item *t)
     bp->prev = ap;
 
     Item *tp = t->next;
-    b->next = tp;    
+    b->next = tp;
     a->prev = t;
     t->next = a;
     tp->prev = b;
@@ -94,3 +94,43 @@ Item *LinkedList::insertAfter(int x, Item *a)
     ap->e = x;
     return ap;
 }
+
+void LinkedList::moveToFront(Item *b)
+{
+    moveAfter(b, &m_head);
+}
+
+void LinkedList::moveToBack(Item *b)
+{
+    moveAfter(b, last());
+}
+
+void LinkedList::popFront()
+{
+    remove(first());
+};
+
+void LinkedList::popBack()
+{
+    remove(last());
+}
+
+Item *LinkedList::insertBefore(int x, Item *b)
+{
+    return insertAfter(x, b->prev);
+}
+
+void LinkedList::pushFront(int x)
+{
+    insertAfter(x, head());
+}
+
+void LinkedList::pushBack(int x)
+{
+    insertAfter(x, last());
+}
+
+void LinkedList::makeEmpty()
+{
+    splice(first(), last(), FreeList::last());
+};

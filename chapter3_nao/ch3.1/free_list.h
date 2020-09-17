@@ -13,6 +13,7 @@ public:
     static Item *head();
     static bool isEmpty();
     static Item *first();
+    static Item *last();
     static void check();
     static void clear();
 };
