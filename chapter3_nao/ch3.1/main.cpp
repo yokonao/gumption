@@ -6,6 +6,6 @@
 
 int main()
 {
-    std::cout << "ALL GREEN" << std::endl;
+    std::cout << "main" << std::endl;
     return 0;
 }

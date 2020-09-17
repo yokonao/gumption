@@ -131,5 +131,5 @@ void LinkedList::pushBack(int x)
 
 void LinkedList::makeEmpty()
 {
-    splice(first(), last(), FreeList::last());
+    splice(first(), last(), FreeList::head());
 };

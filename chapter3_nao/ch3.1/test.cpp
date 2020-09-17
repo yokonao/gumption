@@ -1,4 +1,6 @@
 #include <cassert>
+#include <iostream>
+#include <string>
 #include "item.h"
 #include "linked_list.h"
 #include "free_list.h"
@@ -47,27 +49,111 @@ void testMoveToFront()
     Item *four = ll->insertAfter(4, three);
     assert(ll->all() == "1,2,3,4,");
     ll->moveToFront(four);
-    assert(ll->all() == "4,1,2,3,") ;
+    assert(ll->all() == "4,1,2,3,");
     delete ll;
 }
+
 void testMoveToBack()
 {
     LinkedList *ll = new LinkedList();
-
+    Item *one = ll->insertAfter(1, ll->head());
+    Item *two = ll->insertAfter(2, one);
+    Item *three = ll->insertAfter(3, two);
+    Item *four = ll->insertAfter(4, three);
+    assert(ll->all() == "1,2,3,4,");
+    ll->moveToBack(one);
+    assert(ll->all() == "2,3,4,1,");
     delete ll;
 }
+
 void testPopFront()
 {
     LinkedList *ll = new LinkedList();
+    Item *one = ll->insertAfter(1, ll->head());
+    Item *two = ll->insertAfter(2, one);
+    Item *three = ll->insertAfter(3, two);
+    Item *four = ll->insertAfter(4, three);
+    assert(ll->all() == "1,2,3,4,");
+    ll->popFront();
+    assert(ll->all() == "2,3,4,");
+    delete ll;
+}
 
+void testPopBack()
+{
+    LinkedList *ll = new LinkedList();
+    Item *one = ll->insertAfter(1, ll->head());
+    Item *two = ll->insertAfter(2, one);
+    Item *three = ll->insertAfter(3, two);
+    Item *four = ll->insertAfter(4, three);
+    assert(ll->all() == "1,2,3,4,");
+    ll->popBack();
+    assert(ll->all() == "1,2,3,");
+    delete ll;
+}
+
+void testInsertBefore()
+{
+    LinkedList *ll = new LinkedList();
+    Item *one = ll->insertAfter(1, ll->head());
+    Item *two = ll->insertAfter(2, one);
+    Item *three = ll->insertAfter(3, two);
+    assert(ll->all() == "1,2,3,");
+    ll->insertBefore(100, two);
+    assert(ll->all() == "1,100,2,3,");
+    delete ll;
+}
+
+void testPushFront()
+{
+    LinkedList *ll = new LinkedList();
+    Item *one = ll->insertAfter(1, ll->head());
+    Item *two = ll->insertAfter(2, one);
+    Item *three = ll->insertAfter(3, two);
+    assert(ll->all() == "1,2,3,");
+    ll->pushFront(100);
+    assert(ll->all() == "100,1,2,3,");
+    delete ll;
+}
+
+void testPushBack()
+{
+    LinkedList *ll = new LinkedList();
+    Item *one = ll->insertAfter(1, ll->head());
+    Item *two = ll->insertAfter(2, one);
+    Item *three = ll->insertAfter(3, two);
+    assert(ll->all() == "1,2,3,");
+    ll->pushBack(100);
+    assert(ll->all() == "1,2,3,100,");
+    delete ll;
+}
+
+void testMakeEmpty()
+{
+    LinkedList *ll = new LinkedList();
+    Item *one = ll->insertAfter(1, ll->head());
+    Item *two = ll->insertAfter(2, one);
+    Item *three = ll->insertAfter(3, two);
+    assert(ll->all() == "1,2,3,");
+    ll->makeEmpty();
+    assert(ll->all() == "[]");
     delete ll;
 }
 
 int main()
 {
+    std::cout << "TEST START" << std::endl;
     testLinkedListDefaultConstructor();
     testFreeList();
     testInsertAndRemove();
     testMoveToFront();
+    testMoveToBack();
+    testPopFront();
+    testPopBack();
+    testInsertBefore();
+    testPushFront();
+    testPushFront();
+    testMakeEmpty();
+    std::cout << "ALL GREEN" << std::endl;
     return 0;
 }
