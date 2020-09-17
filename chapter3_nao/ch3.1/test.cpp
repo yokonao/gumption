@@ -38,10 +38,35 @@ void testInsertAndRemove()
     delete ll;
 }
 
+void testMoveToFront()
+{
+    LinkedList *ll = new LinkedList();
+    Item *one = ll->insertAfter(1, ll->head());
+    Item *two = ll->insertAfter(2, one);
+    Item *three = ll->insertAfter(3, two);
+    Item *four = ll->insertAfter(4, three);
+    ll->moveToFront(four);
+    assert(ll->first()->e == 4);
+    delete ll;
+}
+void testMoveToBack()
+{
+    LinkedList *ll = new LinkedList();
+
+    delete ll;
+}
+void testPopFront()
+{
+    LinkedList *ll = new LinkedList();
+
+    delete ll;
+}
+
 int main()
 {
     testLinkedListDefaultConstructor();
     testFreeList();
     testInsertAndRemove();
+    testMoveToFront();
     return 0;
 }
