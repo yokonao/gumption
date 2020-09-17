@@ -68,7 +68,7 @@ std::string LinkedList::all()
         while (!tmp->isDummy)
         {
             result += std::to_string(tmp->e);
-            result += ',' ;
+            result += ',';
             tmp = tmp->next;
         }
         return result;
@@ -133,3 +133,13 @@ void LinkedList::makeEmpty()
 {
     splice(first(), last(), FreeList::head());
 };
+
+Item *LinkedList::findNext(int x, Item *from)
+{
+    m_head.e = x;
+    while (from->e != x)
+    {
+        from = from->next;
+    }
+    return from;
+}

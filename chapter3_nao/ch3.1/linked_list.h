@@ -44,6 +44,8 @@ public:
     void pushBack(int x);
 
     void makeEmpty();
+
+    Item *findNext(int x, Item *from);
 };
 
 #endif

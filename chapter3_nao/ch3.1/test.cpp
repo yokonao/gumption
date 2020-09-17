@@ -140,6 +140,18 @@ void testMakeEmpty()
     delete ll;
 }
 
+void testFindNext()
+{
+    LinkedList *ll = new LinkedList();
+    Item *one = ll->insertAfter(1, ll->head());
+    Item *two = ll->insertAfter(2, one);
+    Item *three = ll->insertAfter(3, two);
+    Item *four = ll->insertAfter(4, three);
+    assert(ll->all() == "1,2,3,4,");
+    assert(ll->findNext(100, ll->first())->isDummy);
+    assert(ll->findNext(3, ll->first()) == three);
+}
+
 int main()
 {
     std::cout << "TEST START" << std::endl;
@@ -154,6 +166,7 @@ int main()
     testPushFront();
     testPushFront();
     testMakeEmpty();
+    testFindNext();
     std::cout << "ALL GREEN" << std::endl;
     return 0;
 }
