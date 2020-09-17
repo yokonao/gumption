@@ -16,6 +16,8 @@ int main()
     FreeList::check();
     assert(!FreeList::isEmpty());
     assert(FreeList::head()->next == FreeList::head()->prev);
+    FreeList::clear();
+    assert(FreeList::isEmpty());
 
     assert(ll.isEmpty());
     Item *one = ll.insertAfter(1, ll.head());

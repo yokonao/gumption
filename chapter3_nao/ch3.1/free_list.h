@@ -14,6 +14,7 @@ public:
     static bool isEmpty();
     static Item *first();
     static void check();
+    static void clear();
 };
 
 #endif

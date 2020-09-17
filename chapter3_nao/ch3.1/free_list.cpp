@@ -19,3 +19,17 @@ void FreeList::check()
         h->prev = a;
     }
 }
+
+void FreeList::clear()
+{
+    Item *head = m_LinkedList.head();
+    Item *tmp = head->next;
+    while (!tmp->isDummy)
+    {
+        Item *next = tmp->next;
+        delete tmp;
+        tmp = next;
+    }
+    head->next = head;
+    head->prev = head;
+}
