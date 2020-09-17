@@ -1,4 +1,15 @@
 #!/bin/sh
 
-g++ -o exe.out main.cpp item.cpp linked_list.cpp free_list.cpp
-./exe 
+set -euo pipefail
+
+function main() {
+    make clean
+    make test
+    ./exe.out
+    make clean
+    make
+    ./exe.out
+    make clean
+}
+
+main
