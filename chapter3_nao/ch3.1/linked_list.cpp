@@ -3,7 +3,6 @@
 #include "free_list.h"
 #include <cassert>
 #include <iostream>
-#include <string>
 
 void splice(Item *a, Item *b, Item *t)
 {
@@ -29,7 +28,7 @@ void splice(Item *a, Item *b, Item *t)
     bp->prev = ap;
 
     Item *tp = t->next;
-    b->next = tp;    
+    b->next = tp;
     a->prev = t;
     t->next = a;
     tp->prev = b;
@@ -56,11 +55,11 @@ Item *LinkedList::last()
     return m_head.prev;
 }
 
-void LinkedList::debug()
+std::string LinkedList::all()
 {
     if (isEmpty())
     {
-        std::cout << "This list is empty" << std::endl;
+        return "[]";
     }
     else
     {
@@ -72,7 +71,7 @@ void LinkedList::debug()
             result += ',';
             tmp = tmp->next;
         }
-        std::cout << result << std::endl;
+        return result;
     }
 }
 
@@ -93,4 +92,54 @@ Item *LinkedList::insertAfter(int x, Item *a)
     moveAfter(ap, a);
     ap->e = x;
     return ap;
+}
+
+void LinkedList::moveToFront(Item *b)
+{
+    moveAfter(b, &m_head);
+}
+
+void LinkedList::moveToBack(Item *b)
+{
+    moveAfter(b, last());
+}
+
+void LinkedList::popFront()
+{
+    remove(first());
+};
+
+void LinkedList::popBack()
+{
+    remove(last());
+}
+
+Item *LinkedList::insertBefore(int x, Item *b)
+{
+    return insertAfter(x, b->prev);
+}
+
+void LinkedList::pushFront(int x)
+{
+    insertAfter(x, head());
+}
+
+void LinkedList::pushBack(int x)
+{
+    insertAfter(x, last());
+}
+
+void LinkedList::makeEmpty()
+{
+    splice(first(), last(), FreeList::head());
+};
+
+Item *LinkedList::findNext(int x, Item *from)
+{
+    m_head.e = x;
+    while (from->e != x)
+    {
+        from = from->next;
+    }
+    return from;
 }
