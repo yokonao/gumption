@@ -62,8 +62,15 @@ void splice(Node *a, Node *b, Node *t){
     tp->prev = b;
 }
 //moveAfter
-void moveAfter(Node *b, Node *ap){
+void List::moveAfter(Node *b, Node *ap){
     splice(b, b, ap);
 }
+void List::moveToFront(Node *b){
+    moveAfter(b, head);
+}
+void List::moveToBack(Node *b){
+    moveAfter(b, last());
+}
+
 
 

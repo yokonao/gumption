@@ -22,7 +22,8 @@ class List{
         Node *first();
         Node *last();
         void moveAfter(Node *b, Node *ap);
-
+        void moveToFront(Node *b);
+        void moveToBack(Node *b);
 };
 
 #endif
