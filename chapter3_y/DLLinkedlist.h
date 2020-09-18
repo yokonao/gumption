@@ -2,12 +2,6 @@
 #define DLLINKEDLIST_HPP
 
 #include <iostream>
-#include <string>
-#include <map>
-#include <vector>
-#include <algorithm>
-#include <cmath>
-#include <cassert>
 using namespace std;
 class Node{
     public:
