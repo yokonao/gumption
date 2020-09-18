@@ -12,7 +12,7 @@ class Node{
 };
 class List{
     private:
-        Node *head;
+        Node *m_head;
         int size;
     public:
         List();

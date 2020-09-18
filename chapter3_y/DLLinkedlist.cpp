@@ -2,8 +2,7 @@
 #include <iostream>
 #include <cassert>
 using namespace std;
-Node::Node(){
-    Node(int x,Node *p, Node *n){
+Node::Node(int x,Node *p, Node *n){
         isDummy = false;
         data = x;
         prev = p;
@@ -11,20 +10,20 @@ Node::Node(){
 }
 List::List(){
     //dummyを追加
-    head = new Node(0, NULL, NULL);
-    head->prev = head;
-    head->next = head;
-    head->isDummy = true;
+    m_head = new Node(0, NULL, NULL);
+    m_head->prev = m_head;
+    m_head->next = m_head;
+    m_head->isDummy = true;
     size = 0;
 }
 int List::Size(){
     return size;
 }
 Node *List::head(){
-    return head;
+    return m_head;
 }
 bool List::isEmpty(){
-    if(head->next == head){
+    if(m_head->next == m_head){
         return true;
     }else{
         return false;
@@ -32,11 +31,11 @@ bool List::isEmpty(){
 }
 Node *List::first(){
     assert(isEmpty());
-    return head->next;
+    return m_head->next;
 }
 Node *List::last(){
     assert(isEmpty());
-    return head->prev;
+    return m_head->prev;
 }
 void splice(Node *a, Node *b, Node *t){
     //assert
@@ -66,7 +65,7 @@ void List::moveAfter(Node *b, Node *ap){
     splice(b, b, ap);
 }
 void List::moveToFront(Node *b){
-    moveAfter(b, head);
+    moveAfter(b, m_head);
 }
 void List::moveToBack(Node *b){
     moveAfter(b, last());
