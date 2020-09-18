@@ -83,9 +83,5 @@ void splice(Node *a, Node *b, Node *t){
 void moveAfter(Node *b, Node *ap){
     splice(b, b, ap);
 }
-int main(){
-    List l;
-    cout << l.Size() << endl;
-    return 0;
-}
+
 
