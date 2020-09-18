@@ -9,6 +9,7 @@ DLLinkedlist.o : DLLinkedlist.cpp
 	$(CC) -c  DLLinkedlist.cpp
 FreeList.o : FreeList.cpp
 	$(CC) -c  FreeList.cpp
-clean:	rm -f *.o $(PROGRAM)
+clean:
+	rm -f *.o $(PROGRAM)
 
 
