@@ -39,13 +39,16 @@ Node *List::last(){
 }
 void splice(Node *a, Node *b, Node *t){
     //assert
-    Node *tmp = a;
-    bool isvalid= false;
-    while(!tmp->isDummy || tmp != t || tmp != a){
-        if(tmp == b){
-            isvalid = true;
-            break;
-        }
+    Node *tmp = a->next;
+    while(!tmp->isDummy){
+        assert(tmp != a);
+        tmp = tmp->next;
+    }
+    tmp = a;
+    while(tmp != b){
+        assert(!tmp->isDummy);
+        assert(tmp != t);
+        tmp = tmp->next;
     }
     assert(isvalid);
 
