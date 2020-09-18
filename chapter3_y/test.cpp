@@ -13,7 +13,7 @@ void testLinkedListDefaultConstructor()
     assert(ll->isEmpty());
     delete ll;
 }
-void testFreeList()
+void testFreeList(){
     assert(FreeList::isEmpty());
     FreeList::checkFreeList();
     assert(!FreeList::isEmpty());
