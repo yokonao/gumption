@@ -6,56 +6,42 @@
 #include <cmath>
 #include <cassert>
 using namespace std;
-#define ll long long
-#define rep(i,n) for(int (i)=0;(i)<(n);(i)++)
-#define Graph vector<vector<int>>;
-#define iterG(next_v, G, v) for(auto next_v : G[v]
-class Node{
-    public:
-    int data;
-    bool isDummy = false;
-    Node *prev, *next;
+Node::Node(){
     Node(int x,Node *p, Node *n){
+        isDummy = false;
         data = x;
         prev = p;
         next = n;
+}
+List::List(){
+    //dummyを追加
+    head = new Node(0, NULL, NULL);
+    head->prev = head;
+    head->next = head;
+    head->isDummy = true;
+    size = 0;
+}
+int List::Size(){
+    return size;
+}
+Node *List::head(){
+    return head;
+}
+bool List::isEmpty(){
+    if(head->next == head){
+        return true;
+    }else{
+        return false;
     }
-};
-class List{
-    private:
-    Node *head;
-    int size;
-    public:
-    List(){
-        //dummyを追加
-        head = new Node(0, NULL, NULL);
-        head->prev = head;
-        head->next = head;
-        head->isDummy = true;
-        size = 0;
-    }
-    int Size(){
-        return size;
-    }
-    Node head(){
-        return head;
-    }
-    bool isEmpty(){
-        if(head->next == head){
-            return true;
-        }else{
-            return false;
-        }
-    }
-    Node first(){
-        assert(isEmpty());
-        return head->next;
-    }
-    Node last(){
-        assert(isEmpty());
-        return head->prev;
-    }
-};
+}
+Node *List::first(){
+    assert(isEmpty());
+    return head->next;
+}
+Node *List::last(){
+    assert(isEmpty());
+    return head->prev;
+}
 void splice(Node *a, Node *b, Node *t){
     //assert
     Node *tmp = a;
