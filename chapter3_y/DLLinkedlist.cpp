@@ -40,14 +40,14 @@ Node *List::last(){
 void splice(Node *a, Node *b, Node *t){
     //assert
     Node *tmp = a;
-    bool assertion = false;
+    bool isvalid= false;
     while(!tmp->isDummy || tmp != t || tmp != a){
         if(tmp == b){
-            assertion = true;
+            isvalid = true;
             break;
         }
     }
-    assert(assertion);
+    assert(isvalid);
 
     //実行部分
     Node *ap = a->prev;
