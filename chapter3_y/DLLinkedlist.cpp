@@ -50,7 +50,6 @@ void splice(Node *a, Node *b, Node *t){
         assert(tmp != t);
         tmp = tmp->next;
     }
-    assert(isvalid);
 
     //実行部分
     Node *ap = a->prev;
