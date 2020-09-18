@@ -10,7 +10,7 @@ class FreeList{
         static List m_List;
     public:
         static Node *head();
-        static bool isEmpty;
+        static bool isEmpty();
         static void checkFreeList();
-}
+};
 #endif
