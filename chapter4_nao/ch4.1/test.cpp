@@ -43,10 +43,21 @@ void testInsertAfter()
     assert(one == sll.head()->next);
     assert(one->next == sll.head());
     SItem *two = sll.insertAfter(2, one);
-    std::cout << sll.all() << std::endl;
     assert(sll.all() == "1,2,");
     SItem *three = sll.insertAfter(3, sll.head());
     assert(sll.all() == "3,1,2,");
+}
+
+void testPushBack()
+{
+    SLinkedList sll;
+    assert(sll.isEmpty());
+    sll.pushBack(1);
+    assert(sll.all() == "1,");
+    sll.pushBack(2);
+    assert(sll.all() == "1,2,");
+    sll.pushBack(3);
+    assert(sll.all() == "1,2,3,");
 }
 
 int main()
@@ -56,6 +67,7 @@ int main()
     testSLinkedListDefaultConstructor();
     testSFreeList();
     testInsertAfter();
+    testPushBack();
     std::cout << "ALL GREEN" << std::endl;
     return 0;
 }

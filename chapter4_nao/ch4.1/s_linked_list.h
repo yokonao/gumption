@@ -21,6 +21,8 @@ public:
     std::string all();
 
     SItem *insertAfter(int x, SItem *a);
+
+    void pushBack(int x);
 };
 
 #endif
