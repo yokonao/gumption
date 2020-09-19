@@ -2,6 +2,7 @@
 #include <cassert>
 #include "s_item.h"
 #include "s_linked_list.h"
+#include "s_free_list.h"
 
 void testSItem()
 {
@@ -24,11 +25,22 @@ void testSLinkedListDefaultConstructor()
     assert(sll.all() == "[]");
 }
 
+void testSFreeList()
+{
+    assert(SFreeList::isEmpty());
+    SFreeList::check();
+    assert(!SFreeList::isEmpty());
+    SFreeList::clear();
+    assert(SFreeList::isEmpty());
+}
+
+
 int main()
 {
     std::cout << "TEST START" << std::endl;
     testSItem();
     testSLinkedListDefaultConstructor();
+    testSFreeList();
     std::cout << "ALL GREEN" << std::endl;
     return 0;
 }
