@@ -61,7 +61,7 @@ std::string SLinkedList::all()
         std::string result;
         while (!tmp->isDummy)
         {
-            result += std::to_string(tmp->e);
+            result += tmp->e;
             result += ',';
             tmp = tmp->next;
         }
@@ -69,7 +69,7 @@ std::string SLinkedList::all()
     }
 }
 
-SItem *SLinkedList::insertAfter(int x, SItem *a)
+SItem *SLinkedList::insertAfter(std::string x, SItem *a)
 {
     SFreeList::check();
     SItem *ap = SFreeList::head();
@@ -82,7 +82,7 @@ SItem *SLinkedList::insertAfter(int x, SItem *a)
     return a->next;
 }
 
-void SLinkedList::pushBack(int x)
+void SLinkedList::pushBack(std::string x)
 {
     if (isEmpty())
     {

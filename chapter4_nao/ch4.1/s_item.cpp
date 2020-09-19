@@ -6,7 +6,7 @@ SItem::SItem()
     isDummy = true;
 }
 
-SItem::SItem(int e, SItem *next)
+SItem::SItem(std::string e, SItem *next)
 {
     this->e = e;
     this->next = next;

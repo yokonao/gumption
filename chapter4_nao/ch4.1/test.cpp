@@ -8,12 +8,17 @@ void testSItem()
 {
     SItem dummy;
     assert(dummy.isDummy);
-    assert(dummy.e == 0);
+    assert(dummy.e == "");
     assert(dummy.next == &dummy);
-    SItem item(1, &dummy);
+    SItem item("a", &dummy);
     dummy.next = &item;
-    assert(item.e == 1);
+    assert(item.e == "a");
     assert(item.next == &dummy);
+    assert(dummy.next == &item);
+    SItem item2("abcd", &dummy);
+    dummy.next = &item;
+    assert(item2.e == "abcd");
+    assert(item2.next == &dummy);
     assert(dummy.next == &item);
 }
 
@@ -38,44 +43,44 @@ void testInsertAfter()
 {
     SLinkedList sll;
     assert(sll.isEmpty());
-    SItem *one = sll.insertAfter(1, sll.head());
-    assert(sll.all() == "1,");
-    assert(one == sll.head()->next);
-    assert(one->next == sll.head());
-    SItem *two = sll.insertAfter(2, one);
-    assert(sll.all() == "1,2,");
-    SItem *three = sll.insertAfter(3, sll.head());
-    assert(sll.all() == "3,1,2,");
+    SItem *ruby = sll.insertAfter("Ruby", sll.head());
+    assert(sll.all() == "Ruby,");
+    assert(ruby == sll.head()->next);
+    assert(ruby->next == sll.head());
+    SItem *python = sll.insertAfter("Python", ruby);
+    assert(sll.all() == "Ruby,Python,");
+    SItem *php = sll.insertAfter("PHP", sll.head());
+    assert(sll.all() == "PHP,Ruby,Python,");
 }
 
 void testPushBack()
 {
     SLinkedList sll;
     assert(sll.isEmpty());
-    sll.pushBack(1);
-    assert(sll.all() == "1,");
-    sll.pushBack(2);
-    assert(sll.all() == "1,2,");
-    sll.pushBack(3);
-    assert(sll.all() == "1,2,3,");
+    sll.pushBack("Java");
+    assert(sll.all() == "Java,");
+    sll.pushBack("C++");
+    assert(sll.all() == "Java,C++,");
+    sll.pushBack("C#");
+    assert(sll.all() == "Java,C++,C#,");
 }
 
 void testRemove()
 {
     SLinkedList sll;
     assert(sll.isEmpty());
-    SItem *one = sll.insertAfter(1, sll.head());
-    assert(sll.all() == "1,");
-    assert(one == sll.head()->next);
-    assert(one->next == sll.head());
-    SItem *two = sll.insertAfter(2, one);
-    assert(sll.all() == "1,2,");
-    SItem *three = sll.insertAfter(3, sll.head());
-    assert(sll.all() == "3,1,2,");
+    SItem *dart = sll.insertAfter("Dart", sll.head());
+    assert(sll.all() == "Dart,");
+    assert(dart == sll.head()->next);
+    assert(dart->next == sll.head());
+    SItem *swift = sll.insertAfter("Swift", dart);
+    assert(sll.all() == "Dart,Swift,");
+    SItem *kotlin = sll.insertAfter("Kotlin", sll.head());
+    assert(sll.all() == "Kotlin,Dart,Swift,");
     sll.remove(sll.head());
-    assert(sll.all() == "1,2,");
-    sll.remove(one);
-    assert(sll.all() == "1,");
+    assert(sll.all() == "Dart,Swift,");
+    sll.remove(dart);
+    assert(sll.all() == "Dart,");
     sll.remove(sll.head());
     assert(sll.isEmpty());
 }

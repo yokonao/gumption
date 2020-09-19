@@ -1,15 +1,17 @@
 #ifndef S_ITEM_HPP
 #define S_ITEM_HPP
 
+#include <string>
+
 struct SItem
 {
-    int e;
+    std::string e;
     SItem *next;
     bool isDummy;
 
     SItem();
 
-    SItem(int e, SItem *next);
+    SItem(std::string e, SItem *next);
 };
 
 #endif

@@ -2,7 +2,6 @@
 #define S_Linked_LIST_HPP
 
 #include "s_item.h"
-#include <string>
 
 class SLinkedList
 {
@@ -20,9 +19,9 @@ public:
     // For Debug
     std::string all();
 
-    SItem *insertAfter(int x, SItem *a);
+    SItem *insertAfter(std::string x, SItem *a);
 
-    void pushBack(int x);
+    void pushBack(std::string x);
 
     void remove(SItem *bp);
 };

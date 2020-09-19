@@ -16,7 +16,7 @@ void SFreeList::check()
     if (m_SLinkedList.isEmpty())
     {
         SItem *h = m_SLinkedList.head();
-        SItem *a = new SItem(0, h);
+        SItem *a = new SItem("", h);
         h->next = a;
     }
 }
