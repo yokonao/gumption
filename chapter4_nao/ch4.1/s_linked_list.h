@@ -23,7 +23,7 @@ public:
 
     void pushBack(std::string x);
 
-    void remove(SItem *bp);
+    void removeAfter(SItem *bp);
 };
 
 #endif

@@ -94,7 +94,7 @@ void SLinkedList::pushBack(std::string x)
     }
 }
 
-void SLinkedList::remove(SItem *bp)
+void SLinkedList::removeAfter(SItem *bp)
 {
     SItem *b = bp->next;
     assert(!b->isDummy);

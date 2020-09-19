@@ -65,7 +65,7 @@ void testPushBack()
     assert(sll.all() == "Java,C++,C#,");
 }
 
-void testRemove()
+void testRemoveAfter()
 {
     SLinkedList sll;
     assert(sll.isEmpty());
@@ -77,11 +77,11 @@ void testRemove()
     assert(sll.all() == "Dart,Swift,");
     SItem *kotlin = sll.insertAfter("Kotlin", sll.head());
     assert(sll.all() == "Kotlin,Dart,Swift,");
-    sll.remove(sll.head());
+    sll.removeAfter(sll.head());
     assert(sll.all() == "Dart,Swift,");
-    sll.remove(dart);
+    sll.removeAfter(dart);
     assert(sll.all() == "Dart,");
-    sll.remove(sll.head());
+    sll.removeAfter(sll.head());
     assert(sll.isEmpty());
 }
 
@@ -93,7 +93,7 @@ int main()
     testSFreeList();
     testInsertAfter();
     testPushBack();
-    testRemove();
+    testRemoveAfter();
     std::cout << "ALL GREEN" << std::endl;
     return 0;
 }
