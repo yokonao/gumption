@@ -1,9 +1,31 @@
 #include <cassert>
 #include "s_linked_list.h"
+#include "s_free_list.h"
 
 void splice(SItem *ap, SItem *b, SItem *t)
 {
-}
+    // apがvalidなLinkedListに所属しているか
+    SItem *tmp = ap->next;
+    while (!tmp->isDummy)
+    {
+        assert(tmp != ap);
+        tmp = tmp->next;
+    }
+    // 同リスト内に[a...b]が存在し、tが含まれない
+    tmp = ap->next;
+    while (tmp != b)
+    {
+        assert(!tmp->isDummy);
+        assert(tmp != t);
+        tmp = tmp->next;
+    }
+
+    SItem *a = ap->next;
+    ap->next = b->next;
+    SItem *tp = t->next;
+    b->next = tp;
+    t->next = a;
+};
 
 SLinkedList::SLinkedList()
 {
@@ -37,4 +59,13 @@ std::string SLinkedList::all()
         }
         return result;
     }
+}
+
+SItem *SLinkedList::insertAfter(int x, SItem *a)
+{
+    SFreeList::check();
+    SItem *ap = SFreeList::head();
+    splice(ap, ap->next, a);
+    a->next->e = x;
+    return a->next;
 }

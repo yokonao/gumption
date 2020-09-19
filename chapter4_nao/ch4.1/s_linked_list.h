@@ -19,6 +19,8 @@ public:
 
     // For Debug
     std::string all();
+
+    SItem *insertAfter(int x, SItem *a);
 };
 
 #endif
