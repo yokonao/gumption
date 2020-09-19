@@ -60,6 +60,26 @@ void testPushBack()
     assert(sll.all() == "1,2,3,");
 }
 
+void testRemove()
+{
+    SLinkedList sll;
+    assert(sll.isEmpty());
+    SItem *one = sll.insertAfter(1, sll.head());
+    assert(sll.all() == "1,");
+    assert(one == sll.head()->next);
+    assert(one->next == sll.head());
+    SItem *two = sll.insertAfter(2, one);
+    assert(sll.all() == "1,2,");
+    SItem *three = sll.insertAfter(3, sll.head());
+    assert(sll.all() == "3,1,2,");
+    sll.remove(sll.head());
+    assert(sll.all() == "1,2,");
+    sll.remove(one);
+    assert(sll.all() == "1,");
+    sll.remove(sll.head());
+    assert(sll.isEmpty());
+}
+
 int main()
 {
     std::cout << "TEST START" << std::endl;
@@ -68,6 +88,7 @@ int main()
     testSFreeList();
     testInsertAfter();
     testPushBack();
+    testRemove();
     std::cout << "ALL GREEN" << std::endl;
     return 0;
 }

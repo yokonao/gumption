@@ -23,6 +23,8 @@ public:
     SItem *insertAfter(int x, SItem *a);
 
     void pushBack(int x);
+
+    void remove(SItem *bp);
 };
 
 #endif

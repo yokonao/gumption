@@ -93,3 +93,14 @@ void SLinkedList::pushBack(int x)
         insertAfter(x, last());
     }
 }
+
+void SLinkedList::remove(SItem *bp)
+{
+    SItem *b = bp->next;
+    assert(!b->isDummy);
+    splice(bp, b, SFreeList::head());
+    if (bp->next->isDummy)
+    {
+        m_last = bp;
+    }
+}
