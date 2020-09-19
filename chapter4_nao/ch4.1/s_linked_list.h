@@ -1,5 +1,5 @@
-#ifndef Linked_LIST_HPP
-#define Linked_LIST_HPP
+#ifndef S_Linked_LIST_HPP
+#define S_Linked_LIST_HPP
 
 #include "s_item.h"
 #include <string>
