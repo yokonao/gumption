@@ -16,6 +16,7 @@ public:
     void insert(std::string e);
     void remove(std::string key);
     std::string find(std::string key);
+    void reallocate(int mp);
 };
 
 #endif
