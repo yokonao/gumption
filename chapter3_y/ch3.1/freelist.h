@@ -1,7 +1,7 @@
 #ifndef FREELIST_HPP
 #define FREELIST_HPP
 
-#include "DLLinkedlist.h"
+#include "dllinkedlist.h"
 #include <iostream>
 #include <cmath>
 using namespace std;

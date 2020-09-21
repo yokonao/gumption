@@ -1,5 +1,5 @@
-#include "DLLinkedlist.h"
-#include "FreeList.h"
+#include "dllinkedlist.h"
+#include "freelist.h"
 #include <iostream>
 #include <cmath>
 using namespace std;
