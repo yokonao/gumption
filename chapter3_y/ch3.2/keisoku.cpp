@@ -36,7 +36,7 @@ int main()
     double dt;
     for(int i=1;i <= 65536;i=i*2){
         t = clock();
-        pushpop(100, 2);
+        pushpop(i, 2);
         dt = (double)(clock() - t)/CLOCKS_PER_SEC;
         std::cout << i << " "<< dt <<std::endl;
     }
