@@ -10,12 +10,12 @@ void testSItem()
     assert(dummy.isDummy);
     assert(dummy.e == "");
     assert(dummy.next == &dummy);
-    SItem item("a", &dummy);
+    SItem item("a", "", &dummy);
     dummy.next = &item;
     assert(item.e == "a");
     assert(item.next == &dummy);
     assert(dummy.next == &item);
-    SItem item2("abcd", &dummy);
+    SItem item2("abcd", "", &dummy);
     dummy.next = &item;
     assert(item2.e == "abcd");
     assert(item2.next == &dummy);

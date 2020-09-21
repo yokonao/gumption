@@ -6,12 +6,13 @@
 struct SItem
 {
     std::string e;
+    std::string value;
     SItem *next;
     bool isDummy;
 
     SItem();
 
-    SItem(std::string e, SItem *next);
+    SItem(std::string e, std::string value, SItem *next);
 };
 
 #endif
