@@ -8,7 +8,7 @@ UArray::UArray(int al, int be){
     b = new int[0];
 }
 int UArray::operator[](int i){
-    if(i >= 0 and i < n)
+    assert(i >= 0 and i < n);
     return b[i]; 
 }
 int UArray::size(){return n;}
@@ -30,7 +30,7 @@ void UArray::popBack(){
 void UArray::reallocate(int wp){
     w = wp;
     int *bp = new int[w];
-    for(int i;i<n;i++){bp[i] = b[i];}
+    for(int i=0;i<n;i++){bp[i] = b[i];}
     delete b;
     b = bp;
 }
