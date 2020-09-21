@@ -4,7 +4,7 @@ keisoku :keisoku.o uarray.o
 	$(CC) -o $(PROGRAM) keisoku.o uarray.o 
 test : test.o uarray.o
 	$(CC) -o $(PROGRAM) test.o uarray.o 
-keisoku.o : test.cpp
+keisoku.o : keisoku.cpp
 	$(CC) -c  keisoku.cpp
 test.o : test.cpp
 	$(CC) -c  test.cpp
