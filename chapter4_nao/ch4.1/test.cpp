@@ -3,86 +3,88 @@
 #include "s_item.h"
 #include "s_linked_list.h"
 #include "s_free_list.h"
+#include "chaining_hash.h"
+#include "expectation.h"
 
 void testSItem()
 {
     SItem dummy;
-    assert(dummy.isDummy);
-    assert(dummy.e == "");
-    assert(dummy.next == &dummy);
+    expect(dummy.isDummy).to_be_truthy();
+    expect(dummy.e).to_be("");
+    expect(dummy.next).to_be(&dummy);
     SItem item("a", "", &dummy);
     dummy.next = &item;
-    assert(item.e == "a");
-    assert(item.next == &dummy);
-    assert(dummy.next == &item);
+    expect(item.e).to_be("a");
+    expect(item.next).to_be(&dummy);
+    expect(dummy.next).to_be(&item);
     SItem item2("abcd", "", &dummy);
     dummy.next = &item;
-    assert(item2.e == "abcd");
-    assert(item2.next == &dummy);
-    assert(dummy.next == &item);
+    expect(item2.e).to_be("abcd");
+    expect(item2.next).to_be(&dummy);
+    expect(dummy.next).to_be(&item);
 }
 
 void testSLinkedListDefaultConstructor()
 {
     SLinkedList sll;
-    assert(sll.isEmpty());
-    assert(sll.head()->isDummy);
-    assert(sll.all() == "[]");
+    expect(sll.isEmpty()).to_be_truthy();
+    expect(sll.head()->isDummy).to_be_truthy();
+    expect(sll.all()).to_be("[]");
 }
 
 void testSFreeList()
 {
-    assert(SFreeList::isEmpty());
+    expect(SFreeList::isEmpty()).to_be_truthy();
     SFreeList::check();
-    assert(!SFreeList::isEmpty());
+    expect(SFreeList::isEmpty()).to_be_falsy();
     SFreeList::clear();
-    assert(SFreeList::isEmpty());
+    expect(SFreeList::isEmpty()).to_be_truthy();
 }
 
 void testInsertAfter()
 {
     SLinkedList sll;
-    assert(sll.isEmpty());
+    expect(sll.isEmpty()).to_be_truthy();
     SItem *ruby = sll.insertAfter("Ruby", sll.head());
-    assert(sll.all() == "Ruby,");
-    assert(ruby == sll.head()->next);
-    assert(ruby->next == sll.head());
+    expect(sll.all()).to_be("Ruby,");
+    expect(ruby).to_be(sll.head()->next);
+    expect(ruby->next).to_be(sll.head());
     SItem *python = sll.insertAfter("Python", ruby);
-    assert(sll.all() == "Ruby,Python,");
+    expect(sll.all()).to_be("Ruby,Python,");
     SItem *php = sll.insertAfter("PHP", sll.head());
-    assert(sll.all() == "PHP,Ruby,Python,");
+    expect(sll.all()).to_be("PHP,Ruby,Python,");
 }
 
 void testPushBack()
 {
     SLinkedList sll;
-    assert(sll.isEmpty());
+    expect(sll.isEmpty()).to_be_truthy();
     sll.pushBack("Java");
-    assert(sll.all() == "Java,");
+    expect(sll.all()).to_be("Java,");
     sll.pushBack("C++");
-    assert(sll.all() == "Java,C++,");
+    expect(sll.all()).to_be("Java,C++,");
     sll.pushBack("C#");
-    assert(sll.all() == "Java,C++,C#,");
+    expect(sll.all()).to_be("Java,C++,C#,");
 }
 
 void testRemoveAfter()
 {
     SLinkedList sll;
-    assert(sll.isEmpty());
+    expect(sll.isEmpty()).to_be_truthy();
     SItem *dart = sll.insertAfter("Dart", sll.head());
-    assert(sll.all() == "Dart,");
-    assert(dart == sll.head()->next);
-    assert(dart->next == sll.head());
+    expect(sll.all()).to_be("Dart,");
+    expect(dart).to_be(sll.head()->next);
+    expect(dart->next).to_be(sll.head());
     SItem *swift = sll.insertAfter("Swift", dart);
-    assert(sll.all() == "Dart,Swift,");
+    expect(sll.all()).to_be("Dart,Swift,");
     SItem *kotlin = sll.insertAfter("Kotlin", sll.head());
-    assert(sll.all() == "Kotlin,Dart,Swift,");
+    expect(sll.all()).to_be("Kotlin,Dart,Swift,");
     sll.removeAfter(sll.head());
-    assert(sll.all() == "Dart,Swift,");
+    expect(sll.all()).to_be("Dart,Swift,");
     sll.removeAfter(dart);
-    assert(sll.all() == "Dart,");
+    expect(sll.all()).to_be("Dart,");
     sll.removeAfter(sll.head());
-    assert(sll.isEmpty());
+    expect(sll.isEmpty()).to_be_truthy();
 }
 
 int main()
@@ -90,7 +92,7 @@ int main()
     std::cout << "TEST START" << std::endl;
     testSItem();
     testSLinkedListDefaultConstructor();
-    testSFreeList();
+    testSFreeList(); 
     testInsertAfter();
     testPushBack();
     testRemoveAfter();
