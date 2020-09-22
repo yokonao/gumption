@@ -11,9 +11,6 @@ function main() {
     make clean
     make test
     ./exe.out
-    make clean
-    make
-    ./exe.out
 }
 
 main

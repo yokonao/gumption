@@ -1,5 +1,4 @@
 #include <iostream>
-#include <cassert>
 #include "s_item.h"
 #include "s_linked_list.h"
 #include "s_free_list.h"
@@ -87,15 +86,42 @@ void testRemoveAfter()
     expect(sll.isEmpty()).to_be_truthy();
 }
 
+void testHash()
+{
+    expect(hashPrime("a")).to_be(1);
+    expect(hashPrime("b")).to_be(2);
+    expect(hashPrime("z")).to_be(26);
+    expect(hashPrime("az")).to_be(52);
+    expect(hashPrime("ruby")).to_be(330641);
+    expect_error<std::invalid_argument>([] {
+        unsigned long long N = hashPrime("");
+    });
+    expect_error<std::invalid_argument>([] {
+        unsigned long long N = hashPrime("Ruby");
+    });
+    expect_error<std::invalid_argument>([] {
+        unsigned long long N = hashPrime("ruビー");
+    });
+    expect_error<std::invalid_argument>([] {
+        unsigned long long N = hashPrime("るびー");
+    });
+    expect_error<std::length_error>([] {
+        unsigned long long N = hashPrime("rubyonrails");
+    });
+    expect(hash("ruby", 1000)).to_be(641);
+    expect(hash("zzzzzz", 10)).to_be(6);
+}
+
 int main()
 {
     std::cout << "TEST START" << std::endl;
     testSItem();
     testSLinkedListDefaultConstructor();
-    testSFreeList(); 
+    testSFreeList();
     testInsertAfter();
     testPushBack();
     testRemoveAfter();
+    testHash();
     std::cout << "ALL GREEN" << std::endl;
     return 0;
 }

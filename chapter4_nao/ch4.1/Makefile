@@ -1,6 +1,6 @@
 CC = g++
 PROGRAM = exe.out
-MODULES = s_item.o s_linked_list.o s_free_list.o
+MODULES = s_item.o s_linked_list.o s_free_list.o chaining_hash.o
 
 main: main.o $(MODULES)
 	$(CC) -o $(PROGRAM) main.o $(MODULES)
@@ -16,4 +16,6 @@ s_linked_list.o: s_linked_list.cpp
 	$(CC) -c s_linked_list.cpp
 s_free_list.o: s_free_list.cpp
 	$(CC) -c s_free_list.cpp
+chaining_hash.o: chaining_hash.cpp
+	$(CC) -c chaining_hash.cpp
 clean:;	rm -f *.o $(PROGRAM)

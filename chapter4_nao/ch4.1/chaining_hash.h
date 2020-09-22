@@ -3,6 +3,14 @@
 
 #include "s_linked_list.h"
 
+extern std::string key(std::string e);
+
+extern std::string element(std::string key);
+
+extern unsigned long long hashPrime(std::string key);
+
+extern int hash(std::string key, int mod);
+
 class ChainingHash
 {
     const int beta = 2;
@@ -13,7 +21,7 @@ class ChainingHash
 
 public:
     ChainingHash();
-    void insert(std::string e);
+    void insert(std::string e, std::string value);
     void remove(std::string key);
     std::string find(std::string key);
     void reallocate(int mp);
