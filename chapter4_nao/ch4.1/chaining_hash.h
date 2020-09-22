@@ -18,13 +18,15 @@ class ChainingHash
     int m = 1;
     int n = 0;
     SLinkedList *t;
+    
+    void reallocate(int mp);
 
 public:
     ChainingHash();
     void insert(std::string e, std::string value);
     void remove(std::string key);
     std::string find(std::string key);
-    void reallocate(int mp);
+    std::string operator[](std::string key);
 };
 
 #endif

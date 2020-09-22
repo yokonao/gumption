@@ -44,13 +44,13 @@ void testInsertAfter()
 {
     SLinkedList sll;
     expect(sll.isEmpty()).to_be_truthy();
-    SItem *ruby = sll.insertAfter("Ruby", sll.head());
+    SItem *ruby = sll.insertAfter("Ruby", "", sll.head());
     expect(sll.all()).to_be("Ruby,");
     expect(ruby).to_be(sll.head()->next);
     expect(ruby->next).to_be(sll.head());
-    SItem *python = sll.insertAfter("Python", ruby);
+    SItem *python = sll.insertAfter("Python", "", ruby);
     expect(sll.all()).to_be("Ruby,Python,");
-    SItem *php = sll.insertAfter("PHP", sll.head());
+    SItem *php = sll.insertAfter("PHP", "", sll.head());
     expect(sll.all()).to_be("PHP,Ruby,Python,");
 }
 
@@ -58,11 +58,11 @@ void testPushBack()
 {
     SLinkedList sll;
     expect(sll.isEmpty()).to_be_truthy();
-    sll.pushBack("Java");
+    sll.pushBack("Java", "");
     expect(sll.all()).to_be("Java,");
-    sll.pushBack("C++");
+    sll.pushBack("C++", "");
     expect(sll.all()).to_be("Java,C++,");
-    sll.pushBack("C#");
+    sll.pushBack("C#", "");
     expect(sll.all()).to_be("Java,C++,C#,");
 }
 
@@ -70,13 +70,13 @@ void testRemoveAfter()
 {
     SLinkedList sll;
     expect(sll.isEmpty()).to_be_truthy();
-    SItem *dart = sll.insertAfter("Dart", sll.head());
+    SItem *dart = sll.insertAfter("Dart", "", sll.head());
     expect(sll.all()).to_be("Dart,");
     expect(dart).to_be(sll.head()->next);
     expect(dart->next).to_be(sll.head());
-    SItem *swift = sll.insertAfter("Swift", dart);
+    SItem *swift = sll.insertAfter("Swift", "", dart);
     expect(sll.all()).to_be("Dart,Swift,");
-    SItem *kotlin = sll.insertAfter("Kotlin", sll.head());
+    SItem *kotlin = sll.insertAfter("Kotlin", "", sll.head());
     expect(sll.all()).to_be("Kotlin,Dart,Swift,");
     sll.removeAfter(sll.head());
     expect(sll.all()).to_be("Dart,Swift,");
@@ -112,6 +112,32 @@ void testHash()
     expect(hash("zzzzzz", 10)).to_be(6);
 }
 
+void testChainingHash()
+{
+    ChainingHash ch;
+    expect(ch.find("ruby")).to_be("");
+
+    ch.insert("ruby", "rails");
+    ch.insert("python", "django");
+    ch.insert("dart", "flutter");
+
+    expect(ch.find("ruby")).to_be("ruby");
+    expect(ch["ruby"]).to_be("rails");
+    expect(ch.find("python")).to_be("python");
+    expect(ch["python"]).to_be("django");
+    expect(ch.find("dart")).to_be("dart");
+    expect(ch["dart"]).to_be("flutter");
+    expect(ch.find("java")).to_be("");
+    expect(ch["java"]).to_be("");
+
+    ch.remove("python");
+    expect(ch.find("python")).to_be("");
+    ch.remove("ruby");
+    expect(ch.find("ruby")).to_be("");
+    ch.remove("dart");
+    expect(ch.find("dart")).to_be("");
+}
+
 int main()
 {
     std::cout << "TEST START" << std::endl;
@@ -122,6 +148,7 @@ int main()
     testPushBack();
     testRemoveAfter();
     testHash();
+    testChainingHash();
     std::cout << "ALL GREEN" << std::endl;
     return 0;
 }
