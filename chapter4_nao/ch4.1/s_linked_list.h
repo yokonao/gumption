@@ -19,9 +19,9 @@ public:
     // For Debug
     std::string all();
 
-    SItem *insertAfter(std::string x, SItem *a);
+    SItem *insertAfter(std::string e, std::string value, SItem *a);
 
-    void pushBack(std::string x);
+    void pushBack(std::string e, std::string value);
 
     void removeAfter(SItem *bp);
 };

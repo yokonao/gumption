@@ -69,12 +69,13 @@ std::string SLinkedList::all()
     }
 }
 
-SItem *SLinkedList::insertAfter(std::string x, SItem *a)
+SItem *SLinkedList::insertAfter(std::string e, std::string value, SItem *a)
 {
     SFreeList::check();
     SItem *ap = SFreeList::head();
     splice(ap, ap->next, a);
-    a->next->e = x;
+    a->next->e = e;
+    a->next->value = value;
     if (a->next->next->isDummy)
     {
         m_last = a->next;
@@ -82,15 +83,15 @@ SItem *SLinkedList::insertAfter(std::string x, SItem *a)
     return a->next;
 }
 
-void SLinkedList::pushBack(std::string x)
+void SLinkedList::pushBack(std::string e, std::string value)
 {
     if (isEmpty())
     {
-        insertAfter(x, head());
+        insertAfter(e, value, head());
     }
     else
     {
-        insertAfter(x, last());
+        insertAfter(e, value, last());
     }
 }
 
