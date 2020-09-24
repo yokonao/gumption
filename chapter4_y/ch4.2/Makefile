@@ -6,6 +6,12 @@ main: main.o $(MODULES)
 	$(CC) -o $(PROGRAM) main.o $(MODULES)
 test: test.o $(MODULES)
 	$(CC) -o $(PROGRAM) test.o $(MODULES)
+random: test_random.o gen_random.o
+	$(CC) -o $(PROGRAM) test_random.o gen_random.o
+test_random.o: test_random.cpp
+	$(CC) -c test_random.cpp
+gen_random.o: gen_random.cpp
+	$(CC) -c gen_random.cpp
 main.o: main.cpp
 	$(CC) -c main.cpp
 test.o: test.cpp
