@@ -2,13 +2,12 @@
 
 set -euo pipefail
 
-function finally() {
+function catch() {
     make clean
 }
 
 function main() {
-    trap finally EXIT
-    make clean
+    trap catch EXIT
     make test
     ./exe.out
 }
