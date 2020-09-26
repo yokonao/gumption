@@ -13,13 +13,13 @@ private:
     T *b;
 
 public:
-    int operator[](int i)
+    T operator[](int i)
     {
         assert(i >= 0 and i < n);
         return b[i];
     };
     int size() { return n; };
-    void pushBack(int e)
+    void pushBack(T e)
     {
         if (n == w)
         {

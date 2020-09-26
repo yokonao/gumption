@@ -64,6 +64,15 @@ void testUmul()
     y.pushBack(12);
     expect(Umul(x, y) == 232).to_be_truthy();
 }
+void testUArray()
+{
+    UArray<UArray<int>> x;
+    UArray<int> y;
+    y.pushBack(10);
+    y.pushBack(12);
+    x.pushBack(y);
+    expect(x[0][1] == 12).to_be_truthy();
+}
 int main()
 {
     std::cout << "TEST START" << std::endl;
@@ -71,6 +80,7 @@ int main()
     testbit();
     testtostr();
     testUmul();
+    testUArray();
     std::cout << "ALL GREEN" << std::endl;
     return 0;
 }

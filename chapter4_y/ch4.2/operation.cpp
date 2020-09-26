@@ -3,7 +3,7 @@
 #include <string>
 #include <bitset>
 #include "operation.h"
-#include "uarray.h"
+#include <uarray.h>
 
 int floorlog(int m)
 {
