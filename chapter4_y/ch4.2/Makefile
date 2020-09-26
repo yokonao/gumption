@@ -9,8 +9,8 @@ INCLUDEPATH = ../../lib
 main: main.cpp $(MODULES)
 	$(CC) $(CFLAGS) -o $(PROGRAM) main.cpp $(MODULES) -I $(INCLUDEPATH)
 
-test: test.cpp $(MODULES)
-	$(CC) $(CFLAGS) -o $(PROGRAM) test.cpp $(MODULES) -I $(INCLUDEPATH)
+chain: test_chainhash.cpp $(MODULES)
+	$(CC) $(CFLAGS) -o $(PROGRAM) test_chainhash.cpp $(MODULES) -I $(INCLUDEPATH)
 
 random: test_random.cpp gen_random.cpp
 	$(CC) $(CFLAGS) -o $(PROGRAM) test_random.cpp gen_random.cpp -I $(INCLUDEPATH)

@@ -3,13 +3,13 @@
 
 #include "s_linked_list.h"
 
-extern std::string key(std::string e);
+std::string key(std::string e);
 
-extern std::string element(std::string key);
+std::string element(std::string key);
 
-extern long long hashRand(std::string key);
+long long hashRand(std::string key);
 
-extern int hash(std::string key, int mod);
+int hash(std::string key, int mod);
 
 class UniversalHash
 {

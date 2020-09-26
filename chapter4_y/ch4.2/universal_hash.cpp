@@ -1,4 +1,5 @@
 #include "universal_hash.h"
+#include "operation.h"
 #include <regex>
 #include <stdexcept>
 #include <cmath>
@@ -129,6 +130,7 @@ void UniversalHash::reallocate(int mp)
     }
 
     m = mp;
+    w = floorlog(m);
     delete[] t;
     t = tp;
 }
