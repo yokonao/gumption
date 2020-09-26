@@ -29,6 +29,10 @@ void testtostr()
     ts = ".";
     x = tobit(ts);
     expect(ts == tostr(x)).to_be_truthy();
+    ts = "py";     //0111000....
+    x = tobit(ts); //[1001111000001110]インデックスが二進数の桁に対応する
+    expect(ts == tostr(x)).to_be_truthy();
+
     ts = "Donte esta el servicio?";
     x = tobit(ts);
     expect(ts == tostr(x)).to_be_truthy();

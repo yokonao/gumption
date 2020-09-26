@@ -1,23 +1,29 @@
-#include "universal_hash.h"
-#include "operation.h"
-#include "gen_random.h"
-#include "uarray.h"
+#include <iostream>
+#include <string>
+#include <bitset>
 #include <regex>
 #include <stdexcept>
 #include <cmath>
-#include <iostream>
-#include <string>
+#include <expectation.h>
+
+#include "s_item.h"
+#include "s_linked_list.h"
+#include "s_free_list.h"
+#include "uarray.h"
+#include "universal_hash.h"
+#include "operation.h"
+#include "gen_random.h"
 
 UArray key(std::string e)
 {
-    UArray x;
-    x.pushBack(1);
+    UArray x = tobit(e);
+    //この後wで分割する処理
     return x;
 }
 
 std::string element(UArray k)
 {
-    std::string a = "sad";
+    std::string a = tostr(k);
     return a;
 }
 /*
