@@ -1,5 +1,6 @@
 #include <iostream>
 #include <cmath>
+#include "operation.h"
 
 int floorlog(int m)
 {
