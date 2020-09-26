@@ -4,7 +4,7 @@
 
 void test_uarray_dummy()
 {
-    UArray ua;
+    UArray<int> ua;
     assert(ua.size() == 0);
     ua.pushBack(1);
     assert(ua[0] == 1);
@@ -22,7 +22,7 @@ void test_uarray_dummy()
 }
 void test_uarray()
 {
-    UArray ua(4, 2);
+    UArray<int> ua(4, 2);
     assert(ua.size() == 0);
     ua.pushBack(1);
     assert(ua[0] == 1);

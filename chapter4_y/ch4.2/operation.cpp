@@ -13,10 +13,10 @@ int floorlog(int m)
     }
     return int(floor(log2(double(m))));
 }
-UArray tobit(std::string s)
+UArray<int> tobit(std::string s)
 {
     // 'p' -> 01110000ならばx=[0,0,0,0,1,1,1,0]で有ることに注意
-    UArray x;
+    UArray<int> x;
     for (int idx = 0; idx < s.size(); idx++)
     {
         char curs = s[s.size() - 1 - idx];
@@ -28,7 +28,7 @@ UArray tobit(std::string s)
     }
     return x;
 }
-std::string tostr(UArray a)
+std::string tostr(UArray<int> a)
 {
     if (a.size() % 8 != 0)
     {
@@ -50,7 +50,7 @@ std::string tostr(UArray a)
     // sはビットの文字列表現になっているはず
     return s;
 }
-long long Umul(UArray a, UArray b)
+long long Umul(UArray<int> a, UArray<int> b)
 {
     if (a.size() != b.size())
     {

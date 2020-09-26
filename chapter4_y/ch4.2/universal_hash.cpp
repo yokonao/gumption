@@ -14,14 +14,14 @@
 #include "operation.h"
 #include "gen_random.h"
 
-UArray key(std::string e)
+UArray<int> key(std::string e)
 {
-    UArray x = tobit(e);
+    UArray<int> x = tobit(e);
     //この後wで分割する処理
     return x;
 }
 
-std::string element(UArray k)
+std::string element(UArray<int> k)
 {
     std::string a = tostr(k);
     return a;

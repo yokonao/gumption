@@ -3,7 +3,7 @@
 #include <string>
 #include "uarray.h"
 int floorlog(int m);
-UArray tobit(std::string s);
-std::string tostr(UArray a);
-long long Umul(UArray a, UArray b);
+UArray<int> tobit(std::string s);
+std::string tostr(UArray<int> a);
+long long Umul(UArray<int> a, UArray<int> b);
 #endif

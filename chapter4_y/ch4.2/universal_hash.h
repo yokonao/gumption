@@ -4,9 +4,9 @@
 #include <string>
 #include "uarray.h"
 
-UArray key(std::string e);
+UArray<int> key(std::string e);
 
-std::string element(UArray k);
+std::string element(UArray<int> k);
 /*
 long long hashRand(std::string key);
 
