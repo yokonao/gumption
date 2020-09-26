@@ -1,6 +1,5 @@
 #include "uarray.h"
 #include <cassert>
-using namespace std;
 
 UArray::UArray()
 {

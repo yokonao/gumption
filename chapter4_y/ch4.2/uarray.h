@@ -1,5 +1,6 @@
-#include <iostream>
-using namespace std;
+#ifndef UARRAY_HPP
+#define UARRAY_HPP
+
 class UArray
 {
 private:
@@ -18,3 +19,4 @@ public:
     UArray();
     UArray(int al, int be);
 };
+#endif
