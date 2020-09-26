@@ -3,13 +3,13 @@
 
 #include "s_linked_list.h"
 
-extern std::string key(std::string e);
+std::string key(std::string e);
 
-extern std::string element(std::string key);
+std::string element(std::string key);
 
-extern unsigned long long hashPrime(std::string key);
+long long hashPrime(std::string key);
 
-extern int hash(std::string key, int mod);
+int hash(std::string key, int mod);
 
 class ChainingHash
 {
@@ -18,7 +18,7 @@ class ChainingHash
     int m = 1;
     int n = 0;
     SLinkedList *t;
-    
+
     void reallocate(int mp);
 
 public:

@@ -14,7 +14,7 @@ std::string element(std::string key)
     return key;
 }
 
-unsigned long long hashPrime(std::string key)
+long long hashPrime(std::string key)
 {
 
     std::smatch smatch;
@@ -31,10 +31,10 @@ unsigned long long hashPrime(std::string key)
         throw std::length_error("文字列が長すぎます。1~6文字の文字列を指定してください");
     }
 
-    unsigned long long N = 0;
+    long long N = 0;
     for (int i = 0; i < key.length(); i++)
     {
-        unsigned long long tmp = (key[key.length() - i - 1] - 'a' + 1) * std::pow(26, i);
+        long long tmp = (key[key.length() - i - 1] - 'a' + 1) * std::pow(26, i);
         N += tmp;
     }
     return N;
