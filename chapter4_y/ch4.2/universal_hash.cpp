@@ -14,9 +14,20 @@
 #include "universal_hash.h"
 #include "operation.h"
 #include "gen_random.h"
+#include "rand_list.h"
 
 UArray<UArray<int>> key(std::string e, int w)
 {
+    std::smatch smatch;
+    if (!std::regex_search(e, smatch, std::regex("^[a-z]+$")))
+    {
+        throw std::invalid_argument("ハッシュの引数は半角英数字のみが許容されます");
+    }
+    if (e.length() == 0)
+    {
+        throw std::invalid_argument("ハッシュの引数には空文字でない文字列を指定してください");
+    }
+
     UArray<UArray<int>> res; //教科書とは逆(x_k,...,x_1)
     UArray<int> x = tobit(e);
     int numsplit = (w - 1 + x.size()) / w; //分割数
@@ -38,7 +49,6 @@ UArray<UArray<int>> key(std::string e, int w)
 
 std::string element(UArray<UArray<int>> k, int w)
 {
-    //flatten
     UArray<int> flatten;
     for (int i = 0; i < k.size(); i++)
     {
@@ -52,33 +62,34 @@ std::string element(UArray<UArray<int>> k, int w)
     std::string res = tostr(flatten);
     return res;
 }
-/*
-long long hashRand(std::string key)
+
+long long hashRand(UArray<UArray<int>> k, int m)
 {
 
-    std::smatch smatch;
-    if (!std::regex_search(key, smatch, std::regex("^[a-z]+$")))
-    {
-        throw std::invalid_argument("ハッシュの引数は半角英数字のみが許容されます");
-    }
-    if (key.length() == 0)
-    {
-        throw std::invalid_argument("ハッシュの引数には空文字でない文字列を指定してください");
-    }
     long long N = 0;
-    for (int i = 0; i < key.length(); i++)
+    int count = 1;
+    for (int i = 0; i < k.size(); i++)
     {
-        long long tmp = (key[key.length() - i - 1] - 'a' + 1) * std::pow(26, i);
-        N += tmp;
+        UArray<int> cur = k[i];
+        for (int j = 0; j < cur.size(); j++)
+        {
+            if (count > RandList::size())
+            {
+
+                RandList::pushBack(m * m); //できれば大きい値にしておきたい reallocで再計算のほうが良い？
+            }
+            N += cur[j] * RandList::at(count - 1);
+            count++;
+        }
     }
     return N;
 }
 
-int hash(std::string key, int mod)
+int hash(UArray<UArray<int>> k, int mod)
 {
-    return hashRand(key) % mod;
+    return hashRand(k, mod) % mod;
 }
-
+/*
 UniversalHash::UniversalHash()
 {
     t = new SLinkedList[1];

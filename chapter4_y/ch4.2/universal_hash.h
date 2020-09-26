@@ -7,11 +7,9 @@
 UArray<UArray<int>> key(std::string e, int w);
 
 std::string element(UArray<UArray<int>> k, int w);
+long long hashRand(UArray<UArray<int>> k);
+int hash(UArray<UArray<int>> k, int mod);
 /*
-long long hashRand(std::string key);
-
-int hash(std::string key, int mod);
-
 class UniversalHash
 {
     const int beta = 2;
