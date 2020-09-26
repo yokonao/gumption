@@ -2,11 +2,11 @@
 #define UNIVERSAL_HASH_HPP
 
 #include <string>
-#include "uarray.h"
+#include <uarray.h>
 
-UArray<int> key(std::string e);
+UArray<UArray<int>> key(std::string e, int w);
 
-std::string element(UArray<int> k);
+std::string element(UArray<UArray<int>> k, int w);
 /*
 long long hashRand(std::string key);
 

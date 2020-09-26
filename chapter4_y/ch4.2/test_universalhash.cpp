@@ -16,8 +16,8 @@ void testkeyf()
         std::cout << std::bitset<8>(teststring.c_str()[i]) << std::endl;
     }
 
-    UArray<int> k = key("hello");
-    std::string e = element(k);
+    UArray<UArray<int>> k = key("hello", 8);
+    std::string e = element(k, 8);
 }
 int main()
 {

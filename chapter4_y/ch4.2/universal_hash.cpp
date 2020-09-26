@@ -14,17 +14,42 @@
 #include "operation.h"
 #include "gen_random.h"
 
-UArray<int> key(std::string e)
+UArray<UArray<int>> key(std::string e, int w)
 {
+    UArray<UArray<int>> res; //教科書とは逆(x_k,...,x_1)
     UArray<int> x = tobit(e);
     //この後wで分割する処理
-    return x;
+    int numsplit = 1 + x.size() / w; //分割数
+    for (int i = 0; i < numsplit; i++)
+    {
+        UArray<int> cur;
+        for (int j = 0; j < w; j++)
+        {
+            if (i * w + j < x.size())
+            {
+                cur.pushBack(x[i * w + j]);
+            }
+            else
+            {
+                cur.pushBack(0);
+            }
+        }
+        res.pushBack(cur);
+    }
+    return res;
 }
 
-std::string element(UArray<int> k)
+std::string element(UArray<UArray<int>> k, int w)
 {
-    std::string a = tostr(k);
-    return a;
+    std::string res = "";
+    //kをflattenして0埋めだけなら捨てる
+    // w>=16だとまずい？
+    for (int i = 0; i < k.size(); i++)
+    {
+        std::string a = tostr(k[i]);
+        res = res + a;
+    }
+    return res;
 }
 /*
 long long hashRand(std::string key)
