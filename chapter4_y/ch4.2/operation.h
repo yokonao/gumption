@@ -3,6 +3,6 @@
 #include <string>
 #include "uarray.h"
 int floorlog(int m);
-UArray tobit(char s);
-char tostr(UArray a);
+UArray tobit(std::string s);
+std::string tostr(UArray a);
 #endif

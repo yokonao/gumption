@@ -14,18 +14,31 @@ void testfloorlog()
 }
 void testbit()
 {
-    UArray x = tobit('p');
+    UArray x = tobit("p");
     std::bitset<8> b = std::bitset<8>('p');
     for (int i = 0; i < x.size(); i++)
     {
         expect(x[i] == b[i]).to_be_truthy();
     }
 }
+void testtostr()
+{
+    std::string ts = "python is too slow.";
+    UArray x = tobit(ts);
+    expect(ts == tostr(x)).to_be_truthy();
+    std::string ts = ".";
+    UArray x = tobit(ts);
+    expect(ts == tostr(x)).to_be_truthy();
+    std::string ts = "Donte esta el servicio?";
+    UArray x = tobit(ts);
+    expect(ts == tostr(x)).to_be_truthy();
+}
 int main()
 {
     std::cout << "TEST START" << std::endl;
     testfloorlog();
     testbit();
+    testtostr();
     std::cout << "ALL GREEN" << std::endl;
     return 0;
 }
