@@ -4,20 +4,19 @@
 #include "s_item.h"
 #include "s_linked_list.h"
 #include "s_free_list.h"
-#include "uarray.h"
+#include <uarray.h>
 #include "universal_hash.h"
-#include "expectation.h"
+#include <expectation.h>
 
 void testkeyf()
 {
     std::string teststring = "python is too slow.";
-    for (std::size_t i = 0; i < teststring.size(); ++i)
+    for (int w = 8; w < 15; w++)
     {
-        std::cout << std::bitset<8>(teststring.c_str()[i]) << std::endl;
+        UArray<UArray<int>> k = key(teststring, w);
+        std::string e = element(k, w);
+        expect(e == teststring).to_be_truthy();
     }
-
-    UArray<UArray<int>> k = key("hello", 8);
-    std::string e = element(k, 8);
 }
 int main()
 {

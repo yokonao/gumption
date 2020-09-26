@@ -1,3 +1,4 @@
+
 #include <iostream>
 #include <string>
 #include <bitset>
@@ -9,7 +10,7 @@
 #include "s_item.h"
 #include "s_linked_list.h"
 #include "s_free_list.h"
-#include "uarray.h"
+#include <uarray.h>
 #include "universal_hash.h"
 #include "operation.h"
 #include "gen_random.h"
@@ -18,21 +19,17 @@ UArray<UArray<int>> key(std::string e, int w)
 {
     UArray<UArray<int>> res; //教科書とは逆(x_k,...,x_1)
     UArray<int> x = tobit(e);
-    //この後wで分割する処理
-    int numsplit = 1 + x.size() / w; //分割数
+    int numsplit = (w - 1 + x.size()) / w; //分割数
     for (int i = 0; i < numsplit; i++)
     {
         UArray<int> cur;
         for (int j = 0; j < w; j++)
         {
-            if (i * w + j < x.size())
+            if (i * w + j >= x.size())
             {
-                cur.pushBack(x[i * w + j]);
+                break;
             }
-            else
-            {
-                cur.pushBack(0);
-            }
+            cur.pushBack(x[i * w + j]);
         }
         res.pushBack(cur);
     }
@@ -41,14 +38,18 @@ UArray<UArray<int>> key(std::string e, int w)
 
 std::string element(UArray<UArray<int>> k, int w)
 {
-    std::string res = "";
-    //kをflattenして0埋めだけなら捨てる
-    // w>=16だとまずい？
+    //flatten
+    UArray<int> flatten;
     for (int i = 0; i < k.size(); i++)
     {
-        std::string a = tostr(k[i]);
-        res = res + a;
+        UArray<int> cur = k[i];
+        for (int idx = 0; idx < cur.size(); idx++)
+        {
+            flatten.pushBack(cur[idx]);
+        }
     }
+
+    std::string res = tostr(flatten);
     return res;
 }
 /*
