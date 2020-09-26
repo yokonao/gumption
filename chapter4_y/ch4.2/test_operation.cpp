@@ -14,7 +14,7 @@ void testfloorlog()
 }
 void testbit()
 {
-    UArray x = tobit("p");
+    UArray<int> x = tobit("p");
     std::bitset<8> b = std::bitset<8>('p');
     for (int i = 0; i < x.size(); i++)
     {
@@ -24,7 +24,7 @@ void testbit()
 void testtostr()
 {
     std::string ts = "python is too slow.";
-    UArray x = tobit(ts);
+    UArray<int> x = tobit(ts);
     expect(ts == tostr(x)).to_be_truthy();
     ts = ".";
     x = tobit(ts);
@@ -40,13 +40,13 @@ void testtostr()
 void testUmul()
 {
     expect_error<std::invalid_argument>([] {
-        UArray x;
-        UArray y;
+        UArray<int> x;
+        UArray<int> y;
         Umul(x, y);
     });
     expect_error<std::invalid_argument>([] {
-        UArray x;
-        UArray y;
+        UArray<int> x;
+        UArray<int> y;
         x.pushBack(10);
         x.pushBack(11);
 
@@ -55,14 +55,23 @@ void testUmul()
         Umul(x, y);
     });
 
-    UArray x;
-    UArray y;
+    UArray<int> x;
+    UArray<int> y;
     x.pushBack(10);
     y.pushBack(10);
     expect(Umul(x, y) == 100).to_be_truthy();
     x.pushBack(11);
     y.pushBack(12);
     expect(Umul(x, y) == 232).to_be_truthy();
+}
+void testUArray()
+{
+    UArray<UArray<int>> x;
+    UArray<int> y;
+    y.pushBack(10);
+    y.pushBack(12);
+    x.pushBack(y);
+    expect(x[0][1] == 12).to_be_truthy();
 }
 int main()
 {
@@ -71,6 +80,7 @@ int main()
     testbit();
     testtostr();
     testUmul();
+    testUArray();
     std::cout << "ALL GREEN" << std::endl;
     return 0;
 }

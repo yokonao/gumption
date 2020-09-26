@@ -16,7 +16,7 @@ void testkeyf()
         std::cout << std::bitset<8>(teststring.c_str()[i]) << std::endl;
     }
 
-    UArray k = key("hello");
+    UArray<int> k = key("hello");
     std::string e = element(k);
 }
 int main()
