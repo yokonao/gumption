@@ -94,19 +94,19 @@ void testHash()
     expect(hashPrime("az")).to_be(52);
     expect(hashPrime("ruby")).to_be(330641);
     expect_error<std::invalid_argument>([] {
-        unsigned long long N = hashPrime("");
+        long long N = hashPrime("");
     });
     expect_error<std::invalid_argument>([] {
-        unsigned long long N = hashPrime("Ruby");
+        hashPrime("Ruby");
     });
     expect_error<std::invalid_argument>([] {
-        unsigned long long N = hashPrime("ruビー");
+        hashPrime("ruビー");
     });
     expect_error<std::invalid_argument>([] {
-        unsigned long long N = hashPrime("るびー");
+        hashPrime("るびー");
     });
     expect_error<std::length_error>([] {
-        unsigned long long N = hashPrime("rubyonrails");
+        hashPrime("rubyonrails");
     });
     expect(hash("ruby", 1000)).to_be(641);
     expect(hash("zzzzzz", 10)).to_be(6);
