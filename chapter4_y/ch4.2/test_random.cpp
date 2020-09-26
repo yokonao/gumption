@@ -1,6 +1,6 @@
 #include <iostream>
 #include "gen_random.h"
-#include "expectation.h"
+#include <expectation.h>
 void testRandom()
 {
     for (int m = 1; m < 10000; m++)
