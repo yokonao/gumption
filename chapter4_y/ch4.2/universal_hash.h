@@ -1,13 +1,13 @@
 #ifndef UNIVERSAL_HASH_HPP
 #define UNIVERSAL_HASH_HPP
 
-#include "s_linked_list.h"
+#include <string>
 #include "uarray.h"
 
 UArray key(std::string e);
 
-std::string element(std::string key);
-
+std::string element(UArray k);
+/*
 long long hashRand(std::string key);
 
 int hash(std::string key, int mod);
@@ -30,5 +30,5 @@ public:
     std::string find(std::string key);
     std::string operator[](std::string key);
 };
-
+*/
 #endif

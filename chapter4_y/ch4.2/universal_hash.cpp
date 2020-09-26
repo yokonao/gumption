@@ -6,20 +6,21 @@
 #include <stdexcept>
 #include <cmath>
 #include <iostream>
+#include <string>
 
 UArray key(std::string e)
 {
-    // e toint
-    // x
     UArray x;
+    x.pushBack(1);
     return x;
 }
 
-std::string element(std::string key)
+std::string element(UArray k)
 {
-    return key;
+    std::string a = "sad";
+    return a;
 }
-
+/*
 long long hashRand(std::string key)
 {
 
@@ -139,3 +140,4 @@ void UniversalHash::reallocate(int mp)
     delete[] t;
     t = tp;
 }
+*/
