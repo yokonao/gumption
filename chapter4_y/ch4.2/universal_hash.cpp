@@ -1,13 +1,18 @@
 #include "universal_hash.h"
 #include "operation.h"
+#include "gen_random.h"
+#include "uarray.h"
 #include <regex>
 #include <stdexcept>
 #include <cmath>
 #include <iostream>
 
-std::string key(std::string e)
+UArray key(std::string e)
 {
-    return e;
+    // e toint
+    // x
+    UArray x;
+    return x;
 }
 
 std::string element(std::string key)

@@ -2,8 +2,9 @@
 #define UNIVERSAL_HASH_HPP
 
 #include "s_linked_list.h"
+#include "uarray.h"
 
-std::string key(std::string e);
+UArray key(std::string e);
 
 std::string element(std::string key);
 
@@ -19,7 +20,7 @@ class UniversalHash
     int w = 8;
     int n = 0;
     SLinkedList *t;
-
+    UArray a;
     void reallocate(int mp);
 
 public:
