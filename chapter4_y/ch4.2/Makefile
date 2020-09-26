@@ -11,8 +11,8 @@ univ: test_universalhash.cpp $(MODULES)
 
 random: test_random.cpp gen_random.cpp
 	$(CC) $(CFLAGS) -o $(PROGRAM) test_random.cpp gen_random.cpp -I $(INCLUDEPATH)
-operation: test_operation.cpp operation.cpp
-	$(CC) $(CFLAGS) -o $(PROGRAM) test_operation.cpp operation.cpp -I $(INCLUDEPATH)
+operation: test_operation.cpp operation.cpp uarray.cpp
+	$(CC) $(CFLAGS) -o $(PROGRAM) test_operation.cpp operation.cpp uarray.cpp -I $(INCLUDEPATH)
 uarray: test_uarray.cpp uarray.cpp
 	$(CC) $(CFLAGS) -o $(PROGRAM) test_uarray.cpp uarray.cpp -I $(INCLUDEPATH)
 .PHONY: clean
