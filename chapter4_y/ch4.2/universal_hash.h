@@ -16,7 +16,7 @@ class UniversalHash
     const int beta = 2;
     const int alpha = 4;
     int m = 257;
-    int w = 2;
+    int w = 8;
     int n = 0;
     SLinkedList *t;
 
