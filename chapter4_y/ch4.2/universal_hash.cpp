@@ -89,31 +89,31 @@ int hash(UArray<UArray<int>> k, int mod)
 {
     return hashRand(k, mod) % mod;
 }
-/*
 UniversalHash::UniversalHash()
 {
     t = new SLinkedList[1];
 }
 
-void UniversalHash::insert(std::string e, std::string value)
+void UniversalHash::insert(std::string s, std::string value)
 {
     if (n == m)
     {
         reallocate(beta * n);
     }
-    std::string k = key(e);
+    UArray<UArray<int>> k = key(s, w);
     int h = hash(k, m);
-    t[h].pushBack(e, value);
+    t[h].pushBack(s, value);
     n++;
 }
 
-void UniversalHash::remove(std::string key)
+void UniversalHash::remove(std::string s)
 {
-    int h = hash(key, m);
+    UArray<UArray<int>> k = key(s, w);
+    int h = hash(k, m);
     SItem *tmp = t[h].head();
     while (!tmp->next->isDummy)
     {
-        if (tmp->next->e == element(key))
+        if (tmp->next->e == element(k, w)) //右辺はeそのものでは？
         {
             t[h].removeAfter(tmp);
             n--;
@@ -134,13 +134,15 @@ void UniversalHash::remove(std::string key)
     }
 }
 
-std::string UniversalHash::find(std::string key)
+std::string UniversalHash::find(std::string s)
 {
-    int h = hash(key, m);
+    UArray<UArray<int>> k = key(s, w);
+
+    int h = hash(k, m);
     SItem *tmp = t[h].head();
     while (!tmp->next->isDummy)
     {
-        if (tmp->next->e == element(key))
+        if (tmp->next->e == element(k, w))
         {
             return tmp->next->e;
         }
@@ -149,13 +151,14 @@ std::string UniversalHash::find(std::string key)
     return "";
 }
 
-std::string UniversalHash::operator[](std::string key)
+std::string UniversalHash::operator[](std::string s)
 {
-    int h = hash(key, m);
+    UArray<UArray<int>> k = key(s, w);
+    int h = hash(k, m);
     SItem *tmp = t[h].head();
     while (!tmp->next->isDummy)
     {
-        if (tmp->next->e == element(key))
+        if (tmp->next->e == element(k, w))
         {
             return tmp->next->value;
         }
@@ -172,7 +175,7 @@ void UniversalHash::reallocate(int mp)
         SItem *tmp = t[i].head()->next;
         while (!tmp->isDummy)
         {
-            int h = hash(key(tmp->e), mp);
+            int h = hash(key(tmp->e, w), mp);
             tp[h].pushBack(tmp->e, tmp->value);
             tmp = tmp->next;
         }
@@ -183,4 +186,3 @@ void UniversalHash::reallocate(int mp)
     delete[] t;
     t = tp;
 }
-*/
