@@ -5,4 +5,5 @@
 int floorlog(int m);
 UArray tobit(std::string s);
 std::string tostr(UArray a);
+long long Umul(UArray a, UArray b);
 #endif

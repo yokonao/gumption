@@ -50,3 +50,21 @@ std::string tostr(UArray a)
     // sはビットの文字列表現になっているはず
     return s;
 }
+long long Umul(UArray a, UArray b)
+{
+    if (a.size() != b.size())
+    {
+        throw std::invalid_argument("配列の長さが違います");
+    }
+    if (a.size() == 0 or b.size() == 0)
+    {
+        throw std::invalid_argument("配列の長さは0以上にしてください");
+    }
+
+    long long res = 0;
+    for (int i = 0; i < a.size(); i++)
+    {
+        res += a[i] * b[i];
+    }
+    return res;
+}

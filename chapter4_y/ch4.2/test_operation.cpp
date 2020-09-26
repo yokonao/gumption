@@ -26,12 +26,39 @@ void testtostr()
     std::string ts = "python is too slow.";
     UArray x = tobit(ts);
     expect(ts == tostr(x)).to_be_truthy();
-    std::string ts = ".";
-    UArray x = tobit(ts);
+    ts = ".";
+    x = tobit(ts);
     expect(ts == tostr(x)).to_be_truthy();
-    std::string ts = "Donte esta el servicio?";
-    UArray x = tobit(ts);
+    ts = "Donte esta el servicio?";
+    x = tobit(ts);
     expect(ts == tostr(x)).to_be_truthy();
+}
+void testUmul()
+{
+    expect_error<std::invalid_argument>([] {
+        UArray x;
+        UArray y;
+        Umul(x, y);
+    });
+    expect_error<std::invalid_argument>([] {
+        UArray x;
+        UArray y;
+        x.pushBack(10);
+        x.pushBack(11);
+
+        y.pushBack(10);
+
+        Umul(x, y);
+    });
+
+    UArray x;
+    UArray y;
+    x.pushBack(10);
+    y.pushBack(10);
+    expect(Umul(x, y) == 100).to_be_truthy();
+    x.pushBack(11);
+    y.pushBack(12);
+    expect(Umul(x, y) == 232).to_be_truthy();
 }
 int main()
 {
@@ -39,6 +66,7 @@ int main()
     testfloorlog();
     testbit();
     testtostr();
+    testUmul();
     std::cout << "ALL GREEN" << std::endl;
     return 0;
 }
