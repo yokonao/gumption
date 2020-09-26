@@ -10,7 +10,7 @@ univ: test_universalhash.cpp $(MODULES)
 	$(CC) $(CFLAGS) -o $(PROGRAM) test_universalhash.cpp $(MODULES) -I $(INCLUDEPATH)
 
 random: test_random.cpp gen_random.cpp
-	$(CC) $(CFLAGS) -o $(PROGRAM) test_random.cpp gen_random.cpp -I $(INCLUDEPATH)
+	$(CC) $(CFLAGS) -o $(PROGRAM) test_random.cpp gen_random.cpp rand_list.cpp -I $(INCLUDEPATH)
 operation: test_operation.cpp operation.cpp 
 	$(CC) $(CFLAGS) -o $(PROGRAM) test_operation.cpp operation.cpp -I $(INCLUDEPATH)
 .PHONY: clean
