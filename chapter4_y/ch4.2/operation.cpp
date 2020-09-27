@@ -68,3 +68,16 @@ long long Umul(UArray<int> a, UArray<int> b)
     }
     return res;
 }
+int findk(int m)
+{
+    if (m < 8)
+    {
+        throw std::invalid_argument("引数は8以上である必要があります");
+    }
+    int k = 2;
+    while (k * k * k < m)
+    {
+        k++;
+    }
+    return k;
+}

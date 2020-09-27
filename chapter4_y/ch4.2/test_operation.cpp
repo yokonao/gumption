@@ -73,6 +73,13 @@ void testUArray()
     x.pushBack(y);
     expect(x[0][1] == 12).to_be_truthy();
 }
+void testfindk()
+{
+    expect(findk(8)).to_be(2);
+    expect(findk(9)).to_be(2);
+    expect(findk(27)).to_be(3);
+    expect(findk(130)).to_be(5);
+}
 int main()
 {
     std::cout << "TEST START" << std::endl;
