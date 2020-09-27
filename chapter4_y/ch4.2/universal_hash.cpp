@@ -91,7 +91,7 @@ int hash(UArray<UArray<int>> k, int mod)
 }
 UniversalHash::UniversalHash()
 {
-    t = new SLinkedList[1];
+    t = new SLinkedList[m];
 }
 
 void UniversalHash::insert(std::string s, std::string value)
@@ -136,12 +136,15 @@ void UniversalHash::remove(std::string s)
 
 std::string UniversalHash::find(std::string s)
 {
+
     UArray<UArray<int>> k = key(s, w);
 
     int h = hash(k, m);
+
     SItem *tmp = t[h].head();
     while (!tmp->next->isDummy)
     {
+
         if (tmp->next->e == element(k, w))
         {
             return tmp->next->e;

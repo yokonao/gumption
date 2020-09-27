@@ -24,14 +24,31 @@ void testHash()
     int m = 257;
     int w = floorlog(m);
     expect(hash(key("hello", w), m) == hash(key("hello", w), m)).to_be_truthy();
-    std::cout << hash(key("hello", w), m) << std::endl;
-    std::cout << hash(key("asdf", w), m) << std::endl;
+    //std::cout << hash(key("hello", w), m) << std::endl;
+    //std::cout << hash(key("asdf", w), m) << std::endl;
+}
+void testUniversalHash()
+{
+    UniversalHash un;
+
+    expect(un.find("python")).to_be("");
+    un.insert("hello", "world");
+    un.insert("python", "slow");
+    un.insert("cpp", "fast");
+    un.insert("swift", "soso");
+    expect(un.find("python")).to_be("python");
+    expect(un["python"]).to_be("slow");
+    expect(un.find("cpp")).to_be("cpp");
+    expect(un.find("swift")).to_be("swift");
+    un.remove("python");
+    expect(un.find("python")).to_be("");
 }
 int main()
 {
     std::cout << "TEST START" << std::endl;
     testkeyf();
     testHash();
+    testUniversalHash();
     std::cout << "ALL GREEN" << std::endl;
     return 0;
 }
