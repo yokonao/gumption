@@ -128,10 +128,10 @@ void UniversalHash::remove(std::string s)
         }
     }
 
-    if (m >= alpha * n && n > 0)
-    {
-        reallocate(beta * n);
-    }
+    //if (m >= alpha * n && n > 0)
+    //{
+    //reallocate(beta * n);
+    //}
 }
 
 std::string UniversalHash::find(std::string s)
@@ -172,6 +172,8 @@ std::string UniversalHash::operator[](std::string s)
 
 void UniversalHash::reallocate(int mp)
 {
+    int k = findk(mp);
+    mp = findPrime(k);
     SLinkedList *tp = new SLinkedList[mp];
     for (int i = 0; i < m; i++)
     {
