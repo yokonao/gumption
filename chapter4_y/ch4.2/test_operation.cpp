@@ -80,6 +80,15 @@ void testfindk()
     expect(findk(27)).to_be(3);
     expect(findk(130)).to_be(5);
 }
+void testfindPrime()
+{
+    expect(findPrime(8)).to_be(521);
+    expect(findPrime(7)).to_be(347);
+
+    expect(findPrime(9)).to_be(733);
+    expect(findPrime(27)).to_be(19687);
+    expect(findPrime(131)).to_be(2248117);
+}
 int main()
 {
     std::cout << "TEST START" << std::endl;
@@ -88,6 +97,8 @@ int main()
     testtostr();
     testUmul();
     testUArray();
+    testfindk();
+    testfindPrime();
     std::cout << "ALL GREEN" << std::endl;
     return 0;
 }

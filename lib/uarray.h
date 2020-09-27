@@ -13,7 +13,7 @@ private:
     T *b;
 
 public:
-    T operator[](int i)
+    T &operator[](int i)
     {
         assert(i >= 0 and i < n);
         return b[i];

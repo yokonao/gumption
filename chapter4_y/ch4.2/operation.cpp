@@ -75,9 +75,43 @@ int findk(int m)
         throw std::invalid_argument("引数は8以上である必要があります");
     }
     int k = 2;
-    while (k * k * k < m)
+    while ((k + 1) * (k + 1) * (k + 1) <= m)
     {
         k++;
     }
     return k;
+}
+
+int findPrime(int k)
+{
+    if (k < 2)
+    {
+        throw std::invalid_argument("引数は2以上である必要があります");
+    }
+    int kt = k * k * k;
+    int kpt = (k + 1) * (k + 1) * (k + 1);
+    int length = kpt - kt;
+    UArray<bool> furui;
+    for (int i = 0; i < length; i++)
+    {
+        furui.pushBack(true); //素数はtrue
+    }
+    for (int i = 2; i <= sqrt(kpt); i++)
+    {
+        int keisu = ((kt + i - 1) / i);
+        int j = i * keisu - kt;
+        while (j < length)
+        {
+            furui[j] = false;
+            j += i;
+        }
+    }
+    for (int i = 0; i < length; i++)
+    {
+        if (furui[i])
+        {
+            return kt + i;
+        }
+    }
+    return findPrime(k + 1);
 }
