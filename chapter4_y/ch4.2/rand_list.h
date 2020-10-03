@@ -15,6 +15,7 @@ public:
     static int size();
 
     static void pushBack(int m);
+    static void recalc(int m);
 };
 
 #endif
