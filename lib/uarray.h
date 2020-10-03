@@ -48,6 +48,14 @@ public:
         delete b;
         b = bp;
     };
+    void clear()
+    {
+        delete b;
+        w = 1;
+        T *bp = new T[0];
+        n = 0;
+        b = bp;
+    };
     UArray()
     {
         alpha = 4;

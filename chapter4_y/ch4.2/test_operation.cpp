@@ -72,6 +72,8 @@ void testUArray()
     y.pushBack(12);
     x.pushBack(y);
     expect(x[0][1] == 12).to_be_truthy();
+    y.clear();
+    expect(y.size()).to_be(0);
 }
 void testfindk()
 {
