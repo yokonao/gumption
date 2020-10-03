@@ -174,6 +174,9 @@ void UniversalHash::reallocate(int mp)
 {
     int k = findk(mp);
     mp = findPrime(k);
+    // Hash関数を再計算
+    RandList::recalc(mp);
+
     SLinkedList *tp = new SLinkedList[mp];
     for (int i = 0; i < m; i++)
     {
@@ -190,6 +193,4 @@ void UniversalHash::reallocate(int mp)
     w = floorlog(m);
     delete[] t;
     t = tp;
-    // Hash関数を再計算
-    RandList::recalc(m);
 }
