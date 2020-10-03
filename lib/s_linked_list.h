@@ -145,6 +145,9 @@ public:
     }
 };
 
+SLinkedList SFreeList::m_SLinkedList;
+
+
 SItem *SLinkedList::insertAfter(std::string e, std::string value, SItem *a)
 {
     SFreeList::check();
