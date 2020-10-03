@@ -11,10 +11,10 @@
 #include "s_linked_list.h"
 #include "s_free_list.h"
 #include <uarray.h>
-#include "universal_hash.h"
 #include "operation.h"
 #include "gen_random.h"
 #include "rand_list.h"
+#include "universal_hash.h"
 
 UArray<UArray<int>> key(std::string e, int w)
 {
@@ -67,20 +67,24 @@ long long hashRand(UArray<UArray<int>> k, int m)
 {
 
     long long N = 0;
-    int count = 1;
+    int base, x_cur;
+    UArray<int> cur;
     for (int i = 0; i < k.size(); i++)
     {
-        UArray<int> cur = k[i];
+        cur = k[i];
+        x_cur = 0;
+        base = 1;
         for (int j = 0; j < cur.size(); j++)
         {
-            if (count > RandList::size())
-            {
-
-                RandList::pushBack(m * m); //できれば大きい値にしておきたい reallocで再計算のほうが良い？
-            }
-            N += cur[j] * RandList::at(count - 1);
-            count++;
+            x_cur += base * cur[j];
+            base *= 2;
         }
+        if (i + 1 > RandList::size())
+        {
+
+            RandList::pushBack(m);
+        }
+        N += x_cur * RandList::at(i);
     }
     return N;
 }
@@ -174,20 +178,24 @@ void UniversalHash::reallocate(int mp)
 {
     int k = findk(mp);
     mp = findPrime(k);
+    int wp = floorlog(mp);
+    // Hash関数を再計算
+    RandList::recalc(mp);
+
     SLinkedList *tp = new SLinkedList[mp];
     for (int i = 0; i < m; i++)
     {
         SItem *tmp = t[i].head()->next;
         while (!tmp->isDummy)
         {
-            int h = hash(key(tmp->e, w), mp);
+            int h = hash(key(tmp->e, wp), mp);
             tp[h].pushBack(tmp->e, tmp->value);
             tmp = tmp->next;
         }
     }
 
     m = mp;
-    w = floorlog(m);
+    w = wp;
     delete[] t;
     t = tp;
 }

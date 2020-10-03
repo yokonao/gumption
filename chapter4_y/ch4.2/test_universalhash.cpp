@@ -79,7 +79,7 @@ int main()
     testkeyf();
     testHash();
     testUniversalHash();
-    testUniversalHash_realloc();
+    //testUniversalHash_realloc();
 
     std::cout << "ALL GREEN" << std::endl;
     return 0;

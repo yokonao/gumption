@@ -21,6 +21,14 @@ void testRandList()
     RandList::pushBack(10);
     expect(RandList::size() == 1).to_be_truthy();
 }
+void testRandListRecalc()
+{
+    RandList::pushBack(10);
+    RandList::recalc(10);
+    expect(RandList::size()).to_be(10);
+    RandList::recalc(1);
+    expect(RandList::size()).to_be(1);
+}
 int main()
 {
     std::cout << "TEST START" << std::endl;
