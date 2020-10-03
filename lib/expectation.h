@@ -1,3 +1,6 @@
+#ifndef EXPECTATION_HPP
+#define EXPECTATION_HPP
+
 #include <stdexcept>
 #include <iostream>
 #include <functional>
@@ -77,3 +80,5 @@ void expect_error(std::function<void()> lambda)
     }
     throw std::logic_error("例外が発生しませんでした");
 }
+
+#endif
