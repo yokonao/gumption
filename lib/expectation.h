@@ -78,7 +78,7 @@ void expect_error(std::function<void()> lambda)
     {
         return;
     }
-    throw std::logic_error("例外が発生しませんでした");
+    throw std::logic_error("想定した例外が発生しませんでした");
 }
 
 #endif
