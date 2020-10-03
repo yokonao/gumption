@@ -15,5 +15,7 @@ operation: test_operation.cpp operation.cpp
 	$(CC) $(CFLAGS) -o $(PROGRAM) test_operation.cpp $(MODULES) -I $(INCLUDEPATH)
 watch: watch_hash.cpp
 	$(CC) $(CFLAGS) -o $(PROGRAM) watch_hash.cpp $(MODULES) -I $(INCLUDEPATH)
+watchrandom: watch_random.cpp
+	$(CC) $(CFLAGS) -o $(PROGRAM) watch_random.cpp $(MODULES) -I $(INCLUDEPATH)
 .PHONY: clean
 clean:;	rm -f *.o $(PROGRAM)
