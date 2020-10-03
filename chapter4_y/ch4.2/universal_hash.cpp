@@ -76,7 +76,7 @@ long long hashRand(UArray<UArray<int>> k, int m)
             if (count > RandList::size())
             {
 
-                RandList::pushBack(m * m); //できれば大きい値にしておきたい reallocで再計算のほうが良い？
+                RandList::pushBack(m);
             }
             N += cur[j] * RandList::at(count - 1);
             count++;
@@ -190,4 +190,6 @@ void UniversalHash::reallocate(int mp)
     w = floorlog(m);
     delete[] t;
     t = tp;
+    // Hash関数を再計算
+    RandList::recalc(m);
 }
