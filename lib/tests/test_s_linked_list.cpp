@@ -12,7 +12,7 @@ void testSItem()
     expect(item.e).to_be("a");
     expect(item.next).to_be(&dummy);
     expect(dummy.next).to_be(&item);
-    SItem item2("abcd", "", &dummy);
+    SItem item2("abcde", "", &dummy);
     dummy.next = &item;
     expect(item2.e).to_be("abcd");
     expect(item2.next).to_be(&dummy);
