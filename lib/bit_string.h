@@ -36,11 +36,6 @@ public:
 
     std::string toString()
     {
-        if (n % 8 != 0)
-        {
-            throw std::invalid_argument("配列の長さは8の倍数にしてください");
-        }
-
         std::string s = "";
         for (int idx = 0; idx < n / 8; idx++)
         {
