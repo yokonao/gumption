@@ -5,12 +5,13 @@ INCLUDEPATH = ../
 
 PROGRAM = exe.out
 
+all: s_linked_list expectation to_bit bit_string
 s_linked_list: test_s_linked_list.cpp
-	$(CC) $(CFLAGS) -o $(PROGRAM) test_s_linked_list.cpp
+	$(CC) $(CFLAGS) -o $(PROGRAM) test_s_linked_list.cpp && ./$(PROGRAM)
 expectation: test_expectation.cpp
-	$(CC) $(CFLAGS) -o $(PROGRAM) test_expectation.cpp
+	$(CC) $(CFLAGS) -o $(PROGRAM) test_expectation.cpp && ./$(PROGRAM)
 to_bit: test_to_bit.cpp
-	$(CC) $(CFLAGS) -o $(PROGRAM) test_to_bit.cpp -I $(INCLUDEPATH)
+	$(CC) $(CFLAGS) -o $(PROGRAM) test_to_bit.cpp -I $(INCLUDEPATH) && ./$(PROGRAM)
 bit_string: test_bit_string.cpp
 	$(CC) $(CFLAGS) -o $(PROGRAM) test_bit_string.cpp -I $(INCLUDEPATH) && ./${PROGRAM}
 .PHONY: clean
