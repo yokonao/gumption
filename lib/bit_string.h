@@ -3,11 +3,8 @@
 
 #include <string>
 #include <bitset>
-#include <stdexcept>
 #include <cassert>
 #include <algorithm>
-#include <cmath>
-#include <iostream>
 
 const int byte_size = 8;
 
@@ -29,6 +26,7 @@ public:
 
     int operator[](int i)
     {
+        assert(i >= 0 && i < byte_size);
         return m_BitSet[i];
     }
 
