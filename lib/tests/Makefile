@@ -5,7 +5,7 @@ INCLUDEPATH = ../
 
 PROGRAM = exe.out
 
-all: s_linked_list expectation to_bit bit_string
+test: s_linked_list expectation to_bit bit_string
 s_linked_list: test_s_linked_list.cpp
 	$(CC) $(CFLAGS) -o $(PROGRAM) test_s_linked_list.cpp && ./$(PROGRAM)
 expectation: test_expectation.cpp
