@@ -10,7 +10,7 @@ UArray<int> toBit(std::string s)
 {
     // 'p' -> 01110000ならばx=[0,0,0,0,1,1,1,0]で有ることに注意
     UArray<int> x;
-    for (int idx = 0; idx < s.size(); idx++)
+    for (int idx = 0; idx < (int)s.size(); idx++)
     {
         char curs = s[s.size() - 1 - idx];
         std::bitset<8> b = std::bitset<8>(curs);
