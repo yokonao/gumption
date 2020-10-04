@@ -8,7 +8,6 @@ void testToBit()
     int size = sizeof(expected) / sizeof(*expected);
     for (int i = 0; i < size; i++)
     {
-        std::cout << bit[i] << std::endl;
         expect(bit[i]).to_be(expected[i]);
     }
 }
