@@ -1,6 +1,4 @@
 #!/bin/sh
 
-make s_linked_list
-./exe.out
-make expectation
+make to_bit
 ./exe.out
