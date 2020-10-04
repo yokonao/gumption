@@ -1,0 +1,24 @@
+name: cpp CI
+
+on:
+  pull_request:
+    branches:
+      - master
+  push:
+    branches:
+      - master
+
+strategy:
+  matrix:
+    compiler: [gcc]
+jobs:
+  test:
+    name: RSpec
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@v2
+      - name: test lib
+        env:
+          CC: ${{ matrix.compiler }}
+        run: cd lib/tests/ && make test
