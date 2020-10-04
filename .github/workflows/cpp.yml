@@ -8,9 +8,6 @@ on:
     branches:
       - master
 
-strategy:
-  matrix:
-    compiler: [gcc]
 jobs:
   test:
     name: RSpec
@@ -20,5 +17,5 @@ jobs:
         uses: actions/checkout@v2
       - name: test lib
         env:
-          CC: ${{ matrix.compiler }}
+          CC: gcc
         run: cd lib/tests/ && make test
