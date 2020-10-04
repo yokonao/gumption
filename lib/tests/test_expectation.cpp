@@ -45,7 +45,15 @@ void testExpectation()
             throw;
         }
     }
+
+    std::string s1 = "a";
+    std::string s2 = "abc";
+    std::string s3 = "three";
+    expect(s1).to_be("a");
+    expect(s2).to_be("abc");
+    expect(s3).to_be("three");
 }
+
 void testExpectError()
 {
     expect_error<std::logic_error>([] { throw std::logic_error("logic_error"); });
