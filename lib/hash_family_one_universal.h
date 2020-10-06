@@ -1,3 +1,6 @@
+#ifndef HASH_FAMILY_ONE_UNIVERSAL_HPP
+#define HASH_FAMILY_ONE_UNIVERSAL_HPP
+
 #include <string>
 #include <bit_string.h>
 #include <gen_mt.h>
@@ -61,3 +64,5 @@ public:
         return N % m;
     }
 };
+
+#endif
