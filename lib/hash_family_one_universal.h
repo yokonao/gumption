@@ -55,11 +55,7 @@ public:
                 x_i += x[idx] * pow(2, j);
             }
             int a_i = gen_mt(m);
-            std::cout << "a_i: " << a_i << std::endl;
-            std::cout << "x_i: " << x_i << std::endl;
-            std::cout << N << " + " << a_i * x_i << " = ";
             N += x_i * a_i;
-            std::cout << N << std::endl;
         }
 
         return N % m;
