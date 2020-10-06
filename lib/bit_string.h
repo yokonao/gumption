@@ -85,6 +85,11 @@ public:
         assert(i >= 0 and i < n);
         return bits[i];
     }
+
+    int size()
+    {
+        return n;
+    }
 };
 
 #endif
