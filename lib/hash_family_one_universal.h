@@ -5,9 +5,19 @@
 #include <cmath>
 #include <iostream>
 
-class HashFamily_OneUniversal
+class IHashFamily
 {
+protected:
     int m;
+
+public: 
+    virtual ~IHashFamily() {}
+
+    virtual int hash(std::string s) = 0;
+};
+
+class HashFamily_OneUniversal : IHashFamily
+{
     int w;
 
     int floorLog(int m)
