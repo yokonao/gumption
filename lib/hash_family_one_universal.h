@@ -5,15 +5,6 @@
 #include <random>
 #include <iostream>
 
-int floorlog(int m)
-{
-    if (m < 1)
-    {
-        throw std::invalid_argument("1以上の値を指定してください");
-    }
-    return int(floor(log2(double(m))));
-}
-
 int gen_mt(int m)
 {
     if (m <= 0)
@@ -31,11 +22,20 @@ class HashFamily_OneUniversal
     int m;
     int w;
 
+    int floorLog(int m)
+    {
+        if (m < 1)
+        {
+            throw std::invalid_argument("1以上の値を指定してください");
+        }
+        return int(floor(log2(double(m))));
+    }
+
 public:
     HashFamily_OneUniversal(int m)
     {
         this->m = m;
-        this->w = floorlog(m);
+        this->w = floorLog(m);
     }
 
     int hash(std::string s)
@@ -63,7 +63,7 @@ public:
             N += x_i * a_i;
             std::cout << N << std::endl;
         }
-        
+
         return N % m;
     }
 };
