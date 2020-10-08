@@ -4,7 +4,8 @@ CFLAGS   = -Wall -O2
 
 PROGRAM = exe.out
 MODULES = s_item.cpp s_linked_list.cpp s_free_list.cpp universal_hash.cpp operation.cpp gen_random.cpp rand_list.cpp
-INCLUDEPATH = ../../lib
+INCLUDEPATH = $(if $(filter $(origin GUMPTION),undefined),$(error GUMPTION is not set.),$(GUMPTION))/lib
+
 
 univ: test_universalhash.cpp $(MODULES)
 	$(CC) $(CFLAGS) -o $(PROGRAM) test_universalhash.cpp $(MODULES) -I $(INCLUDEPATH)
