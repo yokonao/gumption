@@ -1,7 +1,7 @@
 CC = g++
 PROGRAM = exe.out
 MODULES = s_item.cpp s_linked_list.cpp s_free_list.cpp chaining_hash.cpp
-INCLUDEPATH = $(GUMPTION)/lib
+INCLUDEPATH = $(if $(filter $(origin GUMPTION),undefined),$(error GUMPTION is not set.),$(GUMPTION))/lib
 
 main: main.cpp $(MODULES)
 	$(CC) -o $(PROGRAM) main.cpp $(MODULES) -I $(INCLUDEPATH)

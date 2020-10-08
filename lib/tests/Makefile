@@ -1,8 +1,7 @@
 SUFFIX   = .cpp
 CC = g++
 CFLAGS   = -Wall -O2
-INCLUDEPATH = ../
-
+INCLUDEPATH = $(if $(filter $(origin GUMPTION),undefined),$(error GUMPTION is not set.),$(GUMPTION))/lib
 PROGRAM = exe.out
 
 test: s_linked_list expectation to_bit bit_string gen_mt hash_family_one_universal
