@@ -18,4 +18,7 @@ jobs:
       - name: test lib
         env:
           CC: gcc
-        run: cd lib/tests/ && make test
+        run: | 
+          export GUMPTION=$(pwd)
+          cd lib/tests/
+          make test
