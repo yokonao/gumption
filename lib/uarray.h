@@ -1,6 +1,7 @@
 #ifndef UARRAY_HPP
 #define UARRAY_HPP
 #include <cassert>
+#include <iostream>
 
 template <class T>
 class UArray
@@ -56,6 +57,14 @@ public:
         n = 0;
         b = bp;
     };
+    void print()
+    {
+        for (int i = 0; i < n; i++)
+        {
+            std::cout << b[i] << ", ";
+        }
+        std::cout << std::endl;
+    }
     UArray()
     {
         alpha = 4;
