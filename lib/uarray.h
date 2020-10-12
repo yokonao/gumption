@@ -57,14 +57,6 @@ public:
         n = 0;
         b = bp;
     };
-    void print()
-    {
-        for (int i = 0; i < n; i++)
-        {
-            std::cout << b[i] << ", ";
-        }
-        std::cout << std::endl;
-    }
     UArray()
     {
         alpha = 4;
@@ -77,5 +69,16 @@ public:
         beta = be;
         b = new T[0];
     };
+    friend std::ostream &operator<<(std::ostream &, const UArray<T> &);
 };
+
+std::ostream &operator<<(std::ostream &os, const UArray<int> &ua)
+{
+    for (int i = 0; i < ua.n; i++)
+    {
+        os << ua.b[i] << ",";
+    }
+    return os;
+}
+
 #endif

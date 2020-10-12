@@ -1,5 +1,7 @@
 #include <uarray.h>
 #include <expectation.h>
+#include <iostream>
+
 void testUArray()
 {
     UArray<UArray<int>> x;
@@ -13,7 +15,7 @@ void testUArray()
     y.pushBack(10);
     y.pushBack(12);
     expect(y.size()).to_be(2);
-    y.print();
+    std::cout << y << std::endl;
 }
 int main()
 {
