@@ -19,7 +19,12 @@ public:
         assert(i >= 0 and i < n);
         return b[i];
     };
-    int size() { return n; };
+    T &operator[](int i) const
+    {
+        assert(i >= 0 and i < n);
+        return b[i];
+    };
+    int size() const { return n; };
     void pushBack(T e)
     {
         if (n == w)
@@ -69,14 +74,13 @@ public:
         beta = be;
         b = new T[0];
     };
-    friend std::ostream &operator<<(std::ostream &, const UArray<T> &);
 };
 
 std::ostream &operator<<(std::ostream &os, const UArray<int> &ua)
 {
-    for (int i = 0; i < ua.n; i++)
+    for (int i = 0; i < ua.size(); i++)
     {
-        os << ua.b[i] << ",";
+        os << ua[i] << ",";
     }
     return os;
 }
