@@ -17,5 +17,7 @@ gen_mt: test_gen_mt.cpp
 	$(CC) $(CFLAGS) -o $(PROGRAM) test_gen_mt.cpp -I $(INCLUDEPATH) && ./${PROGRAM}
 hash_family_one_universal: test_hash_family_one_universal.cpp
 	$(CC) $(CFLAGS) -o $(PROGRAM) test_hash_family_one_universal.cpp -I $(INCLUDEPATH) && ./${PROGRAM}
+uarray: test_uarray.cpp
+	$(CC) $(CFLAGS) -o $(PROGRAM) test_uarray.cpp -I $(INCLUDEPATH) && ./${PROGRAM}
 .PHONY: clean
 clean:;	rm -f *.o $(PROGRAM)

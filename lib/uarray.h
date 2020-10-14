@@ -1,6 +1,7 @@
 #ifndef UARRAY_HPP
 #define UARRAY_HPP
 #include <cassert>
+#include <iostream>
 
 template <class T>
 class UArray
@@ -18,7 +19,12 @@ public:
         assert(i >= 0 and i < n);
         return b[i];
     };
-    int size() { return n; };
+    T &operator[](int i) const
+    {
+        assert(i >= 0 and i < n);
+        return b[i];
+    };
+    int size() const { return n; };
     void pushBack(T e)
     {
         if (n == w)
@@ -69,4 +75,14 @@ public:
         b = new T[0];
     };
 };
+
+std::ostream &operator<<(std::ostream &os, const UArray<int> &ua)
+{
+    for (int i = 0; i < ua.size(); i++)
+    {
+        os << ua[i] << ",";
+    }
+    return os;
+}
+
 #endif
