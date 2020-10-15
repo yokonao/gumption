@@ -7,7 +7,7 @@ MODULES = selection_sort.cpp initial_list.cpp  gen_random.cpp
 INCLUDEPATH = $(if $(filter $(origin GUMPTION),undefined),$(error GUMPTION is not set.),$(GUMPTION))/lib
 
 
-univ: test_selection_sort.cpp $(MODULES)
+selection: test_selection_sort.cpp $(MODULES)
 	$(CC) $(CFLAGS) -o $(PROGRAM) test_selection_sort.cpp $(MODULES) -I $(INCLUDEPATH)
 
 initial: test_initial_list.cpp $(MODULES)
