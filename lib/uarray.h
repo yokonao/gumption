@@ -74,6 +74,18 @@ public:
         beta = be;
         b = new T[0];
     };
+    UArray(const UArray &obj)
+    {
+        alpha = 4;
+        beta = 2;
+        b = new T[obj.n];
+        for (int i = 0; i < obj.n; i++)
+        {
+            b[i] = obj.b[i];
+        }
+        n = obj.n;
+        w = obj.w;
+    }
 };
 template <class T>
 std::ostream &operator<<(std::ostream &os, const UArray<T> &ua)
