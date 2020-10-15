@@ -75,8 +75,8 @@ public:
         b = new T[0];
     };
 };
-
-std::ostream &operator<<(std::ostream &os, const UArray<int> &ua)
+template <class T>
+std::ostream &operator<<(std::ostream &os, const UArray<T> &ua)
 {
     for (int i = 0; i < ua.size(); i++)
     {
