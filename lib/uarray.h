@@ -27,7 +27,6 @@ public:
     int size() const { return n; };
     void pushBack(const T &e)
     {
-        std::cout << "pushback" << std::endl;
         if (n == w)
         {
             reallocate(beta * n);
@@ -78,8 +77,6 @@ public:
     };
     UArray(const UArray &obj)
     {
-        std::cout << "cpy" << std::endl;
-
         alpha = 4;
         beta = 2;
         b = new T[obj.w];
