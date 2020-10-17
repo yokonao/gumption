@@ -25,13 +25,14 @@ public:
         return b[i];
     };
     int size() const { return n; };
-    void pushBack(T e)
+    void pushBack(const T &e)
     {
         if (n == w)
         {
             reallocate(beta * n);
         }
-        b[n] = e;
+        T element = e;
+        b[n] = element;
         n++;
     };
     void popBack()
@@ -78,7 +79,7 @@ public:
     {
         alpha = 4;
         beta = 2;
-        b = new T[obj.n];
+        b = new T[obj.w];
         for (int i = 0; i < obj.n; i++)
         {
             b[i] = obj.b[i];
