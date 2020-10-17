@@ -2,7 +2,7 @@
 #include "initial_list.h"
 #include <expectation.h>
 
-void test_SelectionSort()
+void test_SelectionSort_Worst()
 {
     int n = 10;
     UArray<int> a = initial_list_worst(n);
@@ -15,7 +15,7 @@ void test_SelectionSort()
 int main()
 {
     std::cout << "TEST START" << std::endl;
-    test_SelectionSort();
+    test_SelectionSort_Worst();
 
     std::cout << "ALL GREEN" << std::endl;
 }
