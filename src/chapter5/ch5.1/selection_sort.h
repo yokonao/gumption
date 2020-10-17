@@ -2,8 +2,5 @@
 #define SELECTION_SORT
 
 #include <uarray.h>
-class SelectionSort
-{
-    void sort(UArray<int> a);
-};
+void selection_sort(UArray<int> &a);
 #endif

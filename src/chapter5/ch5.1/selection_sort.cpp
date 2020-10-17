@@ -1,32 +1,29 @@
 #include <uarray.h>
 
-class SelectionSort
+void selection_sort(UArray<int> &a)
 {
-    void sort(UArray<int> a)
+    int min_idx, buff;
+    for (int i = 0; i < a.size(); i++)
     {
-        int min_idx, buff;
-        for (int i = 0; i < a.size(); i++)
+        min_idx = i;
+        for (int j = i; j < a.size(); j++)
         {
-            min_idx = i;
-            for (int j = i; j < a.size(); j++)
+            if (a[j] < a[min_idx])
             {
-                if (a[j] < a[min_idx])
-                {
-                    min_idx = j;
-                }
+                min_idx = j;
             }
-            if (min_idx == i)
+        }
+        if (min_idx == i)
+        {
+            continue;
+        }
+        else
+        {
+            for (int j = min_idx; j > i; j--)
             {
-                continue;
-            }
-            else
-            {
-                for (int j = min_idx; j > i; j--)
-                {
-                    buff = a[j];
-                    a[j] = a[j - 1];
-                    a[j - 1] = buff;
-                }
+                buff = a[j];
+                a[j] = a[j - 1];
+                a[j - 1] = buff;
             }
         }
     }
