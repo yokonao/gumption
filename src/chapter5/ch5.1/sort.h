@@ -1,5 +1,5 @@
-#ifndef SELECTION_SORT
-#define SELECTION_SORT
+#ifndef SORT
+#define SORT
 
 #include <uarray.h>
 void selection_sort(UArray<int> &a);
