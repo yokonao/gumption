@@ -80,7 +80,7 @@ UArray<int> divide(UArray<int> a)
             c.pushBack(a[i]);
         }
     }
-    return merge(b, c);
+    return merge(divide(b), divide(c));
 }
 void merge_sort(UArray<int> &a)
 {
