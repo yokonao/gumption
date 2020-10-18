@@ -80,6 +80,6 @@ int main()
     test_SelectionSort_Random();
     test_MergeSort_Good();
     test_MergeSort_Worst();
-    test_SelectionSort_Random();
+    test_MergeSort_Random();
     std::cout << "ALL GREEN" << std::endl;
 }
