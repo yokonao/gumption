@@ -2,7 +2,8 @@
 #include "sort.h"
 #include "gen_random.h"
 
-void selection_sort(UArray<int> &a)
+
+void SelectionSort::execute(UArray<int> &a)
 {
     int min_idx, buff;
     for (int i = 0; i < a.size(); i++)
@@ -29,8 +30,9 @@ void selection_sort(UArray<int> &a)
             }
         }
     }
-};
-UArray<int> merge(UArray<int> a, UArray<int> b)
+}
+
+UArray<int> MergeSort::merge(UArray<int> a, UArray<int> b)
 {
     UArray<int> c;
     int l = 0, r = 0;
@@ -63,7 +65,8 @@ UArray<int> merge(UArray<int> a, UArray<int> b)
     }
     return c;
 }
-UArray<int> divide(UArray<int> a)
+
+UArray<int> MergeSort::mergeSort(UArray<int> a)
 {
     if (a.size() == 1)
     {
@@ -82,11 +85,12 @@ UArray<int> divide(UArray<int> a)
             c.pushBack(a[i]);
         }
     }
-    return merge(divide(b), divide(c));
+    return merge(mergeSort(b), mergeSort(c));
 }
-void merge_sort(UArray<int> &a)
+
+void MergeSort::execute(UArray<int> &a)
 {
-    a = divide(a);
+    a = mergeSort(a);
 }
 
 UArray<int> QuickSort::concat(const UArray<int> &a, const UArray<int> &b, const UArray<int> &c)

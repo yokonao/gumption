@@ -6,7 +6,7 @@ void testSelectionSortGood()
 {
     int n = 10;
     UArray<int> a = initial_list_good(n);
-    selection_sort(a);
+    SelectionSort::execute(a);
     for (int i = 1; i <= n; i++)
     {
         expect(a[i - 1]).to_be(i);
@@ -16,7 +16,7 @@ void testSelectionSortWorst()
 {
     int n = 10;
     UArray<int> a = initial_list_worst(n);
-    selection_sort(a);
+    SelectionSort::execute(a);
     for (int i = 1; i <= n; i++)
     {
         expect(a[i - 1]).to_be(i);
@@ -28,7 +28,7 @@ void testSelectionSortRandom()
     {
         int n = rep + 10;
         UArray<int> a = initial_list_random(n);
-        selection_sort(a);
+        SelectionSort::execute(a);
         int prev = 0;
         for (int i = 0; i < n; i++)
         {
@@ -41,7 +41,7 @@ void testMergeSortGood()
 {
     int n = 10;
     UArray<int> a = initial_list_good(n);
-    merge_sort(a);
+    MergeSort::execute(a);
     for (int i = 1; i <= n; i++)
     {
         expect(a[i - 1]).to_be(i);
@@ -51,7 +51,7 @@ void testMergeSortWorst()
 {
     int n = 10;
     UArray<int> a = initial_list_worst(n);
-    merge_sort(a);
+    MergeSort::execute(a);
     for (int i = 1; i <= n; i++)
     {
         expect(a[i - 1]).to_be(i);
@@ -63,7 +63,7 @@ void testMergeSortRandom()
     {
         int n = rep + 10;
         UArray<int> a = initial_list_random(n);
-        merge_sort(a);
+        MergeSort::execute(a);
         int prev = 0;
         for (int i = 0; i < n; i++)
         {
