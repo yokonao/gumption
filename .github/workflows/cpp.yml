@@ -25,8 +25,8 @@ jobs:
       - name: test sort 
         env:
           CC: gcc
-        run: | 
+        run: 
           export GUMPTION=$(pwd)
-          cd chapter5/
+          cd srt/chapter5/
           make sort 
   
