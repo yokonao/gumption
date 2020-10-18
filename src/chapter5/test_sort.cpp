@@ -2,7 +2,7 @@
 #include "initial_list.h"
 #include <expectation.h>
 
-void test_SelectionSort_Good()
+void testSelectionSortGood()
 {
     int n = 10;
     UArray<int> a = initial_list_good(n);
@@ -12,7 +12,7 @@ void test_SelectionSort_Good()
         expect(a[i - 1]).to_be(i);
     }
 }
-void test_SelectionSort_Worst()
+void testSelectionSortWorst()
 {
     int n = 10;
     UArray<int> a = initial_list_worst(n);
@@ -22,7 +22,7 @@ void test_SelectionSort_Worst()
         expect(a[i - 1]).to_be(i);
     }
 }
-void test_SelectionSort_Random()
+void testSelectionSortRandom()
 {
     for (int rep = 0; rep < 10; rep++)
     {
@@ -37,7 +37,7 @@ void test_SelectionSort_Random()
         }
     }
 }
-void test_MergeSort_Good()
+void testMergeSortGood()
 {
     int n = 10;
     UArray<int> a = initial_list_good(n);
@@ -47,7 +47,7 @@ void test_MergeSort_Good()
         expect(a[i - 1]).to_be(i);
     }
 }
-void test_MergeSort_Worst()
+void testMergeSortWorst()
 {
     int n = 10;
     UArray<int> a = initial_list_worst(n);
@@ -57,7 +57,7 @@ void test_MergeSort_Worst()
         expect(a[i - 1]).to_be(i);
     }
 }
-void test_MergeSort_Random()
+void testMergeSortRandom()
 {
     for (int rep = 0; rep < 10; rep++)
     {
@@ -72,7 +72,7 @@ void test_MergeSort_Random()
         }
     }
 }
-void test_QuickSort_Good()
+void testQuickSortGood()
 {
     int n = 10;
     UArray<int> a = initial_list_good(n);
@@ -82,7 +82,7 @@ void test_QuickSort_Good()
         expect(a[i - 1]).to_be(i);
     }
 }
-void test_QuickSort_Worst()
+void testQuickSortWorst()
 {
     int n = 10;
     UArray<int> a = initial_list_worst(n);
@@ -92,7 +92,7 @@ void test_QuickSort_Worst()
         expect(a[i - 1]).to_be(i);
     }
 }
-void test_QuickSort_Random()
+void testQuickSortRandom()
 {
     for (int rep = 0; rep < 10; rep++)
     {
@@ -110,14 +110,14 @@ void test_QuickSort_Random()
 int main()
 {
     std::cout << "TEST START" << std::endl;
-    test_SelectionSort_Good();
-    test_SelectionSort_Worst();
-    test_SelectionSort_Random();
-    test_MergeSort_Good();
-    test_MergeSort_Worst();
-    test_MergeSort_Random();
-    test_QuickSort_Good();
-    test_QuickSort_Worst();
-    test_QuickSort_Random();
+    testSelectionSortGood();
+    testSelectionSortWorst();
+    testSelectionSortRandom();
+    testMergeSortGood();
+    testMergeSortWorst();
+    testMergeSortRandom();
+    testQuickSortGood();
+    testQuickSortWorst();
+    testQuickSortRandom();
     std::cout << "ALL GREEN" << std::endl;
 }
