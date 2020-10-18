@@ -27,6 +27,6 @@ jobs:
           CC: gcc
         run: 
           export GUMPTION=$(pwd)
-          cd srt/chapter5/
+          cd src/chapter5/
           make sort 
   
