@@ -51,9 +51,7 @@ void test_MergeSort_Worst()
 {
     int n = 10;
     UArray<int> a = initial_list_worst(n);
-    std::cout << a << std::endl;
     merge_sort(a);
-    std::cout << a << std::endl;
     for (int i = 1; i <= n; i++)
     {
         expect(a[i - 1]).to_be(i);
@@ -82,6 +80,6 @@ int main()
     test_SelectionSort_Random();
     test_MergeSort_Good();
     test_MergeSort_Worst();
-    //test_SelectionSort_Random();
+    test_SelectionSort_Random();
     std::cout << "ALL GREEN" << std::endl;
 }
