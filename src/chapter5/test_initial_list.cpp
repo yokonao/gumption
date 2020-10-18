@@ -47,5 +47,7 @@ void testInitialList()
 
 int main()
 {
+    std::cout << "TEST START" << std::endl;
     testInitialList();
+    std::cout << "ALL GREEN" << std::endl;
 }
