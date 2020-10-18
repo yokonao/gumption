@@ -4,7 +4,7 @@ CFLAGS   = -Wall -O2
 INCLUDEPATH = $(if $(filter $(origin GUMPTION),undefined),$(error GUMPTION is not set.),$(GUMPTION))/lib
 PROGRAM = exe.out
 
-test: s_linked_list expectation to_bit bit_string gen_mt hash_family_one_universal
+test: s_linked_list expectation to_bit bit_string gen_mt hash_family_one_universal uarray
 s_linked_list: test_s_linked_list.cpp
 	$(CC) $(CFLAGS) -o $(PROGRAM) test_s_linked_list.cpp && ./$(PROGRAM)
 expectation: test_expectation.cpp
