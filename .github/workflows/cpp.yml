@@ -22,3 +22,11 @@ jobs:
           export GUMPTION=$(pwd)
           cd lib/tests/
           make test
+      - name: test sort 
+        env:
+          CC: gcc
+        run: |
+          export GUMPTION=$(pwd)
+          cd src/chapter5/
+          make sort 
+  
