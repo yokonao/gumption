@@ -72,6 +72,41 @@ void test_MergeSort_Random()
         }
     }
 }
+void test_QuickSort_Good()
+{
+    int n = 10;
+    UArray<int> a = initial_list_good(n);
+    QuickSort::execute(a);
+    for (int i = 1; i <= n; i++)
+    {
+        expect(a[i - 1]).to_be(i);
+    }
+}
+void test_QuickSort_Worst()
+{
+    int n = 10;
+    UArray<int> a = initial_list_worst(n);
+    QuickSort::execute(a);
+    for (int i = 1; i <= n; i++)
+    {
+        expect(a[i - 1]).to_be(i);
+    }
+}
+void test_QuickSort_Random()
+{
+    for (int rep = 0; rep < 10; rep++)
+    {
+        int n = rep + 10;
+        UArray<int> a = initial_list_random(n);
+        QuickSort::execute(a);
+        int prev = 0;
+        for (int i = 0; i < n; i++)
+        {
+            expect(a[i] >= prev).to_be_truthy();
+            prev = a[i];
+        }
+    }
+}
 int main()
 {
     std::cout << "TEST START" << std::endl;
@@ -81,5 +116,8 @@ int main()
     test_MergeSort_Good();
     test_MergeSort_Worst();
     test_MergeSort_Random();
+    test_QuickSort_Good();
+    test_QuickSort_Worst();
+    test_QuickSort_Random();
     std::cout << "ALL GREEN" << std::endl;
 }

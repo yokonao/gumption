@@ -1,4 +1,6 @@
 #include <uarray.h>
+#include "sort.h"
+#include "gen_random.h"
 
 void selection_sort(UArray<int> &a)
 {
@@ -85,4 +87,56 @@ UArray<int> divide(UArray<int> a)
 void merge_sort(UArray<int> &a)
 {
     a = divide(a);
+}
+
+UArray<int> QuickSort::concat(const UArray<int> &a, const UArray<int> &b, const UArray<int> &c)
+{
+    UArray<int> d;
+    for (int i = 0; i < a.size(); i++)
+    {
+        d.pushBack(a[i]);
+    }
+    for (int i = 0; i < b.size(); i++)
+    {
+        d.pushBack(b[i]);
+    }
+    for (int i = 0; i < c.size(); i++)
+    {
+        d.pushBack(c[i]);
+    }
+    return d;
+}
+
+UArray<int> QuickSort::quickSort(const UArray<int> &s)
+{
+    if (s.size() < 1)
+    {
+        return s;
+    }
+
+    int p = s[gen_mt(s.size())];
+
+    UArray<int> a, b, c;
+    for (int i = 0; i < s.size(); i++)
+    {
+        if (s[i] < p)
+        {
+            a.pushBack(s[i]);
+        }
+        else if (s[i] == p)
+        {
+            b.pushBack(s[i]);
+        }
+        else
+        {
+            c.pushBack(s[i]);
+        }
+    }
+
+    return concat(quickSort(a), b, quickSort(c));
+}
+
+void QuickSort::execute(UArray<int> &s)
+{
+    s = quickSort(s);
 }
