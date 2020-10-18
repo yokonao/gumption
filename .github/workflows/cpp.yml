@@ -28,5 +28,4 @@ jobs:
         run: |
           export GUMPTION=$(pwd)
           cd src/chapter5/
-          make sort 
-  
+          make test
