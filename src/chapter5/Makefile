@@ -3,7 +3,7 @@ CC = g++
 CFLAGS   = -Wall -O2
 
 PROGRAM = exe.out
-MODULES = sort.cpp initial_list.cpp  gen_random.cpp
+MODULES = sort.cpp initial_list.cpp
 INCLUDEPATH = $(if $(filter $(origin GUMPTION),undefined),$(error GUMPTION is not set.),$(GUMPTION))/lib
 
 

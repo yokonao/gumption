@@ -3,7 +3,8 @@
 
 #include <random>
 #include <stdexcept>
-int gen_mt(int m)
+
+inline int gen_mt(int m)
 {
     if (m <= 0)
     {

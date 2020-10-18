@@ -1,6 +1,6 @@
 #include <uarray.h>
 #include "sort.h"
-#include "gen_random.h"
+#include <gen_mt.h>
 
 
 void SelectionSort::execute(UArray<int> &a)

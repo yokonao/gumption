@@ -1,5 +1,5 @@
 #include <uarray.h>
-#include "gen_random.h"
+#include <gen_mt.h>
 
 UArray<int> initial_list_random(int n)
 {
