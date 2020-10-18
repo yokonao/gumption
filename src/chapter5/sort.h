@@ -2,7 +2,12 @@
 #define SORT_HPP
 
 #include <uarray.h>
-void selection_sort(UArray<int> &a);
+
+class SelectionSort
+{
+public:
+    static void execute(UArray<int> &a);
+};
 
 class MergeSort
 {
