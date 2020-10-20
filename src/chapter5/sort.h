@@ -29,10 +29,10 @@ public:
 
 class InsertionSort
 {
-    static UArray<int> insertionSort(UArray<int> a);
+    static void insertionSort(UArray<int> &a, int l, int r);
 public:
     static void execute(UArray<int> &a);
-    static void execute(UArray<int> &a, int i, int j);
+    static void execute(UArray<int> &a, int l, int r);
 };
 
 #endif

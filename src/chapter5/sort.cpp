@@ -145,18 +145,18 @@ void QuickSort::execute(UArray<int> &s)
     s = quickSort(s);
 }
 
-UArray<int> InsertionSort::insertionSort(UArray<int> a)
+void InsertionSort::insertionSort(UArray<int> &a, int l, int r)
 {
-    for (int i = 1; i < a.size(); i++)
+    for (int i = l + 1; i <= r; i++)
     {
         int e = a[i];
-        if (e < a[0])
+        if (e < a[l])
         {
-            for (int j = i; j > 0; j--)
+            for (int j = i; j > l; j--)
             {
                 a[j] = a[j - 1];
             }
-            a[0] = e;
+            a[l] = e;
         }
         else
         {
@@ -169,24 +169,14 @@ UArray<int> InsertionSort::insertionSort(UArray<int> a)
             a[j] = e;
         }
     }
-    return a;
 }
 
 void InsertionSort::execute(UArray<int> &a)
 {
-    a = insertionSort(a);
+    insertionSort(a, 0, a.size() - 1);
 }
 
-void InsertionSort::execute(UArray<int> &a, int i, int j)
+void InsertionSort::execute(UArray<int> &a, int l, int r)
 {
-    UArray<int> a_p;
-    for (int idx = i; idx <= j; idx++)
-    {
-        a_p.pushBack(a[idx]);
-    }
-    a_p = insertionSort(a_p);
-    for (int idx = i; idx <= j; idx++)
-    {
-        a[idx] = a_p[idx - i];
-    }
+    insertionSort(a, l, r);
 }
