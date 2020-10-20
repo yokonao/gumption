@@ -2,7 +2,6 @@
 #include "sort.h"
 #include <gen_mt.h>
 
-
 void SelectionSort::execute(UArray<int> &a)
 {
     int min_idx, buff;
@@ -143,4 +142,63 @@ UArray<int> QuickSort::quickSort(const UArray<int> &s)
 void QuickSort::execute(UArray<int> &s)
 {
     s = quickSort(s);
+}
+int QSort::pickPivotPos(const UArray<int> &a, int l, int r)
+{
+    return l;
+}
+void QSort::swap(UArray<int> &a, int i, int j)
+{
+    int buff;
+    buff = a[i];
+    a[i] = a[j];
+    a[j] = buff;
+}
+void QSort::qSort(UArray<int> &a, int l, int r)
+{
+    while (r - l + 1 > n_th)
+    {
+        int i, j;
+        j = pickPivotPos(a, l, r);
+        swap(a, l, j);
+        int p = a[l];
+        i = l;
+        j = r;
+        while (i <= j)
+        {
+            while (a[i] < p)
+            {
+                i++;
+            }
+            while (a[j] > p)
+            {
+                j--;
+            }
+            if (i <= j)
+            {
+                swap(a, i, j);
+                i++;
+                j--;
+            }
+        }
+        if (i < (l + r) / 2)
+        {
+            qSort(a, l, j);
+            l = i;
+        }
+        else
+        {
+            qSort(a, i, r);
+            r = j;
+        }
+        dummy_sort(a, l, r);
+    }
+}
+void QSort::dummy_sort(UArray<int> &a, int l, int r)
+{
+    return;
+}
+void QSort::execute(UArray<int> &a)
+{
+    qSort(a, 0, a.size() - 1);
 }

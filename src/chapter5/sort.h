@@ -26,5 +26,17 @@ class QuickSort
 public:
     static void execute(UArray<int> &s);
 };
+class QSort
+{
+    static const int n_th = 1;
+    static int pickPivotPos(const UArray<int> &a, int l, int r);
+    static void swap(UArray<int> &a, int i, int j);
+    static void qSort(UArray<int> &a, int l, int r);
+
+    static void dummy_sort(UArray<int> &a, int l, int r);
+
+public:
+    static void execute(UArray<int> &a);
+};
 
 #endif
