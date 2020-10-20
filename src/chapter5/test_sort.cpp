@@ -107,6 +107,41 @@ void testQuickSortRandom()
         }
     }
 }
+void testInsertionSortGood()
+{
+    int n = 10;
+    UArray<int> a = initial_list_good(n);
+    InsertionSort::execute(a);
+    for (int i = 1; i <= n; i++)
+    {
+        expect(a[i - 1]).to_be(i);
+    }
+}
+void testInsertionSortWorst()
+{
+    int n = 10;
+    UArray<int> a = initial_list_worst(n);
+    InsertionSort::execute(a);
+    for (int i = 1; i <= n; i++)
+    {
+        expect(a[i - 1]).to_be(i);
+    }
+}
+void testInsertionSortRandom()
+{
+    for (int rep = 0; rep < 10; rep++)
+    {
+        int n = rep + 10;
+        UArray<int> a = initial_list_random(n);
+        InsertionSort::execute(a);
+        int prev = 0;
+        for (int i = 0; i < n; i++)
+        {
+            expect(a[i] >= prev).to_be_truthy();
+            prev = a[i];
+        }
+    }
+}
 int main()
 {
     std::cout << "TEST START" << std::endl;
@@ -119,5 +154,8 @@ int main()
     testQuickSortGood();
     testQuickSortWorst();
     testQuickSortRandom();
+    testInsertionSortGood();
+    testInsertionSortWorst();
+    testInsertionSortRandom();
     std::cout << "ALL GREEN" << std::endl;
 }

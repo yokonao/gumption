@@ -1,7 +1,7 @@
 #include <uarray.h>
 #include "sort.h"
 #include <gen_mt.h>
-
+#include <iostream>
 
 void SelectionSort::execute(UArray<int> &a)
 {
@@ -143,4 +143,50 @@ UArray<int> QuickSort::quickSort(const UArray<int> &s)
 void QuickSort::execute(UArray<int> &s)
 {
     s = quickSort(s);
+}
+
+UArray<int> InsertionSort::insertionSort(UArray<int> a)
+{
+    for (int i = 1; i < a.size(); i++)
+    {
+        int e = a[i];
+        if (e < a[0])
+        {
+            for (int j = i; j > 0; j--)
+            {
+                a[j] = a[j - 1];
+            }
+            a[0] = e;
+        }
+        else
+        {
+            int j = i;
+            while (a[j - 1] > e)
+            {
+                a[j] = a[j - 1];
+                j--;
+            }
+            a[j] = e;
+        }
+    }
+    return a;
+}
+
+void InsertionSort::execute(UArray<int> &a)
+{
+    a = insertionSort(a);
+}
+
+void InsertionSort::execute(UArray<int> &a, int i, int j)
+{
+    UArray<int> a_p;
+    for (int idx = i; idx <= j; idx++)
+    {
+        a_p.pushBack(a[idx]);
+    }
+    a_p = insertionSort(a_p);
+    for (int idx = i; idx <= j; idx++)
+    {
+        a[idx] = a_p[idx - i];
+    }
 }
