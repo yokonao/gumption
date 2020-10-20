@@ -143,6 +143,43 @@ void QuickSort::execute(UArray<int> &s)
 {
     s = quickSort(s);
 }
+
+
+void InsertionSort::insertionSort(UArray<int> &a, int l, int r)
+{
+    for (int i = l + 1; i <= r; i++)
+    {
+        int e = a[i];
+        if (e < a[l])
+        {
+            for (int j = i; j > l; j--)
+            {
+                a[j] = a[j - 1];
+            }
+            a[l] = e;
+        }
+        else
+        {
+            int j = i;
+            while (a[j - 1] > e)
+            {
+                a[j] = a[j - 1];
+                j--;
+            }
+            a[j] = e;
+        }
+    }
+}
+
+void InsertionSort::execute(UArray<int> &a)
+{
+    insertionSort(a, 0, a.size() - 1);
+}
+
+void InsertionSort::execute(UArray<int> &a, int l, int r)
+{
+    insertionSort(a, l, r);
+}
 int QSort::pickPivotPos(const UArray<int> &a, int l, int r)
 {
     return l;
