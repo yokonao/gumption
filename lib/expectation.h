@@ -81,4 +81,11 @@ void expect_error(std::function<void()> lambda)
     throw std::logic_error("想定した例外が発生しませんでした");
 }
 
+inline void executeTestSuite(std::string description, std::function<void()> tests)
+{
+    std::cout << "execute " << description << std::endl;
+    tests();
+    std::cout << "passed! " << description << std::endl;
+}
+
 #endif
