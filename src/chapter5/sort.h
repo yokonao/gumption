@@ -28,7 +28,7 @@ public:
 };
 class QSort
 {
-    static const int n_th = 1;
+    static const int n_th = 10;
     static int pickPivotPos(const UArray<int> &a, int l, int r);
     static void swap(UArray<int> &a, int i, int j);
     static void qSort(UArray<int> &a, int l, int r);
@@ -42,6 +42,7 @@ public:
 class InsertionSort
 {
     static void insertionSort(UArray<int> &a, int l, int r);
+
 public:
     static void execute(UArray<int> &a);
     static void execute(UArray<int> &a, int l, int r);

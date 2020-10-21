@@ -144,7 +144,6 @@ void QuickSort::execute(UArray<int> &s)
     s = quickSort(s);
 }
 
-
 void InsertionSort::insertionSort(UArray<int> &a, int l, int r)
 {
     for (int i = l + 1; i <= r; i++)
@@ -228,12 +227,8 @@ void QSort::qSort(UArray<int> &a, int l, int r)
             qSort(a, i, r);
             r = j;
         }
-        dummy_sort(a, l, r);
     }
-}
-void QSort::dummy_sort(UArray<int> &a, int l, int r)
-{
-    return;
+    InsertionSort::execute(a, l, r);
 }
 void QSort::execute(UArray<int> &a)
 {
