@@ -35,11 +35,11 @@ void testSort()
 
 int main()
 {
-    std::cout << "TEST START" << std::endl;
-    testSort<SelectionSort>();
-    testSort<MergeSort>();
-    testSort<QuickSort>();
-    testSort<InsertionSort>();
-    testSort<QSort>();
-    std::cout << "ALL GREEN" << std::endl;
+    executeTestSuite("ソートのテスト", [] {
+        testSort<SelectionSort>();
+        testSort<MergeSort>();
+        testSort<QuickSort>();
+        testSort<InsertionSort>();
+        testSort<QSort>();
+    });
 }
