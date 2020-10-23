@@ -22,6 +22,13 @@ jobs:
           export GUMPTION=$(pwd)
           cd lib/tests/
           make test
+      - name: test chaining hash 
+        env:
+          CC: gcc
+        run: |
+          export GUMPTION=$(pwd)
+          cd src/chapter4/ch4.1
+          make test
       - name: test sort 
         env:
           CC: gcc
