@@ -58,7 +58,7 @@ class SLinkedList
     SItem *m_last;
     SItem *freeHead;
 
-    void check()
+    void checkFreeList()
     {
         if (freeHead->next == freeHead)
         {
@@ -112,7 +112,7 @@ public:
 
     SItem *insertAfter(std::string e, std::string value, SItem *a)
     {
-        check();
+        checkFreeList();
         SItem *ap = freeHead;
         splice(ap, ap->next, a);
         a->next->e = e;
