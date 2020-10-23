@@ -27,7 +27,7 @@ struct SItem
     }
 };
 
-void splice(SItem *ap, SItem *b, SItem *t)
+inline void splice(SItem *ap, SItem *b, SItem *t)
 {
     // apがvalidなLinkedListに所属しているか
     SItem *tmp = ap->next;
