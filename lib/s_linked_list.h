@@ -3,6 +3,7 @@
 
 #include <string>
 #include <cassert>
+#include <iostream>
 
 struct SItem
 {
@@ -26,40 +27,50 @@ struct SItem
     }
 };
 
-void splice(SItem *ap, SItem *b, SItem *t)
-{
-    // apがvalidなLinkedListに所属しているか
-    SItem *tmp = ap->next;
-    while (!tmp->isDummy)
-    {
-        assert(tmp != ap);
-        tmp = tmp->next;
-    }
-    // 同リスト内に[a...b]が存在し、tが含まれない
-    tmp = ap->next;
-    while (tmp != b)
-    {
-        assert(!tmp->isDummy);
-        assert(tmp != t);
-        tmp = tmp->next;
-    }
-
-    SItem *a = ap->next;
-    ap->next = b->next;
-    SItem *tp = t->next;
-    b->next = tp;
-    t->next = a;
-};
-
 class SLinkedList
 {
     SItem m_head;
     SItem *m_last;
+    SItem *freeHead;
+
+    void splice(SItem *ap, SItem *b, SItem *t)
+    {
+        // apがvalidなLinkedListに所属しているか
+        SItem *tmp = ap->next;
+        while (!tmp->isDummy)
+        {
+            assert(tmp != ap);
+            tmp = tmp->next;
+        }
+        // 同リスト内に[a...b]が存在し、tが含まれない
+        tmp = ap->next;
+        while (tmp != b)
+        {
+            assert(!tmp->isDummy);
+            assert(tmp != t);
+            tmp = tmp->next;
+        }
+
+        SItem *a = ap->next;
+        ap->next = b->next;
+        SItem *tp = t->next;
+        b->next = tp;
+        t->next = a;
+    };
+
+    void checkFreeList()
+    {
+        if (freeHead->next == freeHead)
+        {
+            SItem *next = new SItem("", "", freeHead);
+            freeHead->next = next;
+        }
+    }
 
 public:
     SLinkedList()
     {
-        SItem m_head;
+        freeHead = new SItem();
     }
 
     SItem *head() { return &m_head; }
@@ -99,90 +110,42 @@ public:
         }
     }
 
-    SItem *insertAfter(std::string e, std::string value, SItem *a);
-
-    void pushBack(std::string e, std::string value);
-
-    void removeAfter(SItem *bp);
-};
-
-class SFreeList
-{
-private:
-    static SLinkedList m_SLinkedList;
-
-public:
-    static SItem *head() { return m_SLinkedList.head(); }
-
-    static bool isEmpty() { return m_SLinkedList.isEmpty(); }
-
-    static SItem *first() { return m_SLinkedList.first(); }
-
-    static SItem *last() { return m_SLinkedList.last(); }
-
-    static void check()
+    SItem *insertAfter(std::string e, std::string value, SItem *a)
     {
-        // 空ならば要素を追加する
-        if (m_SLinkedList.isEmpty())
+        checkFreeList();
+        SItem *ap = freeHead;
+        splice(ap, ap->next, a);
+        a->next->e = e;
+        a->next->value = value;
+        if (a->next->next->isDummy)
         {
-            SItem *h = m_SLinkedList.head();
-            SItem *a = new SItem("", "", h);
-            h->next = a;
+            m_last = a->next;
+        }
+        return a->next;
+    }
+
+    void pushBack(std::string e, std::string value)
+    {
+        if (isEmpty())
+        {
+            insertAfter(e, value, head());
+        }
+        else
+        {
+            insertAfter(e, value, last());
         }
     }
 
-    static void clear()
+    void removeAfter(SItem *bp)
     {
-        SItem *head = m_SLinkedList.head();
-        SItem *tmp = head->next;
-        while (!tmp->isDummy)
+        SItem *b = bp->next;
+        assert(!b->isDummy);
+        splice(bp, b, freeHead);
+        if (bp->next->isDummy)
         {
-            SItem *next = tmp->next;
-            delete tmp;
-            tmp = next;
+            m_last = bp;
         }
-        head->next = head;
     }
 };
-
-SLinkedList SFreeList::m_SLinkedList;
-
-
-SItem *SLinkedList::insertAfter(std::string e, std::string value, SItem *a)
-{
-    SFreeList::check();
-    SItem *ap = SFreeList::head();
-    splice(ap, ap->next, a);
-    a->next->e = e;
-    a->next->value = value;
-    if (a->next->next->isDummy)
-    {
-        m_last = a->next;
-    }
-    return a->next;
-}
-
-void SLinkedList::pushBack(std::string e, std::string value)
-{
-    if (isEmpty())
-    {
-        insertAfter(e, value, head());
-    }
-    else
-    {
-        insertAfter(e, value, last());
-    }
-}
-
-void SLinkedList::removeAfter(SItem *bp)
-{
-    SItem *b = bp->next;
-    assert(!b->isDummy);
-    splice(bp, b, SFreeList::head());
-    if (bp->next->isDummy)
-    {
-        m_last = bp;
-    }
-}
 
 #endif

@@ -1,10 +1,13 @@
 CC = g++
-PROGRAM = exe.out
-MODULES = s_item.cpp s_linked_list.cpp s_free_list.cpp chaining_hash.cpp
-INCLUDEPATH = $(if $(filter $(origin GUMPTION),undefined),$(error GUMPTION is not set.),$(GUMPTION))/lib
+CFLAGS   = -Wall -O2
 
-main: main.cpp $(MODULES)
-	$(CC) -o $(PROGRAM) main.cpp $(MODULES) -I $(INCLUDEPATH)
-test: test.cpp $(MODULES)
-	$(CC) -o $(PROGRAM) test.cpp $(MODULES) -I $(INCLUDEPATH)
-clean:;	rm -f *.o $(PROGRAM)
+MODULES = chaining_hash.cpp
+INCLUDEPATH = $(if $(filter $(origin GUMPTION),undefined),$(error GUMPTION is not set.),$(GUMPTION))/lib
+BUILD = $(GUMPTION)/build/chapter4/ch4.1
+
+test: test.cpp $(MODULES) mkdir
+	$(CC) $(CFLAGS) -o $(BUILD)/$@ test.cpp $(MODULES) -I $(INCLUDEPATH) && $(BUILD)/$@
+mkdir:
+	mkdir -p $(BUILD)
+.PHONY: clean
+clean:;	rm -f $(BUILD)/*

@@ -1,7 +1,7 @@
 #ifndef CHAINING_HASH_HPP
 #define CHAINING_HASH_HPP
 
-#include "s_linked_list.h"
+#include <s_linked_list.h>
 
 extern std::string key(std::string e);
 

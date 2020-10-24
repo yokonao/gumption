@@ -27,15 +27,6 @@ void testSLinkedListDefaultConstructor()
     expect(sll.all()).to_be("[]");
 }
 
-void testSFreeList()
-{
-    expect(SFreeList::isEmpty()).to_be_truthy();
-    SFreeList::check();
-    expect(SFreeList::isEmpty()).to_be_falsy();
-    SFreeList::clear();
-    expect(SFreeList::isEmpty()).to_be_truthy();
-}
-
 void testInsertAfter()
 {
     SLinkedList sll;
@@ -87,7 +78,6 @@ int main()
     std::cout << "TEST START" << std::endl;
     testSItem();
     testSLinkedListDefaultConstructor();
-    testSFreeList();
     testInsertAfter();
     testPushBack();
     testRemoveAfter();
