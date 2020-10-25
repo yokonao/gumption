@@ -17,7 +17,7 @@ void checkIsSorted(UArray<int> a)
 template <typename T>
 void testSort()
 {
-    int n = 20;
+    int n = 2000;
     checkIsSorted<T>(initial_list_good(n));
     checkIsSorted<T>(initial_list_worst(n));
     for (int i = 0; i < 10; i++)
