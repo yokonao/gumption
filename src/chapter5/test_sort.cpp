@@ -3,33 +3,26 @@
 #include <expectation.h>
 
 template <typename T>
-void testSort()
+void checkIsSorted(UArray<int> a)
 {
-    int n = 10;
-    UArray<int> a = initial_list_good(n);
     T::execute(a);
-    for (int i = 1; i <= n; i++)
-    {
-        expect(a[i - 1]).to_be(i);
-    }
-
-    n = 10;
-    a = initial_list_worst(n);
-    T::execute(a);
-    for (int i = 1; i <= n; i++)
-    {
-        expect(a[i - 1]).to_be(i);
-    }
-
-    int rep = 11;
-    n = rep + 10;
-    a = initial_list_random(n);
-    T::execute(a);
-    int prev = 0;
-    for (int i = 0; i < n; i++)
+    int prev = a[0];
+    for (int i = 0; i < a.size(); i++)
     {
         expect(a[i] >= prev).to_be_truthy();
         prev = a[i];
+    }
+}
+
+template <typename T>
+void testSort()
+{
+    int n = 2000;
+    checkIsSorted<T>(initial_list_good(n));
+    checkIsSorted<T>(initial_list_worst(n));
+    for (int i = 0; i < 10; i++)
+    {
+        checkIsSorted<T>(initial_list_random(n + i));
     }
 }
 
