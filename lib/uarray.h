@@ -24,6 +24,30 @@ public:
         assert(i >= 0 and i < n);
         return b[i];
     };
+    UArray<T> &operator=(const UArray<T> &a)
+    {
+        if (this == &a)
+            return *this;
+        if (a.w <= w)
+        {
+            for (int i = 0; i < a.n; i++)
+            {
+                b[i] = a.b[i];
+            }
+            n = a.n;
+            return *this;
+        }
+        T *bp = new T[a.w];
+        for (int i = 0; i < a.n; i++)
+        {
+            bp[i] = a.b[i];
+        }
+        delete[] b;
+        b = bp;
+        w = a.w;
+        n = a.n;
+        return *this;
+    }
     int size() const { return n; };
     void pushBack(const T &e)
     {
@@ -31,8 +55,7 @@ public:
         {
             reallocate(beta * n);
         }
-        T element = e;
-        b[n] = element;
+        b[n] = e;
         n++;
     };
     void popBack()
@@ -52,14 +75,14 @@ public:
         {
             bp[i] = b[i];
         }
-        delete b;
+        delete[] b;
         b = bp;
     };
     void clear()
     {
         delete b;
         w = 1;
-        T *bp = new T[0];
+        T *bp = new T[1];
         n = 0;
         b = bp;
     };
@@ -67,13 +90,13 @@ public:
     {
         alpha = 4;
         beta = 2;
-        b = new T[0];
+        b = new T[1];
     };
     UArray(int al, int be)
     {
         alpha = al;
         beta = be;
-        b = new T[0];
+        b = new T[1];
     };
     UArray(const UArray &obj)
     {
@@ -86,6 +109,10 @@ public:
         }
         n = obj.n;
         w = obj.w;
+    }
+    ~UArray()
+    {
+        delete[] b;
     }
 };
 template <class T>
