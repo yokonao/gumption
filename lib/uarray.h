@@ -112,7 +112,6 @@ public:
     }
     ~UArray()
     {
-        std::cout << "del" << std::endl;
         delete[] b;
     }
 };
