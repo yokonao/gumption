@@ -2,8 +2,10 @@
 #include "initial_list.h"
 #include <expectation.h>
 
+template <typename T>
 void checkIsSorted(UArray<int> a)
 {
+    T::execute(a);
     int prev = a[0];
     for (int i = 0; i < a.size(); i++)
     {
@@ -11,25 +13,19 @@ void checkIsSorted(UArray<int> a)
         prev = a[i];
     }
 }
+
 template <typename T>
 void testSort()
 {
     int n = 20;
-    UArray<int> a = initial_list_good(n);
-    T::execute(a);
-    checkIsSorted(a);
-
-    n = 20;
-    a = initial_list_worst(n);
-    T::execute(a);
-    checkIsSorted(a);
-
-    int rep = 11;
-    n = rep + 10;
-    a = initial_list_random(n);
-    T::execute(a);
-    checkIsSorted(a);
+    checkIsSorted<T>(initial_list_good(n));
+    checkIsSorted<T>(initial_list_worst(n));
+    for (int i = 0; i < 10; i++)
+    {
+        checkIsSorted<T>(initial_list_random(n + i));
+    }
 }
+
 int main()
 {
     executeTestSuite("ソートのテスト", [] {
