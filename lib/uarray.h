@@ -52,7 +52,7 @@ public:
         {
             bp[i] = b[i];
         }
-        delete b;
+        delete[] b;
         b = bp;
     };
     void clear()
@@ -87,6 +87,11 @@ public:
         n = obj.n;
         w = obj.w;
     }
+    // ~UArray()
+    // {
+    //     std::cout << "del" << std::endl;
+    //     delete[] b;
+    // }
 };
 template <class T>
 std::ostream &operator<<(std::ostream &os, const UArray<T> &ua)
