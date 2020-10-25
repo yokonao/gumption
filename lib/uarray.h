@@ -83,7 +83,7 @@ public:
     {
         delete b;
         w = 1;
-        T *bp = new T[0];
+        T *bp = new T[1];
         n = 0;
         b = bp;
     };
@@ -91,13 +91,13 @@ public:
     {
         alpha = 4;
         beta = 2;
-        b = new T[0];
+        b = new T[1];
     };
     UArray(int al, int be)
     {
         alpha = al;
         beta = be;
-        b = new T[0];
+        b = new T[1];
     };
     UArray(const UArray &obj)
     {
