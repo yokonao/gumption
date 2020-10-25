@@ -55,8 +55,7 @@ public:
         {
             reallocate(beta * n);
         }
-        T element = e;
-        b[n] = element;
+        b[n] = e;
         n++;
     };
     void popBack()
