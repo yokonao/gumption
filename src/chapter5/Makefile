@@ -14,6 +14,7 @@ initial: test_initial_list.cpp $(MODULES) mkdir
 	$(CC) $(CFLAGS) -o $(BUILD)/$@ test_initial_list.cpp  $(MODULES) -I $(INCLUDEPATH) && $(BUILD)/$@
 watch: watch_sort.cpp $(MODULES) mkdir
 	$(CC) $(CFLAGS) -o $(BUILD)/$@ watch_sort.cpp $(MODULES) -I $(INCLUDEPATH) && $(BUILD)/$@
+	python $(GUMPTION)/plot/chapter5/plot_sort.py
 mkdir:
 	mkdir -p $(BUILD)
 	mkdir -p $(RESULT)
