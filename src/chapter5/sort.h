@@ -47,5 +47,13 @@ public:
     static void execute(UArray<int> &a);
     static void execute(UArray<int> &a, int l, int r);
 };
+class BinaryInsertionSort
+{
+    static void insertionSort(UArray<int> &a, int l, int r);
+
+public:
+    static void execute(UArray<int> &a);
+    static void execute(UArray<int> &a, int l, int r);
+};
 
 #endif

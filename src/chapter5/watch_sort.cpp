@@ -29,5 +29,6 @@ int main()
     watchSort<MergeSort>("mergesort.dat");
     watchSort<QuickSort>("quicksort.dat");
     watchSort<InsertionSort>("insertionsort.dat");
+    watchSort<BinaryInsertionSort>("binaryinsertionsort.dat");
     watchSort<QSort>("qsort.dat");
 }

@@ -179,6 +179,55 @@ void InsertionSort::execute(UArray<int> &a, int l, int r)
 {
     insertionSort(a, l, r);
 }
+
+void BinaryInsertionSort::insertionSort(UArray<int> &a, int l, int r)
+{
+    for (int i = l + 1; i <= r; i++)
+    {
+        int e = a[i];
+        if (e < a[l])
+        {
+            for (int j = i; j > l; j--)
+            {
+                a[j] = a[j - 1];
+            }
+            a[l] = e;
+        }
+        else
+        {
+            int m = l;
+            int n = i;
+            while (m != n)
+            {
+                int mid = (m + n) / 2;
+                if (a[mid] > e)
+                {
+                    n = mid;
+                }
+                else
+                {
+                    m = mid + 1;
+                }
+            }
+            for (int j = i; j > m; j--)
+            {
+                a[j] = a[j - 1];
+            }
+            a[m] = e;
+        }
+    }
+}
+
+void BinaryInsertionSort::execute(UArray<int> &a)
+{
+    insertionSort(a, 0, a.size() - 1);
+}
+
+void BinaryInsertionSort::execute(UArray<int> &a, int l, int r)
+{
+    insertionSort(a, l, r);
+}
+
 int QSort::pickPivotPos(const UArray<int> &a, int l, int r)
 {
     return l;
