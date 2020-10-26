@@ -18,6 +18,8 @@ void testEquivalenceOperator()
     expect(x != std::array<int, 1>{1}).to_be_truthy();
     expect(x != std::array<int, 2>{1, 9}).to_be_truthy();
     expect(x != std::array<int, 2>{2, 10}).to_be_truthy();
+
+    expect(x).to_be_equal_to(std::array<int, 2>{1,  10});
 }
 
 void testUArray1D()
