@@ -9,7 +9,7 @@ def main():
     sns.set_theme()
     base_dir = os.environ["GUMPTION"]
     data_dir = os.path.join(base_dir, "results/chapter5")
-    fig = plt.figure()
+    fig = plt.figure(figsize=(8, 6))
     ax1 = fig.add_subplot(1, 2, 1)
     ax2 = fig.add_subplot(1, 2, 2)
     for fname in glob.glob(os.path.join(data_dir, "*.dat")):
