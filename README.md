@@ -8,6 +8,12 @@
 export GUMPTION=$(pwd)
 ```
 
+### PythonPackage
+```
+numpy 
+matplotlib
+seaborn
+```
 ## 実装言語
 
 第 3 章：c++(横塚、山田)
