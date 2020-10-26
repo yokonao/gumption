@@ -33,6 +33,7 @@ int main()
         testSort<MergeSort>();
         testSort<QuickSort>();
         testSort<InsertionSort>();
+        testSort<BinaryInsertionSort>();
         testSort<QSort>();
     });
 }
