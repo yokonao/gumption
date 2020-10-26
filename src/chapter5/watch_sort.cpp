@@ -1,6 +1,7 @@
 #include <iostream>
 #include <fstream>
 #include <ctime>
+#include <cstdlib>
 #include "sort.h"
 #include "initial_list.h"
 
@@ -9,7 +10,9 @@ void watchSort(std::string fname)
 {
     double t;
     std::ofstream f;
-    f.open("results/" + fname);
+    std::string base = std::getenv("GUMPTION");
+    std::cout << base << std::endl;
+    f.open(base + "/results/chapter5/" + fname);
     for (int n = 1; n <= 300000; n = n * 2)
     {
         std::clock_t c_start = std::clock();
