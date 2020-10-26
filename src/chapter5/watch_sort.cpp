@@ -11,7 +11,6 @@ void watchSort(std::string fname)
     double t;
     std::ofstream f;
     std::string base = std::getenv("GUMPTION");
-    std::cout << base << std::endl;
     f.open(base + "/results/chapter5/" + fname);
     for (int n = 1; n <= 300000; n = n * 2)
     {
