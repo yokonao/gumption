@@ -2,6 +2,7 @@
 #define UARRAY_HPP
 #include <cassert>
 #include <iostream>
+#include <array>
 
 template <class T>
 class UArray
@@ -83,7 +84,31 @@ public:
         return *this;
     }
 
-    int size() const { return n; };
+    template <std::size_t N>
+    bool operator==(const std::array<T, N> a)
+    {
+        if (n != N)
+            return false;
+
+        for (int i = 0; i < n; i++)
+        {
+            if (b[i] != a[i])
+                return false;
+        }
+
+        return true;
+    }
+
+    template <std::size_t N>
+    inline bool operator!=(const std::array<T, N> a)
+    {
+        return !(*this == a);
+    }
+
+    int size() const
+    {
+        return n;
+    };
 
     void pushBack(const T &e)
     {
@@ -116,7 +141,7 @@ public:
         delete[] b;
         b = bp;
     };
-    
+
     void clear()
     {
         delete b;

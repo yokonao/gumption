@@ -2,6 +2,24 @@
 #include <expectation.h>
 #include <iostream>
 
+void testEquivalenceOperator()
+{
+    UArray<int> x;
+    x.pushBack(1);
+    expect(x == std::array<int, 1>{1}).to_be_truthy();
+    expect(x == std::array<int, 2>{1, 2}).to_be_falsy();
+    x.pushBack(10);
+    expect(x == std::array<int, 2>{1, 10}).to_be_truthy();
+    expect(x == std::array<int, 1>{1}).to_be_falsy();
+    expect(x == std::array<int, 2>{1, 9}).to_be_falsy();
+    expect(x == std::array<int, 2>{2, 10}).to_be_falsy();
+
+    expect(x != std::array<int, 2>{1, 10}).to_be_falsy();
+    expect(x != std::array<int, 1>{1}).to_be_truthy();
+    expect(x != std::array<int, 2>{1, 9}).to_be_truthy();
+    expect(x != std::array<int, 2>{2, 10}).to_be_truthy();
+}
+
 void testUArray1D()
 {
     UArray<int> x;
@@ -39,6 +57,7 @@ void testUArray2D()
 
 int main()
 {
+    executeTestSuite("==演算子のテスト", testEquivalenceOperator);
     executeTestSuite("1次元配列のテスト", testUArray1D);
     executeTestSuite("2次元配列のテスト", testUArray2D);
     return 0;
