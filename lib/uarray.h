@@ -2,6 +2,7 @@
 #define UARRAY_HPP
 #include <cassert>
 #include <iostream>
+#include <array>
 
 template <class T>
 class UArray
@@ -14,16 +15,50 @@ private:
     T *b;
 
 public:
+    UArray()
+    {
+        alpha = 4;
+        beta = 2;
+        b = new T[1];
+    };
+
+    UArray(int al, int be)
+    {
+        alpha = al;
+        beta = be;
+        b = new T[1];
+    };
+
+    UArray(const UArray &obj)
+    {
+        alpha = 4;
+        beta = 2;
+        b = new T[obj.w];
+        for (int i = 0; i < obj.n; i++)
+        {
+            b[i] = obj.b[i];
+        }
+        n = obj.n;
+        w = obj.w;
+    }
+
+    ~UArray()
+    {
+        delete[] b;
+    }
+
     T &operator[](int i)
     {
         assert(i >= 0 and i < n);
         return b[i];
     };
+
     T &operator[](int i) const
     {
         assert(i >= 0 and i < n);
         return b[i];
     };
+
     UArray<T> &operator=(const UArray<T> &a)
     {
         if (this == &a)
@@ -48,7 +83,33 @@ public:
         n = a.n;
         return *this;
     }
-    int size() const { return n; };
+
+    template <std::size_t N>
+    bool operator==(const std::array<T, N> a)
+    {
+        if (n != N)
+            return false;
+
+        for (int i = 0; i < n; i++)
+        {
+            if (b[i] != a[i])
+                return false;
+        }
+
+        return true;
+    }
+
+    template <std::size_t N>
+    inline bool operator!=(const std::array<T, N> a)
+    {
+        return !(*this == a);
+    }
+
+    int size() const
+    {
+        return n;
+    };
+
     void pushBack(const T &e)
     {
         if (n == w)
@@ -58,6 +119,7 @@ public:
         b[n] = e;
         n++;
     };
+
     void popBack()
     {
         assert(n > 0);
@@ -67,6 +129,7 @@ public:
             reallocate(beta * n);
         }
     };
+
     void reallocate(int wp)
     {
         w = wp;
@@ -78,6 +141,7 @@ public:
         delete[] b;
         b = bp;
     };
+
     void clear()
     {
         delete b;
@@ -86,35 +150,8 @@ public:
         n = 0;
         b = bp;
     };
-    UArray()
-    {
-        alpha = 4;
-        beta = 2;
-        b = new T[1];
-    };
-    UArray(int al, int be)
-    {
-        alpha = al;
-        beta = be;
-        b = new T[1];
-    };
-    UArray(const UArray &obj)
-    {
-        alpha = 4;
-        beta = 2;
-        b = new T[obj.w];
-        for (int i = 0; i < obj.n; i++)
-        {
-            b[i] = obj.b[i];
-        }
-        n = obj.n;
-        w = obj.w;
-    }
-    ~UArray()
-    {
-        delete[] b;
-    }
 };
+
 template <class T>
 std::ostream &operator<<(std::ostream &os, const UArray<T> &ua)
 {
