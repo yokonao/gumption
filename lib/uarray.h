@@ -1,7 +1,9 @@
 #ifndef UARRAY_HPP
 #define UARRAY_HPP
+
 #include <cassert>
 #include <iostream>
+#include <array.h>
 #include <array>
 
 template <class T>
@@ -12,28 +14,28 @@ private:
     int alpha;
     int w = 1;
     int n = 0;
-    T *b;
+    Array<T> b;
 
 public:
     UArray()
     {
         alpha = 4;
         beta = 2;
-        b = new T[1];
+        b = Array<T>(1);
     };
 
     UArray(int al, int be)
     {
         alpha = al;
         beta = be;
-        b = new T[1];
+        b = Array<T>(1);
     };
 
     UArray(const UArray &obj)
     {
         alpha = 4;
         beta = 2;
-        b = new T[obj.w];
+        b = obj.b;
         for (int i = 0; i < obj.n; i++)
         {
             b[i] = obj.b[i];
@@ -44,7 +46,6 @@ public:
 
     ~UArray()
     {
-        delete[] b;
     }
 
     T &operator[](int i)
@@ -63,22 +64,8 @@ public:
     {
         if (this == &a)
             return *this;
-        if (a.w <= w)
-        {
-            for (int i = 0; i < a.n; i++)
-            {
-                b[i] = a.b[i];
-            }
-            n = a.n;
-            return *this;
-        }
-        T *bp = new T[a.w];
-        for (int i = 0; i < a.n; i++)
-        {
-            bp[i] = a.b[i];
-        }
-        delete[] b;
-        b = bp;
+
+        b = a.b;
         w = a.w;
         n = a.n;
         return *this;
@@ -133,22 +120,19 @@ public:
     void reallocate(int wp)
     {
         w = wp;
-        T *bp = new T[w];
+        Array<T> bp = Array<T>(w);
         for (int i = 0; i < n; i++)
         {
             bp[i] = b[i];
         }
-        delete[] b;
         b = bp;
     };
 
     void clear()
     {
-        delete b;
         w = 1;
-        T *bp = new T[1];
         n = 0;
-        b = bp;
+        b = Array<T>(w);
     };
 };
 
