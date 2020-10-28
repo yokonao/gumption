@@ -31,19 +31,11 @@ public:
             return *this;
         if (a.w <= w)
         {
-            for (int i = 0; i < a.n; i++)
-            {
-                b[i] = a.b[i];
-            }
+            b = a.b;
             n = a.n;
             return *this;
         }
-        Array<T> bp = Array<T>(a.w);
-        for (int i = 0; i < a.n; i++)
-        {
-            bp[i] = a.b[i];
-        }
-        b = bp;
+        b = a.b;
         w = a.w;
         n = a.n;
         return *this;
@@ -99,11 +91,7 @@ public:
     {
         alpha = 4;
         beta = 2;
-        b = Array<T>(obj.w);
-        for (int i = 0; i < obj.n; i++)
-        {
-            b[i] = obj.b[i];
-        }
+        b = obj.b;
         n = obj.n;
         w = obj.w;
     }
