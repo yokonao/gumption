@@ -2,6 +2,7 @@
 #define UARRAY_HPP
 #include <cassert>
 #include <iostream>
+#include <array.h>
 
 template <class T>
 class UArray
@@ -11,7 +12,7 @@ private:
     int alpha;
     int w = 1;
     int n = 0;
-    T *b;
+    Array<T> b;
 
 public:
     T &operator[](int i)
@@ -37,12 +38,11 @@ public:
             n = a.n;
             return *this;
         }
-        T *bp = new T[a.w];
+        Array<T> bp = Array<T>(a.w);
         for (int i = 0; i < a.n; i++)
         {
             bp[i] = a.b[i];
         }
-        delete[] b;
         b = bp;
         w = a.w;
         n = a.n;
@@ -70,39 +70,36 @@ public:
     void reallocate(int wp)
     {
         w = wp;
-        T *bp = new T[w];
+        Array<T> bp = Array<T>(w);
         for (int i = 0; i < n; i++)
         {
             bp[i] = b[i];
         }
-        delete[] b;
         b = bp;
     };
     void clear()
     {
-        delete b;
         w = 1;
-        T *bp = new T[1];
         n = 0;
-        b = bp;
+        b = Array<T>(w);
     };
     UArray()
     {
         alpha = 4;
         beta = 2;
-        b = new T[1];
+        b = Array<T>(1);
     };
     UArray(int al, int be)
     {
         alpha = al;
         beta = be;
-        b = new T[1];
+        b = Array<T>(1);
     };
     UArray(const UArray &obj)
     {
         alpha = 4;
         beta = 2;
-        b = new T[obj.w];
+        b = Array<T>(obj.w);
         for (int i = 0; i < obj.n; i++)
         {
             b[i] = obj.b[i];
@@ -112,7 +109,6 @@ public:
     }
     ~UArray()
     {
-        delete[] b;
     }
 };
 template <class T>
