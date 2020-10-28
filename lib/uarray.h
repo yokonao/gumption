@@ -6,7 +6,6 @@
 #include <array.h>
 #include <array>
 
-
 template <class T>
 class UArray
 {
@@ -22,21 +21,21 @@ public:
     {
         alpha = 4;
         beta = 2;
-        b = new T[1];
+        b = Array<T>(1);
     };
 
     UArray(int al, int be)
     {
         alpha = al;
         beta = be;
-        b = new T[1];
+        b = Array<T>(1);
     };
 
     UArray(const UArray &obj)
     {
         alpha = 4;
         beta = 2;
-        b = new T[obj.w];
+        b = obj.b;
         for (int i = 0; i < obj.n; i++)
         {
             b[i] = obj.b[i];
@@ -47,7 +46,6 @@ public:
 
     ~UArray()
     {
-        delete[] b;
     }
 
     T &operator[](int i)
@@ -66,12 +64,7 @@ public:
     {
         if (this == &a)
             return *this;
-        if (a.w <= w)
-        {
-            b = a.b;
-            n = a.n;
-            return *this;
-        }
+
         b = a.b;
         w = a.w;
         n = a.n;
