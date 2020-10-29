@@ -9,6 +9,8 @@ private:
     Array<int> h;
     void swap(int i, int j);
     void siftUp(int i);
+    void siftDownSimply(int i);
+    void siftDownBinary(int i);
     void siftDown(int i);
 
 public:

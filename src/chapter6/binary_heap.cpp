@@ -22,7 +22,7 @@ void BinaryHeapPriorityQueue::siftUp(int i)
     siftUp((i - 1) / 2);
 }
 
-void BinaryHeapPriorityQueue::siftDown(int i)
+void BinaryHeapPriorityQueue::siftDownSimply(int i)
 {
     if ((i + 1) * 2 <= n)
     {
@@ -47,6 +47,15 @@ void BinaryHeapPriorityQueue::siftDown(int i)
             siftDown(m);
         }
     }
+}
+
+void BinaryHeapPriorityQueue::siftDownBinary(int i)
+{
+}
+
+void BinaryHeapPriorityQueue::siftDown(int i)
+{
+    siftDownSimply(i);
 }
 
 int BinaryHeapPriorityQueue::min()
