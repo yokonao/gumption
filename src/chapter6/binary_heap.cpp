@@ -24,22 +24,28 @@ void BinaryHeapPriorityQueue::siftUp(int i)
 
 void BinaryHeapPriorityQueue::siftDown(int i)
 {
-    int m;
     if ((i + 1) * 2 <= n)
     {
-        if (h[i * 2] <= h[i * 2 + 1])
-        {
-            m = i * 2;
-        }
-        else
+        int m = 0;
+
+        if ((i + 1) * 2 + 1 > n)
         {
             m = i * 2 + 1;
         }
-    }
-    if (h[i] > h[m])
-    {
-        swap(i, m);
-        siftDown(m);
+        else if (h[i * 2 + 1] <= h[(i + 1) * 2])
+        {
+            m = i * 2 + 1;
+        }
+        else
+        {
+            m = (i + 1) * 2;
+        }
+
+        if (h[i] > h[m])
+        {
+            swap(i, m);
+            siftDown(m);
+        }
     }
 }
 
