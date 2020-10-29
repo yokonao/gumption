@@ -36,10 +36,6 @@ public:
         alpha = 4;
         beta = 2;
         b = obj.b;
-        for (int i = 0; i < obj.n; i++)
-        {
-            b[i] = obj.b[i];
-        }
         n = obj.n;
         w = obj.w;
     }
