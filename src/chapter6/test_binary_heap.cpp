@@ -40,25 +40,25 @@ void testDeleteMin()
     pq.insert(77);
 
     expect(pq.min()).to_be(1);
-    // expect(pq.deleteMin()).to_be(1);
-    // expect(pq.min()).to_be(5);
-    // expect(pq.deleteMin()).to_be(5);
-    // expect(pq.min()).to_be(12);
-    // expect(pq.deleteMin()).to_be(12);
-    // expect(pq.min()).to_be(23);
-    // expect(pq.deleteMin()).to_be(23);
-    // expect(pq.min()).to_be(28);
-    // expect(pq.deleteMin()).to_be(28);
-    // expect(pq.min()).to_be(35);
-    // expect(pq.deleteMin()).to_be(35);
-    // expect(pq.min()).to_be(67);
-    // expect(pq.deleteMin()).to_be(67);
-    // expect(pq.min()).to_be(77);
-    // expect(pq.deleteMin()).to_be(77);
-    // expect(pq.min()).to_be(99);
-    // expect(pq.deleteMin()).to_be(99);
-    // expect(pq.min()).to_be(100);
-    // expect(pq.deleteMin()).to_be(100);
+    expect(pq.deleteMin()).to_be(1);
+    expect(pq.min()).to_be(5);
+    expect(pq.deleteMin()).to_be(5);
+    expect(pq.min()).to_be(12);
+    expect(pq.deleteMin()).to_be(12);
+    expect(pq.min()).to_be(23);
+    expect(pq.deleteMin()).to_be(23);
+    expect(pq.min()).to_be(28);
+    expect(pq.deleteMin()).to_be(28);
+    expect(pq.min()).to_be(35);
+    expect(pq.deleteMin()).to_be(35);
+    expect(pq.min()).to_be(67);
+    expect(pq.deleteMin()).to_be(67);
+    expect(pq.min()).to_be(77);
+    expect(pq.deleteMin()).to_be(77);
+    expect(pq.min()).to_be(99);
+    expect(pq.deleteMin()).to_be(99);
+    expect(pq.min()).to_be(100);
+    expect(pq.deleteMin()).to_be(100);
 }
 
 int main()
