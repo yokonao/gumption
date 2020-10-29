@@ -3,7 +3,7 @@
 
 void testBinaryHeapSimple()
 {
-    BinaryHeapPriorityQueue q;
+    BinaryHeapPriorityQueue q(3);
     q.insert(5);
     q.insert(4);
     q.insert(3);
@@ -11,7 +11,7 @@ void testBinaryHeapSimple()
 }
 void testBinaryHeap()
 {
-    BinaryHeapPriorityQueue q;
+    BinaryHeapPriorityQueue q(10);
     q.insert(5);
     q.insert(4);
     q.insert(3);

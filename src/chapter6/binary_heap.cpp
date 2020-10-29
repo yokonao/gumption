@@ -1,6 +1,12 @@
 #include "binary_heap.h"
 #include <cassert>
 
+BinaryHeapPriorityQueue::BinaryHeapPriorityQueue(int w)
+{
+    this->w = w;
+    this->h = Array<int>(w);
+}
+
 void BinaryHeapPriorityQueue::swap(int i, int j)
 {
     int buff = h[i];
@@ -24,7 +30,8 @@ int BinaryHeapPriorityQueue::min()
 
 void BinaryHeapPriorityQueue::insert(int e)
 {
-    h.pushBack(e);
+    assert(n < w);
     n++;
+    h[n - 1] = e;
     siftUp(n - 1);
 }
