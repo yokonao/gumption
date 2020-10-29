@@ -7,7 +7,6 @@ private:
     int n = 0;
     int w = 0;
     Array<int> h;
-    int at(int i);
     void swap(int i, int j);
     void siftUp(int i);
     void siftDown(int i);
