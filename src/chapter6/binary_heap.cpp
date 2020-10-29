@@ -22,6 +22,27 @@ void BinaryHeapPriorityQueue::siftUp(int i)
     siftUp(i / 2);
 }
 
+void BinaryHeapPriorityQueue::siftDown(int i)
+{
+    int m;
+    if ((i + 1) * 2 <= n)
+    {
+        if (h[(i + 1) * 2 - 1] <= h[(i + 1) * 2])
+        {
+            m = (i + 1) * 2 - 1;
+        }
+        else
+        {
+            m = (i + 1) * 2;
+        }
+    }
+    if (h[i] > h[m])
+    {
+        swap(i, m);
+        siftDown(m);
+    }
+}
+
 int BinaryHeapPriorityQueue::min()
 {
     assert(n > 0);
