@@ -32,6 +32,22 @@ public:
         }
     }
 
+    template <class R>
+    void to_be_equal_to(R to)
+    {
+        if (e == to)
+        {
+            return;
+        }
+        else
+        {
+            std::cout << "Test Failed!" << std::endl;
+            // std::cout << "expected:" << to << std::endl;
+            // std::cout << "actual:" << e << std::endl;
+            throw std::logic_error("テストに失敗しました");
+        }
+    }
+
     void to_be_truthy()
     {
         if (e)

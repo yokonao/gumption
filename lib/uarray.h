@@ -1,7 +1,10 @@
 #ifndef UARRAY_HPP
 #define UARRAY_HPP
+
 #include <cassert>
 #include <iostream>
+#include <array.h>
+#include <array>
 
 template <class T>
 class UArray
@@ -11,44 +14,97 @@ private:
     int alpha;
     int w = 1;
     int n = 0;
-    T *b;
+    Array<T> b;
 
 public:
+    UArray()
+    {
+        alpha = 4;
+        beta = 2;
+        b = Array<T>(1);
+    };
+
+    UArray(int al, int be)
+    {
+        alpha = al;
+        beta = be;
+        b = Array<T>(1);
+    };
+
+    UArray(std::initializer_list<T> init)
+    {
+        alpha = 4;
+        beta = 2;
+        n = init.size();
+        w = beta * n;
+        b = Array<T>(w);
+        int idx = 0;
+        for (T t : init)
+        {
+            b[idx] = t;
+            idx++;
+        }
+    }
+
+    UArray(const UArray &obj)
+    {
+        alpha = 4;
+        beta = 2;
+        b = obj.b;
+        n = obj.n;
+        w = obj.w;
+    }
+
+    ~UArray()
+    {
+    }
+
     T &operator[](int i)
     {
         assert(i >= 0 and i < n);
         return b[i];
     };
+
     T &operator[](int i) const
     {
         assert(i >= 0 and i < n);
         return b[i];
     };
+
     UArray<T> &operator=(const UArray<T> &a)
     {
         if (this == &a)
             return *this;
-        if (a.w <= w)
-        {
-            for (int i = 0; i < a.n; i++)
-            {
-                b[i] = a.b[i];
-            }
-            n = a.n;
-            return *this;
-        }
-        T *bp = new T[a.w];
-        for (int i = 0; i < a.n; i++)
-        {
-            bp[i] = a.b[i];
-        }
-        delete[] b;
-        b = bp;
+
+        b = a.b;
         w = a.w;
         n = a.n;
         return *this;
     }
-    int size() const { return n; };
+
+    bool operator==(const UArray<T> a)
+    {
+        if (n != a.n)
+            return false;
+
+        for (int i = 0; i < n; i++)
+        {
+            if (b[i] != a.b[i])
+                return false;
+        }
+        return true;
+    }
+
+    inline bool operator!=(const UArray<T> a)
+    {
+        return !(*this == a);
+    }
+
+    int size() const
+    {
+        return n;
+    };
+
     void pushBack(const T &e)
     {
         if (n == w)
@@ -58,6 +114,7 @@ public:
         b[n] = e;
         n++;
     };
+
     void popBack()
     {
         assert(n > 0);
@@ -67,54 +124,26 @@ public:
             reallocate(beta * n);
         }
     };
+
     void reallocate(int wp)
     {
         w = wp;
-        T *bp = new T[w];
+        Array<T> bp = Array<T>(w);
         for (int i = 0; i < n; i++)
         {
             bp[i] = b[i];
         }
-        delete[] b;
         b = bp;
     };
+
     void clear()
     {
-        delete b;
         w = 1;
-        T *bp = new T[1];
         n = 0;
-        b = bp;
+        b = Array<T>(w);
     };
-    UArray()
-    {
-        alpha = 4;
-        beta = 2;
-        b = new T[1];
-    };
-    UArray(int al, int be)
-    {
-        alpha = al;
-        beta = be;
-        b = new T[1];
-    };
-    UArray(const UArray &obj)
-    {
-        alpha = 4;
-        beta = 2;
-        b = new T[obj.w];
-        for (int i = 0; i < obj.n; i++)
-        {
-            b[i] = obj.b[i];
-        }
-        n = obj.n;
-        w = obj.w;
-    }
-    ~UArray()
-    {
-        delete[] b;
-    }
 };
+
 template <class T>
 std::ostream &operator<<(std::ostream &os, const UArray<T> &ua)
 {
