@@ -1,11 +1,44 @@
 #include "binary_heap.h"
 #include <cassert>
-#include <uarray.h>
 
 BinaryHeapPriorityQueue::BinaryHeapPriorityQueue(int w)
 {
     this->w = w;
     this->h = Array<int>(w);
+}
+BinaryHeapPriorityQueue::BinaryHeapPriorityQueue(int w, std::initializer_list<int> init)
+{
+    assert(w >= init.size());
+    this->w = w;
+    this->h = Array<int>(w);
+    this->n = init.size();
+    int idx = 0;
+    for (int e : init)
+    {
+        h[idx] = e;
+        idx++;
+    }
+    heapify();
+}
+BinaryHeapPriorityQueue::BinaryHeapPriorityQueue(int w, UArray<int> a)
+{
+    assert(w >= a.size());
+    this->w = w;
+    this->h = Array<int>(w);
+    this->n = a.size();
+    for (int i = 0; i < a.size(); i++)
+    {
+        h[i] = a[i];
+    }
+    heapify();
+}
+
+void BinaryHeapPriorityQueue::heapify()
+{
+    for (int i = n / 2 - 1; i >= 0; i--)
+    {
+        siftDown(i);
+    }
 }
 
 void BinaryHeapPriorityQueue::swap(int i, int j)
@@ -52,6 +85,7 @@ void BinaryHeapPriorityQueue::siftDownSimply(int i)
 
 void BinaryHeapPriorityQueue::siftDownBinary(int i)
 {
+    //todo:i = 0以外のときにswap(0,p[idx])を修正
     if (n <= 1)
     {
         return;
@@ -110,7 +144,7 @@ void BinaryHeapPriorityQueue::siftDownBinary(int i)
 
 void BinaryHeapPriorityQueue::siftDown(int i)
 {
-    siftDownBinary(i);
+    siftDownSimply(i);
 }
 
 int BinaryHeapPriorityQueue::min()
