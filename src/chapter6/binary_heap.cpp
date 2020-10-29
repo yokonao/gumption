@@ -19,7 +19,7 @@ void BinaryHeapPriorityQueue::siftUp(int i)
     if (i == 0 or h[(i - 1) / 2] <= h[i])
         return;
     swap(i, (i - 1) / 2);
-    siftUp(i / 2);
+    siftUp((i - 1) / 2);
 }
 
 void BinaryHeapPriorityQueue::siftDown(int i)
