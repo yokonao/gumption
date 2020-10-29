@@ -35,3 +35,13 @@ void BinaryHeapPriorityQueue::insert(int e)
     h[n - 1] = e;
     siftUp(n - 1);
 }
+
+int BinaryHeapPriorityQueue::deleteMin()
+{
+    assert(n > 0);
+    int result = h[0];
+    h[0] = h[n - 1];
+    n--;
+    siftDown(0);
+    return result;
+}
