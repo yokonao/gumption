@@ -1,5 +1,6 @@
 #include "binary_heap.h"
 #include <cassert>
+#include <uarray.h>
 
 BinaryHeapPriorityQueue::BinaryHeapPriorityQueue(int w)
 {
@@ -44,18 +45,72 @@ void BinaryHeapPriorityQueue::siftDownSimply(int i)
         if (h[i] > h[m])
         {
             swap(i, m);
-            siftDown(m);
+            siftDownSimply(m);
         }
     }
 }
 
 void BinaryHeapPriorityQueue::siftDownBinary(int i)
 {
+    if (n <= 1)
+    {
+        return;
+    }
+    int e = h[i];
+    UArray<int> p;
+    while ((i + 1) * 2 <= n)
+    {
+        int m = 0;
+        if ((i + 1) * 2 + 1 > n)
+        {
+            m = i * 2 + 1;
+        }
+        else if (h[i * 2 + 1] <= h[(i + 1) * 2])
+        {
+            m = i * 2 + 1;
+        }
+        else
+        {
+            m = (i + 1) * 2;
+        }
+        p.pushBack(m);
+        i = m;
+    }
+    if (e <= h[p[0]])
+    {
+        return;
+    }
+    int l = 0;
+    int r = p.size();
+    while (l != r)
+    {
+        int mid = (l + r) / 2;
+        if (h[p[mid]] > e)
+        {
+            r = mid;
+        }
+        else
+        {
+            l = mid + 1;
+        }
+    }
+    //swap
+    for (int idx = 0; idx < l; idx++)
+    {
+        if (idx == 0)
+        {
+            swap(0, p[idx]);
+        }
+        else
+        {
+            swap(p[idx - 1], p[idx]);
+        }
+    }
 }
 
 void BinaryHeapPriorityQueue::siftDown(int i)
 {
-    siftDownSimply(i);
+    siftDownBinary(i);
 }
 
 int BinaryHeapPriorityQueue::min()
