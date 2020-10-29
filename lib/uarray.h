@@ -31,15 +31,26 @@ public:
         b = Array<T>(1);
     };
 
+    UArray(std::initializer_list<T> init)
+    {
+        alpha = 4;
+        beta = 2;
+        n = init.size();
+        w = beta * n;
+        b = Array<T>(w);
+        int idx = 0;
+        for (T t : init)
+        {
+            b[idx] = t;
+            idx++;
+        }
+    }
+
     UArray(const UArray &obj)
     {
         alpha = 4;
         beta = 2;
         b = obj.b;
-        for (int i = 0; i < obj.n; i++)
-        {
-            b[i] = obj.b[i];
-        }
         n = obj.n;
         w = obj.w;
     }
@@ -71,23 +82,20 @@ public:
         return *this;
     }
 
-    template <std::size_t N>
-    bool operator==(const std::array<T, N> a)
+    bool operator==(const UArray<T> a)
     {
-        if (n != N)
+        if (n != a.n)
             return false;
 
         for (int i = 0; i < n; i++)
         {
-            if (b[i] != a[i])
+            if (b[i] != a.b[i])
                 return false;
         }
-
         return true;
     }
 
-    template <std::size_t N>
-    inline bool operator!=(const std::array<T, N> a)
+    inline bool operator!=(const UArray<T> a)
     {
         return !(*this == a);
     }
