@@ -297,5 +297,5 @@ UArray<int> HeapSort::heapSort(const UArray<int> &s)
 }
 void HeapSort::execute(UArray<int> &s)
 {
-    heapSort(s);
+    s = heapSort(s);
 }
