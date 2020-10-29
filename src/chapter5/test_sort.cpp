@@ -28,12 +28,11 @@ void testSort()
 
 int main()
 {
-    executeTestSuite("ソートのテスト", [] {
-        testSort<SelectionSort>();
-        testSort<MergeSort>();
-        testSort<QuickSort>();
-        testSort<InsertionSort>();
-        testSort<BinaryInsertionSort>();
-        testSort<QSort>();
-    });
+    executeTestSuite("SelectionSortのテスト", testSort<SelectionSort>);
+    executeTestSuite("MergeSortのテスト", testSort<MergeSort>);
+    executeTestSuite("QuickSortのテスト", testSort<QuickSort>);
+    executeTestSuite("InsertionSortのテスト", testSort<InsertionSort>);
+    executeTestSuite("BinaryInsertionSortのテスト", testSort<BinaryInsertionSort>);
+    executeTestSuite("QSortのテスト", testSort<QSort>);
+    executeTestSuite("HeapSortのテスト", testSort<HeapSort>);
 }

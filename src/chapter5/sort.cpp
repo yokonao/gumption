@@ -1,6 +1,7 @@
 #include <uarray.h>
 #include "sort.h"
 #include <gen_mt.h>
+#include <binary_heap.h>
 
 void SelectionSort::execute(UArray<int> &a)
 {
@@ -282,4 +283,19 @@ void QSort::qSort(UArray<int> &a, int l, int r)
 void QSort::execute(UArray<int> &a)
 {
     qSort(a, 0, a.size() - 1);
+}
+
+UArray<int> HeapSort::heapSort(const UArray<int> &s)
+{
+    UArray<int> result;
+    BinaryHeapPriorityQueue pq(s.size(), s);
+    for (int i = 0; i < s.size(); i++)
+    {
+        result.pushBack(pq.deleteMin());
+    }
+    return result;
+}
+void HeapSort::execute(UArray<int> &s)
+{
+    s = heapSort(s);
 }
