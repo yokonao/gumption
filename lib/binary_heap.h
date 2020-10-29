@@ -54,12 +54,12 @@ private:
 
     void siftDownBinary(int i)
     {
-        //todo:i = 0以外のときにswap(0,p[idx])を修正
         if (n <= 1)
         {
             return;
         }
         int e = h[i];
+        int root = i;
         UArray<int> p;
         while ((i + 1) * 2 <= n)
         {
@@ -102,7 +102,7 @@ private:
         {
             if (idx == 0)
             {
-                swap(0, p[idx]);
+                swap(root, p[idx]);
             }
             else
             {
@@ -113,7 +113,7 @@ private:
 
     void siftDown(int i)
     {
-        siftDownSimply(i);
+        siftDownBinary(i);
     }
 
     void heapify()

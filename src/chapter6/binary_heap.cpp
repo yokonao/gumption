@@ -85,12 +85,12 @@ void BinaryHeapPriorityQueue::siftDownSimply(int i)
 
 void BinaryHeapPriorityQueue::siftDownBinary(int i)
 {
-    //todo:i = 0以外のときにswap(0,p[idx])を修正
     if (n <= 1)
     {
         return;
     }
     int e = h[i];
+    int root = i;
     UArray<int> p;
     while ((i + 1) * 2 <= n)
     {
@@ -133,7 +133,7 @@ void BinaryHeapPriorityQueue::siftDownBinary(int i)
     {
         if (idx == 0)
         {
-            swap(0, p[idx]);
+            swap(root, p[idx]);
         }
         else
         {
@@ -144,7 +144,7 @@ void BinaryHeapPriorityQueue::siftDownBinary(int i)
 
 void BinaryHeapPriorityQueue::siftDown(int i)
 {
-    siftDownSimply(i);
+    siftDownBinary(i);
 }
 
 int BinaryHeapPriorityQueue::min()
