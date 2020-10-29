@@ -68,6 +68,24 @@ public:
         return *this;
     }
 
+    bool operator==(const Array<T> a)
+    {
+        if (n != a.n)
+            return false;
+
+        for (int i = 0; i < n; i++)
+        {
+            if (content[i] != a.content[i])
+                return false;
+        }
+        return true;
+    }
+
+    inline bool operator!=(const Array<T> a)
+    {
+        return !(*this == a);
+    }
+
     T &operator[](int i)
     {
         assert(i >= 0 and i < n);
