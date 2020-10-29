@@ -61,10 +61,66 @@ void testDeleteMin()
     expect(pq.deleteMin()).to_be(100);
 }
 
+void testFromInitializerList()
+{
+    BinaryHeapPriorityQueue pq(10, {100, 23, 35, 67, 28, 12, 1, 5, 99, 77});
+
+    expect(pq.min()).to_be(1);
+    expect(pq.deleteMin()).to_be(1);
+    expect(pq.min()).to_be(5);
+    expect(pq.deleteMin()).to_be(5);
+    expect(pq.min()).to_be(12);
+    expect(pq.deleteMin()).to_be(12);
+    expect(pq.min()).to_be(23);
+    expect(pq.deleteMin()).to_be(23);
+    expect(pq.min()).to_be(28);
+    expect(pq.deleteMin()).to_be(28);
+    expect(pq.min()).to_be(35);
+    expect(pq.deleteMin()).to_be(35);
+    expect(pq.min()).to_be(67);
+    expect(pq.deleteMin()).to_be(67);
+    expect(pq.min()).to_be(77);
+    expect(pq.deleteMin()).to_be(77);
+    expect(pq.min()).to_be(99);
+    expect(pq.deleteMin()).to_be(99);
+    expect(pq.min()).to_be(100);
+    expect(pq.deleteMin()).to_be(100);
+}
+
+void testFromUArray()
+{
+    UArray<int> a{100, 23, 35, 67, 28, 12, 1, 5, 99, 77};
+    BinaryHeapPriorityQueue pq(10, a);
+
+    expect(pq.min()).to_be(1);
+    expect(pq.deleteMin()).to_be(1);
+    expect(pq.min()).to_be(5);
+    expect(pq.deleteMin()).to_be(5);
+    expect(pq.min()).to_be(12);
+    expect(pq.deleteMin()).to_be(12);
+    expect(pq.min()).to_be(23);
+    expect(pq.deleteMin()).to_be(23);
+    expect(pq.min()).to_be(28);
+    expect(pq.deleteMin()).to_be(28);
+    expect(pq.min()).to_be(35);
+    expect(pq.deleteMin()).to_be(35);
+    expect(pq.min()).to_be(67);
+    expect(pq.deleteMin()).to_be(67);
+    expect(pq.min()).to_be(77);
+    expect(pq.deleteMin()).to_be(77);
+    expect(pq.min()).to_be(99);
+    expect(pq.deleteMin()).to_be(99);
+    expect(pq.min()).to_be(100);
+    expect(pq.deleteMin()).to_be(100);
+}
+
 int main()
 {
     executeTestSuite("ヒープのテストSimple", testBinaryHeapSimple);
     executeTestSuite("ヒープのテスト", testBinaryHeap);
     executeTestSuite("最小値削除テスト", testDeleteMin);
+    executeTestSuite("初期化リストを使ったコンストラクタのテスト", testFromInitializerList);
+    executeTestSuite("UArrayを使ったコンストラクタのテスト", testFromUArray);
+
     return 0;
 }
