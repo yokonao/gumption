@@ -299,3 +299,18 @@ void HeapSort::execute(UArray<int> &s)
 {
     s = heapSort(s);
 }
+
+UArray<int> BinaryHeapSort::heapSort(const UArray<int> &s)
+{
+    UArray<int> result;
+    BinaryHeapPriorityQueue pq(s.size(), s, 1);
+    for (int i = 0; i < s.size(); i++)
+    {
+        result.pushBack(pq.deleteMin());
+    }
+    return result;
+}
+void BinaryHeapSort::execute(UArray<int> &s)
+{
+    s = heapSort(s);
+}

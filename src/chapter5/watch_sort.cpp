@@ -25,10 +25,12 @@ void watchSort(std::string fname)
 }
 int main()
 {
-    watchSort<SelectionSort>("selectionsort.dat");
-    watchSort<MergeSort>("mergesort.dat");
-    watchSort<QuickSort>("quicksort.dat");
-    watchSort<InsertionSort>("insertionsort.dat");
-    watchSort<BinaryInsertionSort>("binaryinsertionsort.dat");
-    watchSort<QSort>("qsort.dat");
+    watchSort<SelectionSort>("SelectionSort.dat");
+    watchSort<MergeSort>("MergeSort.dat");
+    watchSort<QuickSort>("QuickSort.dat");
+    watchSort<InsertionSort>("InsertionSort.dat");
+    watchSort<BinaryInsertionSort>("BinaryInsertionSort.dat");
+    watchSort<QSort>("QSort.dat");
+    watchSort<HeapSort>("HeapSort.dat");
+    watchSort<BinaryHeapSort>("BinaryHeapSort.dat");
 }

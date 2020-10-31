@@ -35,4 +35,5 @@ int main()
     executeTestSuite("BinaryInsertionSortのテスト", testSort<BinaryInsertionSort>);
     executeTestSuite("QSortのテスト", testSort<QSort>);
     executeTestSuite("HeapSortのテスト", testSort<HeapSort>);
+    executeTestSuite("BinaryHeapSortのテスト", testSort<BinaryHeapSort>);
 }

@@ -64,4 +64,12 @@ public:
     static void execute(UArray<int> &s);
 };
 
+class BinaryHeapSort
+{
+    static UArray<int> heapSort(const UArray<int> &s);
+
+public:
+    static void execute(UArray<int> &s);
+};
+
 #endif

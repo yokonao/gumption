@@ -3,7 +3,5 @@
 .DS_Store
 *.json
 *.dat
-*.png
 .envrc
 build/
-results/

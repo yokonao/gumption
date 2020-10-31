@@ -9,6 +9,7 @@ class BinaryHeapPriorityQueue
 private:
     int n = 0;
     int w = 0;
+    int flag = 0;
     Array<int> h;
     void swap(int i, int j)
     {
@@ -113,7 +114,14 @@ private:
 
     void siftDown(int i)
     {
-        siftDownBinary(i);
+        if (flag == 0)
+        {
+            siftDownSimply(i);
+        }
+        else
+        {
+            siftDownBinary(i);
+        }
     }
 
     void heapify()
@@ -152,6 +160,43 @@ public:
         this->w = w;
         this->h = Array<int>(w);
         this->n = a.size();
+        for (int i = 0; i < a.size(); i++)
+        {
+            h[i] = a[i];
+        }
+        heapify();
+    }
+    BinaryHeapPriorityQueue(int w, int flag)
+    {
+        this->w = w;
+        this->h = Array<int>(w);
+        this->flag = flag;
+    }
+
+    BinaryHeapPriorityQueue(int w, std::initializer_list<int> init, int flag)
+    {
+        assert(w >= init.size());
+        this->w = w;
+        this->h = Array<int>(w);
+        this->n = init.size();
+        this->flag = flag;
+
+        int idx = 0;
+        for (int e : init)
+        {
+            h[idx] = e;
+            idx++;
+        }
+        heapify();
+    }
+
+    BinaryHeapPriorityQueue(int w, UArray<int> a, int flag)
+    {
+        assert(w >= a.size());
+        this->w = w;
+        this->h = Array<int>(w);
+        this->n = a.size();
+        this->flag = flag;
         for (int i = 0; i < a.size(); i++)
         {
             h[i] = a[i];
