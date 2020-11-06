@@ -6,6 +6,7 @@ void testStackConstructer()
 {
     Stack<int> s;
     expect(s.size()).to_be(0);
+    expect(s.isEmpty()).to_be_truthy();
 }
 
 void testStackPushBack()

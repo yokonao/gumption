@@ -42,12 +42,15 @@ public:
     {
         return n;
     };
-    int last() const
+    T last() const
     {
         assert(n > 0);
         return b[n - 1];
     }
-
+    bool isEmpty() const
+    {
+        return n == 0;
+    }
     void pushBack(const T &e)
     {
         if (n == w)
