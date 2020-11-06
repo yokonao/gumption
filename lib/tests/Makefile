@@ -4,7 +4,7 @@ CFLAGS   = -Wall -O2
 INCLUDEPATH = $(if $(filter $(origin GUMPTION),undefined),$(error GUMPTION is not set.),$(GUMPTION))/lib
 PROGRAM = exe.out
 
-test: s_linked_list expectation to_bit bit_string gen_mt hash_family_one_universal uarray array binary_heap stack
+test: s_linked_list expectation to_bit bit_string gen_mt hash_family_one_universal uarray array binary_heap stack queue
 s_linked_list: test_s_linked_list.cpp
 	$(CC) $(CFLAGS) -o $(PROGRAM) test_s_linked_list.cpp && ./$(PROGRAM)
 expectation: test_expectation.cpp
@@ -23,6 +23,8 @@ uarray: test_uarray.cpp
 	$(CC) $(CFLAGS) -o $(PROGRAM) test_uarray.cpp -I $(INCLUDEPATH) && ./${PROGRAM}
 stack: test_stack.cpp
 	$(CC) $(CFLAGS) -o $(PROGRAM) test_stack.cpp -I $(INCLUDEPATH) && ./${PROGRAM}
+queue: test_queue.cpp
+	$(CC) $(CFLAGS) -o $(PROGRAM) test_queue.cpp -I $(INCLUDEPATH) && ./${PROGRAM}
 binary_heap: test_binary_heap.cpp
 	$(CC) $(CFLAGS) -o $(PROGRAM) test_binary_heap.cpp -I $(INCLUDEPATH) && ./${PROGRAM}
 .PHONY: clean
