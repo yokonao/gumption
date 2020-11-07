@@ -27,7 +27,9 @@ void testQueuePopFront()
     expect(q.size()).to_be(3);
     expect(q.popFront()).to_be(1);
     expect(q.popFront()).to_be(3);
+    q.pushBack(5);
     expect(q.popFront()).to_be(4);
+    expect(q.popFront()).to_be(5);
 }
 
 int main()
