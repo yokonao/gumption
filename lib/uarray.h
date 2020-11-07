@@ -4,7 +4,6 @@
 #include <cassert>
 #include <iostream>
 #include <array.h>
-#include <array>
 
 template <class T>
 class UArray
