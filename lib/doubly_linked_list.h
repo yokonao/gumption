@@ -115,6 +115,25 @@ public:
         assert(!isEmpty());
         return _head.prev;
     }
+
+    void moveAfter(DoublyLinkedItem<T> *b, DoublyLinkedItem<T> *ap)
+    {
+        splice(b, b, ap);
+    }
+
+    void remove(DoublyLinkedItem<T> *b)
+    {
+        moveAfter(b, _freeHead);
+    }
+
+    DoublyLinkedItem<T> *insertAfter(int x, DoublyLinkedItem<T> *a)
+    {
+        checkFreeList();
+        DoublyLinkedItem<T> *ap = _freeHead->next;
+        moveAfter(ap, a);
+        ap->e = x;
+        return ap;
+    }
 };
 
 #endif
