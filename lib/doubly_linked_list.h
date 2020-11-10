@@ -126,12 +126,12 @@ public:
         moveAfter(b, _freeHead);
     }
 
-    DoublyLinkedItem<T> *insertAfter(int x, DoublyLinkedItem<T> *a)
+    DoublyLinkedItem<T> *insertAfter(T body, DoublyLinkedItem<T> *a)
     {
         checkFreeList();
         DoublyLinkedItem<T> *ap = _freeHead->next;
         moveAfter(ap, a);
-        ap->e = x;
+        ap->body = body;
         return ap;
     }
 };
