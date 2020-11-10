@@ -1,5 +1,26 @@
 #include <doubly_linked_list.h>
 #include <expectation.h>
+#include <string>
+
+std::string DoublyLinkedListAll(DoublyLinkedList<int> *ll)
+{
+    if (ll->isEmpty())
+    {
+        return "[]";
+    }
+    else
+    {
+        DoublyLinkedItem<int> *tmp = ll->head()->next;
+        std::string result;
+        while (!tmp->isDummy)
+        {
+            result += std::to_string(tmp->body);
+            result += ',';
+            tmp = tmp->next;
+        }
+        return result;
+    }
+}
 
 void testItem()
 {
@@ -38,12 +59,119 @@ void testInsertAndRemove()
     assert(ll->isEmpty());
     delete ll;
 }
+void testMoveToFront()
+{
+    DoublyLinkedList<int> *ll = new DoublyLinkedList<int>();
+    DoublyLinkedItem<int> *one = ll->insertAfter(1, ll->head());
+    DoublyLinkedItem<int> *two = ll->insertAfter(2, one);
+    DoublyLinkedItem<int> *three = ll->insertAfter(3, two);
+    DoublyLinkedItem<int> *four = ll->insertAfter(4, three);
+    assert(DoublyLinkedListAll(ll) == "1,2,3,4,");
+    ll->moveToFront(four);
+    assert(DoublyLinkedListAll(ll) == "4,1,2,3,");
+    delete ll;
+}
+
+void testMoveToBack()
+{
+    DoublyLinkedList<int> *ll = new DoublyLinkedList<int>();
+    DoublyLinkedItem<int> *one = ll->insertAfter(1, ll->head());
+    DoublyLinkedItem<int> *two = ll->insertAfter(2, one);
+    DoublyLinkedItem<int> *three = ll->insertAfter(3, two);
+    ll->insertAfter(4, three);
+    assert(DoublyLinkedListAll(ll) == "1,2,3,4,");
+    ll->moveToBack(one);
+    assert(DoublyLinkedListAll(ll) == "2,3,4,1,");
+    delete ll;
+}
+
+void testPopFront()
+{
+    DoublyLinkedList<int> *ll = new DoublyLinkedList<int>();
+    DoublyLinkedItem<int> *one = ll->insertAfter(1, ll->head());
+    DoublyLinkedItem<int> *two = ll->insertAfter(2, one);
+    DoublyLinkedItem<int> *three = ll->insertAfter(3, two);
+    ll->insertAfter(4, three);
+    assert(DoublyLinkedListAll(ll) == "1,2,3,4,");
+    ll->popFront();
+    assert(DoublyLinkedListAll(ll) == "2,3,4,");
+    delete ll;
+}
+
+void testPopBack()
+{
+    DoublyLinkedList<int> *ll = new DoublyLinkedList<int>();
+    DoublyLinkedItem<int> *one = ll->insertAfter(1, ll->head());
+    DoublyLinkedItem<int> *two = ll->insertAfter(2, one);
+    DoublyLinkedItem<int> *three = ll->insertAfter(3, two);
+    ll->insertAfter(4, three);
+    assert(DoublyLinkedListAll(ll) == "1,2,3,4,");
+    ll->popBack();
+    assert(DoublyLinkedListAll(ll) == "1,2,3,");
+    delete ll;
+}
+
+void testInsertBefore()
+{
+    DoublyLinkedList<int> *ll = new DoublyLinkedList<int>();
+    DoublyLinkedItem<int> *one = ll->insertAfter(1, ll->head());
+    DoublyLinkedItem<int> *two = ll->insertAfter(2, one);
+    DoublyLinkedItem<int> *three = ll->insertAfter(3, two);
+    assert(DoublyLinkedListAll(ll) == "1,2,3,");
+    ll->insertBefore(100, three);
+    assert(DoublyLinkedListAll(ll) == "1,2,100,3,");
+    delete ll;
+}
+
+void testPushFront()
+{
+    DoublyLinkedList<int> *ll = new DoublyLinkedList<int>();
+    DoublyLinkedItem<int> *one = ll->insertAfter(1, ll->head());
+    DoublyLinkedItem<int> *two = ll->insertAfter(2, one);
+    ll->insertAfter(3, two);
+    assert(DoublyLinkedListAll(ll) == "1,2,3,");
+    ll->pushFront(100);
+    assert(DoublyLinkedListAll(ll) == "100,1,2,3,");
+    delete ll;
+}
+
+void testPushBack()
+{
+    DoublyLinkedList<int> *ll = new DoublyLinkedList<int>();
+    DoublyLinkedItem<int> *one = ll->insertAfter(1, ll->head());
+    DoublyLinkedItem<int> *two = ll->insertAfter(2, one);
+    ll->insertAfter(3, two);
+    assert(DoublyLinkedListAll(ll) == "1,2,3,");
+    ll->pushBack(100);
+    assert(DoublyLinkedListAll(ll) == "1,2,3,100,");
+    delete ll;
+}
+
+void testMakeEmpty()
+{
+    DoublyLinkedList<int> *ll = new DoublyLinkedList<int>();
+    DoublyLinkedItem<int> *one = ll->insertAfter(1, ll->head());
+    DoublyLinkedItem<int> *two = ll->insertAfter(2, one);
+    ll->insertAfter(3, two);
+    assert(DoublyLinkedListAll(ll) == "1,2,3,");
+    ll->makeEmpty();
+    assert(DoublyLinkedListAll(ll) == "[]");
+    delete ll;
+}
 
 int main()
 {
     executeTestSuite("アイテムのテスト", testItem);
     executeTestSuite("双方向連結リストのコンストラクタのテスト", testDoublyLinkedListConstructor);
     executeTestSuite("InsertとRemoveのテスト", testInsertAndRemove);
+    executeTestSuite("MoveToFrontのテスト", testMoveToFront);
+    executeTestSuite("MoveToBackのテスト", testMoveToBack);
+    executeTestSuite("PopFrontのテスト", testPopFront);
+    executeTestSuite("PopBackのテスト", testPopBack);
+    executeTestSuite("InsertBeforeのテスト", testInsertBefore);
+    executeTestSuite("PushFrontのテスト", testPushFront);
+    executeTestSuite("PushBackのテスト", testPushBack);
+    executeTestSuite("MakeEmptyのテスト", testMakeEmpty);
 
     return 0;
 }
