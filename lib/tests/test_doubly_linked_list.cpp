@@ -13,8 +13,20 @@ void testItem()
     expect(one.isDummy).to_be_falsy();
 }
 
+void testDoublyLinkedListConstructor()
+{
+    DoublyLinkedList<int> *ll = new DoublyLinkedList<int>();
+    assert(ll->head() == ll->head()->next);
+    assert(ll->head() == ll->head()->prev);
+    assert(ll->head()->isDummy);
+    assert(ll->isEmpty());
+    assert(ll->isEmpty());
+    delete ll;
+}
+
 int main()
 {
     executeTestSuite("アイテムのテスト", testItem);
+    executeTestSuite("双方向連結リストのコンストラクタのテスト", testDoublyLinkedListConstructor);
     return 0;
 }
