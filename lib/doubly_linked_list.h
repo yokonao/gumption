@@ -20,6 +20,13 @@ public:
         isDummy = true;
     }
 
+    DoublyLinkedItem(DoublyLinkedItem *prev, DoublyLinkedItem *next)
+    {
+        this->prev = prev;
+        this->next = next;
+        isDummy = false;
+    }
+
     DoublyLinkedItem(T body, DoublyLinkedItem *prev, DoublyLinkedItem *next)
     {
         this->body = body;
@@ -34,6 +41,7 @@ class DoublyLinkedList
 {
 private:
     DoublyLinkedItem<T> _head;
+    DoublyLinkedItem<T> *_freeHead;
 
     void splice(DoublyLinkedItem<T> *a, DoublyLinkedItem<T> *b, DoublyLinkedItem<T> *t)
     {
@@ -65,13 +73,25 @@ private:
         tp->prev = b;
     };
 
+    void checkFreeList()
+    {
+        if (_freeHead->next == _freeHead)
+        {
+            DoublyLinkedItem<T> *next = new DoublyLinkedItem<T>(_freeHead, _freeHead);
+            _freeHead->next = next;
+            _freeHead->prev = next;
+        }
+    }
+
 public:
     DoublyLinkedList()
     {
+        _freeHead = new DoublyLinkedItem<T>();
     }
 
     ~DoublyLinkedList()
     {
+        delete _freeHead;
     }
 
     DoublyLinkedItem<T> *head()
