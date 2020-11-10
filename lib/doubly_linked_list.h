@@ -160,14 +160,14 @@ public:
         return insertAfter(body, b->prev);
     }
 
-    void pushFront(int x)
+    void pushFront(T body)
     {
-        insertAfter(x, head());
+        insertAfter(body, head());
     }
 
-    void pushBack(int x)
+    void pushBack(T body)
     {
-        insertAfter(x, last());
+        insertAfter(body, last());
     }
 
     void makeEmpty()

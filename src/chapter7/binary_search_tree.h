@@ -17,6 +17,8 @@ class BinarySearchLeafNode
 {
 private:
     int splitter;
+
+public:
     bool toLeftIsLowest = false;
     bool toRightIsLowest = false;
     BinarySearchLeafNode *leftNode;
@@ -24,24 +26,26 @@ private:
     DoublyLinkedItem<KeyAndValue> *leftItem;
     DoublyLinkedItem<KeyAndValue> *rightItem;
 
-public:
     BinarySearchLeafNode();
     ~BinarySearchLeafNode();
-    BinarySearchLeafNode(BinarySearchLeafNode *left, BinarySearchLeafNode *right);
-    BinarySearchLeafNode(DoublyLinkedItem<KeyAndValue> *left, BinarySearchLeafNode *right);
-    BinarySearchLeafNode(BinarySearchLeafNode *left, DoublyLinkedItem<KeyAndValue> *right);
-    BinarySearchLeafNode(DoublyLinkedItem<KeyAndValue> *left, DoublyLinkedItem<KeyAndValue> *right);
+    BinarySearchLeafNode(int splitter, BinarySearchLeafNode *left, BinarySearchLeafNode *right);
+    BinarySearchLeafNode(int splitter, DoublyLinkedItem<KeyAndValue> *left, BinarySearchLeafNode *right);
+    BinarySearchLeafNode(int splitter, BinarySearchLeafNode *left, DoublyLinkedItem<KeyAndValue> *right);
+    BinarySearchLeafNode(int splitter, DoublyLinkedItem<KeyAndValue> *left, DoublyLinkedItem<KeyAndValue> *right);
 };
 
 class BinarySearchTree
 {
 private:
     DoublyLinkedList<KeyAndValue> _list;
-    BinarySearchLeafNode _root;
+    BinarySearchLeafNode *_root;
+    bool isEmpty = true;
 
 public:
     BinarySearchTree();
     ~BinarySearchTree();
+    void insert(KeyAndValue tuple);
+    KeyAndValue locate(int key);
 };
 
 #endif
