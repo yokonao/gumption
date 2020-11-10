@@ -24,9 +24,26 @@ void testDoublyLinkedListConstructor()
     delete ll;
 }
 
+void testInsertAndRemove()
+{
+    DoublyLinkedList<int> *ll = new DoublyLinkedList<int>();
+    assert(ll->isEmpty());
+    DoublyLinkedItem<int> *one = ll->insertAfter(1, ll->head());
+    assert(ll->first()->body == 1);
+    DoublyLinkedItem<int> *two = ll->insertAfter(2, one);
+    assert(ll->last()->body == 2 && ll->first()->body == 1);
+    ll->remove(two);
+    assert(ll->first()->body == 1 && ll->last()->body == 1);
+    ll->remove(one);
+    assert(ll->isEmpty());
+    delete ll;
+}
+
 int main()
 {
     executeTestSuite("アイテムのテスト", testItem);
     executeTestSuite("双方向連結リストのコンストラクタのテスト", testDoublyLinkedListConstructor);
+    executeTestSuite("InsertとRemoveのテスト", testInsertAndRemove);
+
     return 0;
 }
