@@ -3,11 +3,34 @@
 
 void testBinarySearchLeafSimple()
 {
-    BinarySearchLeafNode t;
+    BinarySearchLeaf l;
 }
 
+void testBinarySearchTreeSimple()
+{
+    BinarySearchTree t;
+}
+
+void testBinarySearchTreeInsertSimple()
+{
+    BinarySearchTree t;
+    t.insert(Dict(1, "a"));
+    expect(t.locate(0).value).to_be("a");
+    expect(t.locate(1).value).to_be("a");
+    expect(t.locate(2).value).to_be("");
+}
+
+void testPrint()
+{
+    BinarySearchTree t;
+    t.insert(Dict(1, "a"));
+    t.Print();
+}
 int main()
 {
-    executeTestSuite("二分木のテストSimple", testBinarySearchLeafSimple);
+    executeTestSuite("葉のテストSimple", testBinarySearchLeafSimple);
+    executeTestSuite("二分木のテストSimple", testBinarySearchTreeSimple);
+    executeTestSuite("二分木のプリント", testPrint);
+    executeTestSuite("二分木のInsertテストSimple", testBinarySearchTreeInsertSimple);
     return 0;
 }
