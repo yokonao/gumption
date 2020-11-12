@@ -35,6 +35,7 @@ public:
     BinarySearchLeaf(DoublyLinkedItem<Dict> *dict);
     int insertRec(Dict dict, DoublyLinkedList<Dict> *list);
     Dict locateRec(int key);
+    void removeRec(int key);
 };
 
 class BinarySearchTree
@@ -50,6 +51,7 @@ public:
     ~BinarySearchTree();
     void insert(Dict dict);
     Dict locate(int key);
+    void remove(int key);
     int height();
     void Print(); //debug
 };
