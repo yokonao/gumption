@@ -1,5 +1,6 @@
 #include "binary_search_tree.h"
 #include <iostream>
+#define INF 100000000
 
 Dict::Dict()
 {
@@ -8,6 +9,7 @@ Dict::Dict()
 }
 Dict::Dict(int key, std::string value)
 {
+    assert(key <= INF);
     this->key = key;
     this->value = value;
 }
@@ -91,7 +93,7 @@ Dict BinarySearchLeaf::locateRec(int key)
 BinarySearchTree::BinarySearchTree()
 {
     // key:infinityのNodeを作成
-    Dict _d(10000000, ""); //todo:infinityで置き換える
+    Dict _d(INF, ""); //todo:infinityで置き換える
     DoublyLinkedItem<Dict> *item = _list.insertAfter(_d, _list.head());
     _root = new BinarySearchLeaf(item);
 }
