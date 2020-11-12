@@ -2,50 +2,55 @@
 #define BINARY_SEARCH_TREE_HPP
 
 #include <string>
+#include <ostream>
 #include <doubly_linked_list.h>
 
-class KeyAndValue
+struct Dict
 {
 public:
     int key;
     std::string value;
-    KeyAndValue();
-    KeyAndValue(int key, std::string value);
+
+    Dict();
+    Dict(int key, std::string value);
+    ~Dict();
 };
 
-class BinarySearchLeafNode
+std::ostream &operator<<(std::ostream &os, const Dict &d);
+
+class BinarySearchLeaf
 {
 private:
-    int splitter;
+    int splitter = 0;
 
 public:
-    bool toLeftIsLowest = false;
-    bool toRightIsLowest = false;
-    BinarySearchLeafNode *leftNode;
-    BinarySearchLeafNode *rightNode;
-    DoublyLinkedItem<KeyAndValue> *leftItem;
-    DoublyLinkedItem<KeyAndValue> *rightItem;
+    bool isItem = false;
+    DoublyLinkedItem<Dict> *_d = NULL;
+    BinarySearchLeaf *leftLeaf = NULL;
+    BinarySearchLeaf *rightLeaf = NULL;
 
-    BinarySearchLeafNode();
-    ~BinarySearchLeafNode();
-    BinarySearchLeafNode(int splitter, BinarySearchLeafNode *left, BinarySearchLeafNode *right);
-    BinarySearchLeafNode(int splitter, DoublyLinkedItem<KeyAndValue> *left, BinarySearchLeafNode *right);
-    BinarySearchLeafNode(int splitter, BinarySearchLeafNode *left, DoublyLinkedItem<KeyAndValue> *right);
-    BinarySearchLeafNode(int splitter, DoublyLinkedItem<KeyAndValue> *left, DoublyLinkedItem<KeyAndValue> *right);
+    BinarySearchLeaf();
+    ~BinarySearchLeaf();
+    BinarySearchLeaf(int splitter, BinarySearchLeaf *left, BinarySearchLeaf *right);
+    BinarySearchLeaf(DoublyLinkedItem<Dict> *dict);
+    int insertRec(Dict dict, DoublyLinkedList<Dict> *list);
+    Dict locateRec(int key);
 };
 
 class BinarySearchTree
 {
 private:
-    DoublyLinkedList<KeyAndValue> _list;
-    BinarySearchLeafNode *_root;
-    bool isEmpty = true;
+    int hight = 0;
+    DoublyLinkedList<Dict> _list;
+    BinarySearchLeaf *_root;
+    //bool isEmpty;
 
 public:
     BinarySearchTree();
     ~BinarySearchTree();
-    void insert(KeyAndValue tuple);
-    KeyAndValue locate(int key);
+    void insert(Dict dict);
+    Dict locate(int key);
+    void Print(); //debug
 };
 
 #endif
