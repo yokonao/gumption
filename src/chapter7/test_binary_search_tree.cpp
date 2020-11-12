@@ -20,17 +20,34 @@ void testBinarySearchTreeInsertSimple()
     expect(t.locate(2).value).to_be("");
 }
 
+void testBinarySearchTreeInsertNormal()
+{
+    BinarySearchTree t;
+    t.insert(Dict(1, "a"));
+    t.insert(Dict(2, "b"));
+    t.insert(Dict(5, "e"));
+    t.insert(Dict(4, "d"));
+    t.insert(Dict(3, "c"));
+    t.insert(Dict(6, "f"));
+    t.Print();
+    expect(t.locate(0).value).to_be("a");
+    expect(t.locate(1).value).to_be("a");
+    expect(t.locate(2).value).to_be("b");
+    expect(t.locate(7).value).to_be("");
+}
 void testPrint()
 {
     BinarySearchTree t;
     t.insert(Dict(1, "a"));
     t.Print();
 }
+
 int main()
 {
     executeTestSuite("葉のテストSimple", testBinarySearchLeafSimple);
     executeTestSuite("二分木のテストSimple", testBinarySearchTreeSimple);
     executeTestSuite("二分木のプリント", testPrint);
     executeTestSuite("二分木のInsertテストSimple", testBinarySearchTreeInsertSimple);
+    executeTestSuite("二分木のInsertテストNormal", testBinarySearchTreeInsertNormal);
     return 0;
 }
