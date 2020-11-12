@@ -18,6 +18,7 @@ void testBinarySearchTreeInsertSimple()
     expect(t.locate(0).value).to_be("a");
     expect(t.locate(1).value).to_be("a");
     expect(t.locate(2).value).to_be("");
+    expect(t.height()).to_be(1);
 }
 
 void testBinarySearchTreeInsertNormal()
@@ -34,7 +35,9 @@ void testBinarySearchTreeInsertNormal()
     expect(t.locate(1).value).to_be("a");
     expect(t.locate(2).value).to_be("b");
     expect(t.locate(7).value).to_be("");
+    expect(t.height()).to_be(5);
 }
+
 void testPrint()
 {
     BinarySearchTree t;
