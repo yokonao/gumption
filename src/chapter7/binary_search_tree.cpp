@@ -7,13 +7,16 @@ Dict::Dict()
     this->key = 0;
     this->value = "";
 }
+
 Dict::Dict(int key, std::string value)
 {
     assert(key <= INF);
     this->key = key;
     this->value = value;
 }
+
 Dict::~Dict() {}
+
 std::ostream &operator<<(std::ostream &os, const Dict &d)
 {
     os << "(" << d.key << ", ";
