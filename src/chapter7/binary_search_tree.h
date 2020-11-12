@@ -22,6 +22,7 @@ class BinarySearchLeaf
 {
 private:
     int splitter = 0;
+    int maxRec(int key);
 
 public:
     bool isItem = false;
@@ -33,9 +34,10 @@ public:
     ~BinarySearchLeaf();
     BinarySearchLeaf(int splitter, BinarySearchLeaf *left, BinarySearchLeaf *right);
     BinarySearchLeaf(DoublyLinkedItem<Dict> *dict);
+    int heightRec();
     int insertRec(Dict dict, DoublyLinkedList<Dict> *list);
     Dict locateRec(int key);
-    void removeRec(int key);
+    int removeRec(int key, DoublyLinkedList<Dict> *list);
 };
 
 class BinarySearchTree
