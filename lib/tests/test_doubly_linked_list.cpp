@@ -159,6 +159,14 @@ void testMakeEmpty()
     delete ll;
 }
 
+void testPrint()
+{
+    DoublyLinkedList<int> ll;
+    DoublyLinkedItem<int> *one = ll.insertAfter(1, ll.head());
+    ll.insertAfter(2, one);
+    std::cout << ll << std::endl;
+}
+
 int main()
 {
     executeTestSuite("アイテムのテスト", testItem);
@@ -172,6 +180,6 @@ int main()
     executeTestSuite("PushFrontのテスト", testPushFront);
     executeTestSuite("PushBackのテスト", testPushBack);
     executeTestSuite("MakeEmptyのテスト", testMakeEmpty);
-
+    executeTestSuite("プリントのテスト", testPrint);
     return 0;
 }
