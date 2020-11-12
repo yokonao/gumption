@@ -103,9 +103,9 @@ void BinarySearchTree::insert(Dict dict)
     //DoublyLinkedItem<Dict> *item = _list.insertAfter(d, _list.head());
     //_root = new BinarySearchLeaf(d.key, item, _list.head());
     //isEmpty = false;
-    if (_root->insertRec(dict, &_list) > hight)
+    if (_root->insertRec(dict, &_list) > h)
     {
-        hight++;
+        h++;
     };
 }
 
@@ -114,8 +114,14 @@ Dict BinarySearchTree::locate(int key)
     return _root->locateRec(key);
 }
 
+int BinarySearchTree::height()
+{
+    return h;
+}
+
 void BinarySearchTree::Print()
 {
     std::cout << "DoublyLinkedList:" << _list << std::endl;
     //std::cout << "BinarySearchTree:" << _root->splitter << std::endl;
+    // todo: 木構造のプリント
 }

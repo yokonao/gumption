@@ -40,7 +40,7 @@ public:
 class BinarySearchTree
 {
 private:
-    int hight = 0;
+    int h = 0;
     DoublyLinkedList<Dict> _list;
     BinarySearchLeaf *_root;
     //bool isEmpty;
@@ -50,6 +50,7 @@ public:
     ~BinarySearchTree();
     void insert(Dict dict);
     Dict locate(int key);
+    int height();
     void Print(); //debug
 };
 
