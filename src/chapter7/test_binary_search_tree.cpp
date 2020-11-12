@@ -102,6 +102,29 @@ void testBinarySearchTreeRemove1()
 
     expect(t.locate(7).value).to_be("");
     expect(t.height()).to_be(4);
+    t.remove(1);
+    expect(t.locate(2).value).to_be("b");
+    expect(t.locate(3).value).to_be("c");
+    expect(t.locate(5).value).to_be("e");
+    expect(t.locate(6).value).to_be("g");
+
+    expect(t.locate(7).value).to_be("");
+    expect(t.height()).to_be(3);
+    t.remove(2);
+    expect(t.locate(3).value).to_be("c");
+    expect(t.locate(5).value).to_be("e");
+    expect(t.locate(6).value).to_be("g");
+    expect(t.height()).to_be(2);
+    t.remove(3);
+    expect(t.locate(5).value).to_be("e");
+    expect(t.locate(6).value).to_be("g");
+    expect(t.height()).to_be(2);
+
+    t.remove(5);
+    expect(t.locate(6).value).to_be("g");
+    expect(t.height()).to_be(1);
+    t.remove(6);
+    expect(t.height()).to_be(0);
 }
 
 void testBinarySearchTreeRemove2()
