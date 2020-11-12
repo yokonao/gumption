@@ -2,6 +2,8 @@
 #define DOUBLY_LIKED_LIST_HPP
 
 #include <cassert>
+#include <ostream>
+#include <iostream>
 
 template <typename T>
 class DoublyLinkedItem
@@ -176,4 +178,15 @@ public:
     };
 };
 
+template <class T>
+std::ostream &operator<<(std::ostream &os, DoublyLinkedList<T> &list)
+{
+    DoublyLinkedItem<T> *item = list.first();
+    while (not item->isDummy)
+    {
+        os << item->body << ",";
+        item = item->next;
+    }
+    return os;
+}
 #endif
