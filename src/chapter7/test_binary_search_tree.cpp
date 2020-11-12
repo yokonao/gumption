@@ -34,6 +34,11 @@ void testBinarySearchTreeInsertNormal()
     expect(t.locate(0).value).to_be("a");
     expect(t.locate(1).value).to_be("a");
     expect(t.locate(2).value).to_be("b");
+    expect(t.locate(3).value).to_be("c");
+    expect(t.locate(4).value).to_be("d");
+    expect(t.locate(5).value).to_be("e");
+    expect(t.locate(6).value).to_be("f");
+
     expect(t.locate(7).value).to_be("");
     expect(t.height()).to_be(5);
 }
