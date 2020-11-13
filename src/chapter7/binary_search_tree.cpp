@@ -1,6 +1,5 @@
 #include "binary_search_tree.h"
 #include <iostream>
-#define INF 100000000
 
 Dict::Dict()
 {
@@ -10,7 +9,6 @@ Dict::Dict()
 
 Dict::Dict(int key, std::string value)
 {
-    assert(key <= INF);
     this->key = key;
     this->value = value;
 }
@@ -178,19 +176,16 @@ int BinarySearchLeaf::removeRec(int key, DoublyLinkedList<Dict> *list)
 
 BinarySearchTree::BinarySearchTree()
 {
-    // key:infinityのNodeを作成
-    Dict _d(INF, ""); //todo:infinityで置き換える
-    DoublyLinkedItem<Dict> *item = _list.insertAfter(_d, _list.head());
-    _root = new BinarySearchLeaf(item);
+    _root = new BinarySearchLeaf(_list.head());
 }
 
-BinarySearchTree::~BinarySearchTree() {}
+BinarySearchTree::~BinarySearchTree()
+{
+    delete _root;
+}
 
 void BinarySearchTree::insert(Dict dict)
 {
-    //DoublyLinkedItem<Dict> *item = _list.insertAfter(d, _list.head());
-    //_root = new BinarySearchLeaf(d.key, item, _list.head());
-    //isEmpty = false;
     if (_root->insertRec(dict, &_list) > h)
     {
         h++;
@@ -222,7 +217,7 @@ int BinarySearchTree::height()
 
 void BinarySearchTree::Print()
 {
-    std::cout << "DoublyLinkedList:" << _list << std::endl;
+    std::cout << "DoublyLinkedList:" << _list << "INF" << std::endl;
     //std::cout << "BinarySearchTree:" << _root->splitter << std::endl;
     // todo: 木構造のプリント
 }

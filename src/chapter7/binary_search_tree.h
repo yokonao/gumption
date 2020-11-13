@@ -4,6 +4,7 @@
 #include <string>
 #include <ostream>
 #include <doubly_linked_list.h>
+#include <limits.h>
 
 struct Dict
 {
