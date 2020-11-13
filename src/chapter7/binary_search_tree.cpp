@@ -86,20 +86,10 @@ int BinarySearchLeaf::insertRec(Dict dict, DoublyLinkedList<Dict> *list)
     if (isItem)
     {
         isItem = false;
-        if (dict.key <= _d->body.key)
-        {
-            DoublyLinkedItem<Dict> *dictItem = list->insertBefore(dict, _d);
-            splitter = dict.key;
-            leftLeaf = new BinarySearchLeaf(dictItem);
-            rightLeaf = new BinarySearchLeaf(_d);
-        }
-        else
-        {
-            splitter = _d->body.key;
-            DoublyLinkedItem<Dict> *dictItem = list->insertAfter(dict, _d);
-            leftLeaf = new BinarySearchLeaf(_d);
-            rightLeaf = new BinarySearchLeaf(dictItem);
-        }
+        DoublyLinkedItem<Dict> *dictItem = list->insertBefore(dict, _d);
+        splitter = dict.key;
+        leftLeaf = new BinarySearchLeaf(dictItem);
+        rightLeaf = new BinarySearchLeaf(_d);
         return 1;
     }
     else
