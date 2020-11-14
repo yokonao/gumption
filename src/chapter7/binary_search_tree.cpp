@@ -1,9 +1,10 @@
 #include "binary_search_tree.h"
 #include <iostream>
+#include <limits.h>
 
 Dict::Dict()
 {
-    this->key = 0;
+    this->key = INT_MAX;
     this->value = "";
 }
 
