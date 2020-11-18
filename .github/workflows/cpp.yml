@@ -22,7 +22,7 @@ jobs:
           export GUMPTION=$(pwd)
           cd lib/tests/
           make test
-      - name: test chaining hash 
+      - name: test chaining_hash 
         env:
           CC: gcc
         run: |
@@ -35,4 +35,18 @@ jobs:
         run: |
           export GUMPTION=$(pwd)
           cd src/chapter5/
+          make test
+      - name: test binary_heap
+        env:
+          CC: gcc
+        run: |
+          export GUMPTION=$(pwd)
+          cd src/chapter6/
+          make test
+      - name: test binary_search_tree
+        env:
+          CC: gcc
+        run: |
+          export GUMPTION=$(pwd)
+          cd src/chapter7/
           make test
