@@ -242,9 +242,14 @@ int BinarySearchTree::height()
     return h;
 }
 
-void BinarySearchTree::Print()
+void BinarySearchTree::print()
 {
     std::cout << "DoublyLinkedList:" << _list << std::endl;
+    printTree();
+}
+
+void BinarySearchTree::printTree()
+{
     std::cout << "{\"BinarySearchTree\": ";
     std::cout << "[";
     _root->PrintRec();

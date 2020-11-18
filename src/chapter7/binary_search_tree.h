@@ -57,7 +57,8 @@ public:
     Dict locate(int key);
     void remove(int key);
     int height();
-    void Print(); //debug
+    void print(); // debug
+    void printTree(); // debug
 };
 
 #endif
