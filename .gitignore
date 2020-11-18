@@ -5,3 +5,6 @@
 *.dat
 .envrc
 build/
+
+#chapter 7
+results/chapter7
