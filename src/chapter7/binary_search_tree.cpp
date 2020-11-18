@@ -192,7 +192,7 @@ void BinarySearchLeaf::PrintRec()
     std::cout << "{\"isItem\": false, ";
     std::cout << "\"id\": ";
     std::cout << "\"" << this << "\", ";
-    std::cout << "\"key\": " << _d->body.key << ", ";
+    std::cout << "\"key\": " << splitter << ", ";
     std::cout << "\"left\": ";
     std::cout << "\"" << leftLeaf << "\", ";
     std::cout << "\"right\": ";
