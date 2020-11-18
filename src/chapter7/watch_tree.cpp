@@ -18,6 +18,7 @@ void watchTree(std::string fname, BinarySearchTree &tree)
 int main()
 {
     BinarySearchTree t;
+    watchTree("tree0.json", t);
     t.insert(Dict(10, "e"));
     t.insert(Dict(8, "g"));
     t.insert(Dict(2, "a"));
@@ -27,4 +28,14 @@ int main()
     watchTree("tree1.json", t);
     t.remove(8);
     watchTree("tree2.json", t);
+    t.remove(10);
+    watchTree("tree3.json", t);
+    t.remove(3);
+    watchTree("tree4.json", t);
+    t.remove(5);
+    watchTree("tree5.json", t);
+    t.remove(2);
+    watchTree("tree6.json", t);
+    t.remove(4);
+    watchTree("tree7.json", t);
 }
