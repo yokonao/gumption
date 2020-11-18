@@ -191,7 +191,7 @@ void BinarySearchLeaf::PrintRec()
 
     std::cout << "{\"isItem\": false, ";
     std::cout << "\"id\": ";
-    std::cout << "\"" << this << "\",";
+    std::cout << "\"" << this << "\", ";
     std::cout << "\"key\": " << _d->body.key << ", ";
     std::cout << "\"left\": ";
     std::cout << "\"" << leftLeaf << "\", ";
@@ -244,9 +244,9 @@ int BinarySearchTree::height()
 
 void BinarySearchTree::Print()
 {
-    std::cout << "DoublyLinkedList:" << _list << "INF" << std::endl;
-    std::cout << "BinarySearchTree: ";
+    std::cout << "DoublyLinkedList:" << _list << std::endl;
+    std::cout << "{\"BinarySearchTree\": ";
     std::cout << "[";
     _root->PrintRec();
-    std::cout << "{}]" << std::endl;
+    std::cout << "{}]}" << std::endl;
 }
