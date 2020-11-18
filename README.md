@@ -11,6 +11,7 @@ export GUMPTION=$(pwd)
 ### PythonPackage
 ```
 numpy 
+graphviz
 matplotlib
 seaborn
 ```
