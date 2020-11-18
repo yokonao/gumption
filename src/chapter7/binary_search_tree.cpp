@@ -53,6 +53,7 @@ int max(int a, int b)
 }
 int BinarySearchLeaf::maxRec(int key)
 {
+
     if (isItem)
     {
         if (_d->body.key == key)
@@ -146,10 +147,14 @@ int BinarySearchLeaf::removeRec(int key, DoublyLinkedList<Dict> *list)
                 }
                 else
                 {
-                    splitter = rightLeaf->splitter;
-                    leftLeaf = rightLeaf->leftLeaf;
-                    rightLeaf = rightLeaf->rightLeaf;
+                    BinarySearchLeaf *buffLeaf = rightLeaf;
+                    splitter = buffLeaf->splitter;
+                    leftLeaf = buffLeaf->leftLeaf;
+                    rightLeaf = buffLeaf->rightLeaf;
                 }
+            }
+            if (key == splitter)
+            {
                 splitter = leftLeaf->maxRec(key);
             }
 
@@ -167,9 +172,10 @@ int BinarySearchLeaf::removeRec(int key, DoublyLinkedList<Dict> *list)
                 }
                 else
                 {
-                    splitter = leftLeaf->splitter;
-                    leftLeaf = leftLeaf->leftLeaf;
-                    rightLeaf = leftLeaf->rightLeaf;
+                    BinarySearchLeaf *buffLeaf = leftLeaf;
+                    splitter = buffLeaf->splitter;
+                    rightLeaf = buffLeaf->rightLeaf;
+                    leftLeaf = buffLeaf->leftLeaf;
                 }
             }
             return 1 + dist;
