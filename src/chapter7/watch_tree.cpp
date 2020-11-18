@@ -18,11 +18,13 @@ void watchTree(std::string fname, BinarySearchTree &tree)
 int main()
 {
     BinarySearchTree t;
-    t.insert(Dict(1, "a"));
-    t.insert(Dict(2, "b"));
-    t.insert(Dict(5, "e"));
-    t.insert(Dict(4, "d"));
-    t.insert(Dict(3, "c"));
-    t.insert(Dict(6, "f"));
-    watchTree("tree.json", t);
+    t.insert(Dict(10, "e"));
+    t.insert(Dict(8, "g"));
+    t.insert(Dict(2, "a"));
+    t.insert(Dict(3, "b"));
+    t.insert(Dict(4, "c"));
+    t.insert(Dict(5, "d"));
+    watchTree("tree1.json", t);
+    t.remove(8);
+    watchTree("tree2.json", t);
 }
