@@ -30,7 +30,7 @@ void testBinarySearchTreeInsertNormal1()
     t.insert(Dict(4, "d"));
     t.insert(Dict(3, "c"));
     t.insert(Dict(6, "f"));
-    t.Print();
+    t.print();
     expect(t.locate(0).value).to_be("a");
     expect(t.locate(1).value).to_be("a");
     expect(t.locate(2).value).to_be("b");
@@ -51,7 +51,7 @@ void testBinarySearchTreeInsertNormal2()
     t.insert(Dict(3, "b"));
     t.insert(Dict(4, "c"));
     t.insert(Dict(5, "d"));
-    t.Print();
+    t.print();
     expect(t.locate(10).value).to_be("e");
     expect(t.locate(2).value).to_be("a");
     expect(t.locate(3).value).to_be("b");
@@ -65,7 +65,7 @@ void testPrint()
 {
     BinarySearchTree t;
     t.insert(Dict(1, "a"));
-    t.Print();
+    t.print();
 }
 
 void testBinarySearchTreeRemove1()
@@ -78,9 +78,9 @@ void testBinarySearchTreeRemove1()
     t.insert(Dict(3, "c"));
     t.insert(Dict(6, "f"));
 
-    t.Print();
+    t.print();
     t.remove(6);
-    t.Print();
+    t.print();
     expect(t.locate(0).value).to_be("a");
     expect(t.locate(1).value).to_be("a");
     expect(t.locate(2).value).to_be("b");
@@ -90,9 +90,9 @@ void testBinarySearchTreeRemove1()
     expect(t.height()).to_be(5);
 
     t.insert(Dict(6, "g"));
-    t.Print();
+    t.print();
     t.remove(4);
-    t.Print();
+    t.print();
     expect(t.locate(0).value).to_be("a");
     expect(t.locate(1).value).to_be("a");
     expect(t.locate(2).value).to_be("b");
@@ -135,9 +135,9 @@ void testBinarySearchTreeRemove2()
     t.insert(Dict(3, "b"));
     t.insert(Dict(4, "c"));
     t.insert(Dict(5, "d"));
-    t.Print();
+    t.print();
     t.remove(10);
-    t.Print();
+    t.print();
 
     expect(t.locate(2).value).to_be("a");
     expect(t.locate(3).value).to_be("b");

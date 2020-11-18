@@ -182,9 +182,11 @@ template <class T>
 std::ostream &operator<<(std::ostream &os, DoublyLinkedList<T> &list)
 {
     DoublyLinkedItem<T> *item = list.first();
-    while (not item->isDummy)
+    while (true)
     {
         os << item->body << ",";
+        if(item->isDummy)
+            break;
         item = item->next;
     }
     return os;

@@ -37,7 +37,9 @@ BinarySearchLeaf::BinarySearchLeaf(DoublyLinkedItem<Dict> *dict)
 {
     this->isItem = true;
     this->_d = dict;
+    this->splitter = dict->body.key;
 }
+
 int max(int a, int b)
 {
     if (a >= b)
@@ -175,6 +177,30 @@ int BinarySearchLeaf::removeRec(int key, DoublyLinkedList<Dict> *list)
     }
 }
 
+void BinarySearchLeaf::PrintRec()
+{
+    if (isItem)
+    {
+        std::cout << "{\"isItem\": true, ";
+        std::cout << "\"id\": ";
+        std::cout << "\"" << this << "\",";
+        std::cout << "\"key\": " << _d->body.key;
+        std::cout << "},";
+        return;
+    }
+
+    std::cout << "{\"isItem\": false, ";
+    std::cout << "\"id\": ";
+    std::cout << "\"" << this << "\", ";
+    std::cout << "\"key\": " << splitter << ", ";
+    std::cout << "\"left\": ";
+    std::cout << "\"" << leftLeaf << "\", ";
+    std::cout << "\"right\": ";
+    std::cout << "\"" << rightLeaf << "\"},";
+    leftLeaf->PrintRec();
+    rightLeaf->PrintRec();
+}
+
 BinarySearchTree::BinarySearchTree()
 {
     _root = new BinarySearchLeaf(_list.head());
@@ -216,9 +242,16 @@ int BinarySearchTree::height()
     return h;
 }
 
-void BinarySearchTree::Print()
+void BinarySearchTree::print()
 {
-    std::cout << "DoublyLinkedList:" << _list << "INF" << std::endl;
-    //std::cout << "BinarySearchTree:" << _root->splitter << std::endl;
-    // todo: 木構造のプリント
+    std::cout << "DoublyLinkedList:" << _list << std::endl;
+    printTree();
+}
+
+void BinarySearchTree::printTree()
+{
+    std::cout << "{\"BinarySearchTree\": ";
+    std::cout << "[";
+    _root->PrintRec();
+    std::cout << "{}]}" << std::endl;
 }
