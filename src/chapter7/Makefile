@@ -9,6 +9,8 @@ BUILD = $(GUMPTION)/build/chapter7
 test: binary_search_tree
 binary_search_tree: test_binary_search_tree.cpp $(MODULES) mkdir
 	$(CC) $(CFLAGS) -o $(BUILD)/$@.o test_binary_search_tree.cpp $(MODULES) -I $(INCLUDEPATH) && $(BUILD)/$@.o
+watch: watch_tree.cpp $(MODULES) mkdir
+	$(CC) $(CFLAGS) -o $(BUILD)/$@ watch_tree.cpp $(MODULES) -I $(INCLUDEPATH) && $(BUILD)/$@
 mkdir:
 	mkdir -p $(BUILD)
 .PHONY: clean
