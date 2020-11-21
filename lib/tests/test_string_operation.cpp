@@ -20,11 +20,20 @@ void testCharCmp()
 
 void testInplaceReverse()
 {
+
+    char a[2] = "a";
+    char b[2] = "a";
     char s[6] = "hello";
     char t[6] = "olleh";
-    inplace_reverse(t);
+    char r[7] = "python";
+    char p[7] = "nohtyp";
 
+    inplace_reverse(a);
+    inplace_reverse(t);
+    inplace_reverse(p);
+    expect(charcmp(a, b)).to_be_truthy();
     expect(charcmp(s, t)).to_be_truthy();
+    expect(charcmp(r, p)).to_be_truthy();
 }
 
 int main()
