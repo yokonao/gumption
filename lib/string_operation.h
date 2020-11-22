@@ -1,3 +1,4 @@
+#include <iostream>
 #include <cstddef>
 #include <utility>
 
@@ -51,3 +52,31 @@ void inplace_reverse(char *s)
         }
     }
 }
+
+int f_atoi(char *str)
+{
+    int n = 0;
+    int sgn = -1;
+    while (*str == ' ' || *str == '\f' || *str == '\n' || *str == '\r' || *str == '\t' || *str == '\v')
+    {
+        str++;
+    }
+    if (*str == '-')
+    {
+        sgn = 1;
+    }
+    if (*str == '-' or *str == '+')
+    {
+        str++;
+    }
+    while (*str != '\0' and *str >= '0' and *str <= '9')
+    {
+        //-2147483648を処理するときにnを正として扱うとn=2147483648,となりoverflowする
+        n *= 10;
+        n -= *str - '0';
+        str++;
+    }
+
+    return sgn * n;
+}
+char *itoa(int value, char *str, int radix);
