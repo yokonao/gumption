@@ -47,7 +47,7 @@ void testAtoi()
     char g[11] = "0000123456";
     char h[12] = "-2147483648";
     char i[11] = "2147483647";
-
+    expect(a[0] == '1').to_be_truthy();
     expect(f_atoi(a)).to_be(123456);
     expect(f_atoi(b)).to_be(123456);
     expect(f_atoi(c)).to_be(-123456);
@@ -57,13 +57,27 @@ void testAtoi()
     expect(f_atoi(g)).to_be(123456);
     expect(f_atoi(h)).to_be(-2147483648);
     expect(f_atoi(i)).to_be(2147483647);
+    expect(a[0] == '1').to_be_truthy();
 }
 
+void testItoa()
+{
+    char a[30];
+    char b[30] = "12345";
+    char c[30];
+    char d[30] = "-12345";
+
+    f_itoa(12345, a, 10);
+    f_itoa(-12345, c, 10);
+    expect(charcmp(a, b)).to_be_truthy();
+    expect(charcmp(c, d)).to_be_truthy();
+}
 int main()
 {
     executeTestSuite("strlenのテスト", testStrlen);
     executeTestSuite("charcmpのテスト", testCharCmp);
     executeTestSuite("反転のテスト", testInplaceReverse);
     executeTestSuite("atoiのテスト", testAtoi);
+    executeTestSuite("itoaのテスト", testItoa);
     return 0;
 }
