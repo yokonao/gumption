@@ -1,5 +1,7 @@
+#include <iostream>
 #include <cstddef>
 #include <utility>
+#include <stack.h>
 
 template <typename T>
 void swap(T &t1, T &t2)
@@ -50,4 +52,58 @@ void inplace_reverse(char *s)
             swap(s[i], s[n - i - 1]);
         }
     }
+}
+
+int f_atoi(char *str)
+{
+    int n = 0;
+    int sgn = -1;
+    while (*str == ' ' || *str == '\f' || *str == '\n' || *str == '\r' || *str == '\t' || *str == '\v')
+    {
+        str++;
+    }
+    if (*str == '-')
+    {
+        sgn = 1;
+    }
+    if (*str == '-' or *str == '+')
+    {
+        str++;
+    }
+    while (*str != '\0' and *str >= '0' and *str <= '9')
+    {
+        //-2147483648を処理するときにnを正として扱うとn=2147483648,となりoverflowする
+        n *= 10;
+        n -= *str - '0';
+        str++;
+    }
+
+    return sgn * n;
+}
+char *f_itoa(int value, char *str, int radix)
+{
+    int idx = 0;
+    Stack<char> t;
+    while (value != 0)
+    {
+        if (value < 0)
+        {
+            str[idx] = '-';
+            idx++;
+            value *= -1;
+        }
+        else
+        {
+            t.pushBack(value % radix + '0');
+            value /= radix;
+        }
+    }
+    while (not t.isEmpty())
+    {
+        str[idx] = t.last();
+        t.popBack();
+        idx++;
+    }
+    str[idx] = '\0';
+    return str;
 }
