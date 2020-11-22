@@ -1,6 +1,7 @@
 #include <iostream>
 #include <cstddef>
 #include <utility>
+#include <stack.h>
 
 template <typename T>
 void swap(T &t1, T &t2)
@@ -79,4 +80,30 @@ int f_atoi(char *str)
 
     return sgn * n;
 }
-char *itoa(int value, char *str, int radix);
+char *f_itoa(int value, char *str, int radix)
+{
+    int idx = 0;
+    Stack<char> t;
+    while (value != 0)
+    {
+        if (value < 0)
+        {
+            str[idx] = '-';
+            idx++;
+            value *= -1;
+        }
+        else
+        {
+            t.pushBack(value % radix + '0');
+            value /= radix;
+        }
+    }
+    while (not t.isEmpty())
+    {
+        str[idx] = t.last();
+        t.popBack();
+        idx++;
+    }
+    str[idx] = '\0';
+    return str;
+}
