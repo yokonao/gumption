@@ -138,9 +138,9 @@ void testPushFront()
 void testPushBack()
 {
     DoublyLinkedList<int> *ll = new DoublyLinkedList<int>();
-    DoublyLinkedItem<int> *one = ll->insertAfter(1, ll->head());
-    DoublyLinkedItem<int> *two = ll->insertAfter(2, one);
-    ll->insertAfter(3, two);
+    ll->pushBack(1);
+    ll->pushBack(2);
+    ll->pushBack(3);
     assert(DoublyLinkedListAll(ll) == "1,2,3,");
     ll->pushBack(100);
     assert(DoublyLinkedListAll(ll) == "1,2,3,100,");
