@@ -69,6 +69,24 @@ UArray<int> GraphNode::next()
     return res;
 }
 
+void GraphNode::print()
+{
+    std::cout << "\"";
+    std::cout << index << "\"";
+    std::cout << ":";
+    std::cout << "[";
+    DoublyLinkedItem<int> *tmp = nodeList->head()->next;
+    while (!tmp->isDummy)
+    {
+        std::cout << tmp->body;
+        tmp = tmp->next;
+        if (tmp->isDummy)
+            break;
+        std::cout << ",";
+    }
+    std::cout << "]";
+}
+
 Graph::Graph(int n)
 {
     this->n = n;
@@ -98,4 +116,18 @@ bool Graph::isEdge(int a, int b)
 UArray<int> Graph::next(int a)
 {
     return nodeArray[a].next();
+}
+
+void Graph::print()
+{
+    std::cout << "{\"size\":";
+    std::cout << n << ",";
+    std::cout << "\"content\":{";
+    for (int i = 0; i < n; i++)
+    {
+        nodeArray[i].print();
+        if (i != n - 1)
+            std::cout << ",";
+    }
+    std::cout << "}}" << std::endl;
 }
