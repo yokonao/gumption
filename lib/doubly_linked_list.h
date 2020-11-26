@@ -169,7 +169,14 @@ public:
 
     void pushBack(T body)
     {
-        insertAfter(body, last());
+        if (isEmpty())
+        {
+            insertAfter(body, head());
+        }
+        else
+        {
+            insertAfter(body, last());
+        }
     }
 
     void makeEmpty()
@@ -185,7 +192,7 @@ std::ostream &operator<<(std::ostream &os, DoublyLinkedList<T> &list)
     while (true)
     {
         os << item->body << ",";
-        if(item->isDummy)
+        if (item->isDummy)
             break;
         item = item->next;
     }
