@@ -1,5 +1,5 @@
-#ifndef NODE_ARRAY_HPP
-#define NODE_ARRAY_HPP
+#ifndef GRAPH_HPP
+#define GRAPH_HPP
 
 #include <uarray.h>
 #include <doubly_linked_list.h>
@@ -19,6 +19,7 @@ public:
     void connect(int a);
     bool isEdge(int a);
     UArray<int> next();
+    void print();
 };
 
 class Graph
@@ -33,5 +34,6 @@ public:
     bool isEdge(int a, int b);
     UArray<int> next(int a);
     Graph(int n);
+    void print();
 };
 #endif
