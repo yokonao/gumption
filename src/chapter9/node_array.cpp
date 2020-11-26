@@ -37,6 +37,20 @@ void GraphNode::connect(int a)
     nodeList->pushBack(a);
 }
 
+bool GraphNode::isEdge(int a)
+{
+    DoublyLinkedItem<int> *tmp = nodeList->first();
+    while (!tmp->isDummy)
+    {
+        if (tmp->body == a)
+        {
+            return true;
+        }
+        tmp = tmp->next;
+    }
+    return false;
+}
+
 UArray<int> GraphNode::next()
 {
     UArray<int> res;
@@ -68,6 +82,11 @@ void Graph::addEdge(int a, int b)
 {
     nodeArray[a].connect(b);
     nodeArray[b].connect(a);
+}
+
+bool Graph::isEdge(int a, int b)
+{
+    return nodeArray[a].isEdge(b);
 }
 
 UArray<int> Graph::next(int a)
