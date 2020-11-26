@@ -12,6 +12,7 @@ private:
 public:
     GraphNode(int index);
     GraphNode(const GraphNode &obj);
+    ~GraphNode();
     GraphNode &operator=(const GraphNode &a);
     void connect(int a);
     bool isEdge(int a);

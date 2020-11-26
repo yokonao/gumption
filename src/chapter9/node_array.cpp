@@ -23,6 +23,11 @@ GraphNode &GraphNode::operator=(const GraphNode &a)
     return *this;
 }
 
+GraphNode::~GraphNode()
+{
+    delete nodeList;
+}
+
 void GraphNode::connect(int a)
 {
     DoublyLinkedItem<int> *tmp = nodeList->first();
