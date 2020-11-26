@@ -50,3 +50,10 @@ jobs:
           export GUMPTION=$(pwd)
           cd src/chapter7/
           make test
+      - name: test graph 
+        env:
+          CC: gcc
+        run: |
+          export GUMPTION=$(pwd)
+          cd src/chapter9/
+          make test
