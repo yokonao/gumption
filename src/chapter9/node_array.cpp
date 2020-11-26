@@ -59,6 +59,11 @@ Graph::Graph(int n)
     }
 }
 
+int Graph::size()
+{
+    return n;
+}
+
 void Graph::addEdge(int a, int b)
 {
     nodeArray[a].connect(b);

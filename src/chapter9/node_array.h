@@ -24,6 +24,7 @@ private:
     UArray<GraphNode> nodeArray;
 
 public:
+    int size();
     void addEdge(int a, int b);
     UArray<int> next(int a);
     Graph(int n);
