@@ -7,9 +7,11 @@ INCLUDEPATH = $(if $(filter $(origin GUMPTION),undefined),$(error GUMPTION is no
 BUILD = $(GUMPTION)/build/chapter9
 RESULT = $(GUMPTION)/results/chapter9
 
-test: node_array 
+test: graph 
 graph: test_graph.cpp $(MODULES) mkdir
 	$(CC) $(CFLAGS) -o $(BUILD)/$@.o test_graph.cpp $(MODULES) -I $(INCLUDEPATH) && $(BUILD)/$@.o
+print: print_graph.cpp $(MODULES) mkdir
+	$(CC) $(CFLAGS) -o $(BUILD)/$@.o print_graph.cpp $(MODULES) -I $(INCLUDEPATH) && $(BUILD)/$@.o
 mkdir:
 	mkdir -p $(BUILD)
 	mkdir -p $(RESULT)
