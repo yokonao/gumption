@@ -1,5 +1,6 @@
 #ifndef NODE_ARRAY_HPP
 #define NODE_ARRAY_HPP
+
 #include <uarray.h>
 #include <doubly_linked_list.h>
 
@@ -10,6 +11,7 @@ private:
     DoublyLinkedList<int> *nodeList;
 
 public:
+    GraphNode();
     GraphNode(int index);
     GraphNode(const GraphNode &obj);
     ~GraphNode();

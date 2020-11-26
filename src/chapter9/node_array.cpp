@@ -1,5 +1,8 @@
 #include "node_array.h"
 
+GraphNode::GraphNode()
+{
+}
 GraphNode::GraphNode(int index)
 {
     this->index = index;
