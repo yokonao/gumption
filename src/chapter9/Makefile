@@ -8,8 +8,8 @@ BUILD = $(GUMPTION)/build/chapter9
 RESULT = $(GUMPTION)/results/chapter9
 
 test: node_array 
-node_array: test_node_array.cpp $(MODULES) mkdir
-	$(CC) $(CFLAGS) -o $(BUILD)/$@.o test_node_array.cpp $(MODULES) -I $(INCLUDEPATH) && $(BUILD)/$@.o
+graph: test_graph.cpp $(MODULES) mkdir
+	$(CC) $(CFLAGS) -o $(BUILD)/$@.o test_graph.cpp $(MODULES) -I $(INCLUDEPATH) && $(BUILD)/$@.o
 mkdir:
 	mkdir -p $(BUILD)
 	mkdir -p $(RESULT)
