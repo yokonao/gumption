@@ -31,6 +31,7 @@ GraphNode &GraphNode::operator=(const GraphNode &a)
 
 GraphNode::~GraphNode()
 {
+    delete nodeList;
 }
 
 void GraphNode::connect(int a)
