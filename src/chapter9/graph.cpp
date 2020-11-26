@@ -1,11 +1,14 @@
-#include "node_array.h"
+#include "graph.h"
 
 GraphNode::GraphNode()
 {
+    this->index = 0;
+    this->nodeList = new DoublyLinkedList<int>;
 }
 GraphNode::GraphNode(int index)
 {
     this->index = index;
+    this->nodeList = new DoublyLinkedList<int>;
 }
 
 GraphNode::GraphNode(const GraphNode &obj)
@@ -21,7 +24,13 @@ GraphNode &GraphNode::operator=(const GraphNode &a)
         return *this;
     }
     index = a.index;
-    nodeList = a.nodeList;
+    nodeList = new DoublyLinkedList<int>;
+    DoublyLinkedItem<int> *tmp = a.nodeList->head()->next;
+    while (!tmp->isDummy)
+    {
+        nodeList->pushBack(tmp->body);
+        tmp = tmp->next;
+    }
     return *this;
 }
 

@@ -1,5 +1,5 @@
 #include <expectation.h>
-#include "node_array.h"
+#include "graph.h"
 
 void testGraphSimple()
 {
