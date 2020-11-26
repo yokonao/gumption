@@ -25,12 +25,7 @@ GraphNode &GraphNode::operator=(const GraphNode &a)
     }
     index = a.index;
     nodeList = new DoublyLinkedList<int>;
-    DoublyLinkedItem<int> *tmp = a.nodeList->head()->next;
-    while (!tmp->isDummy)
-    {
-        nodeList->pushBack(tmp->body);
-        tmp = tmp->next;
-    }
+    a.nodeList->foreach([&](int e) { nodeList->pushBack(e); });
     return *this;
 }
 
@@ -40,15 +35,13 @@ GraphNode::~GraphNode()
 
 void GraphNode::connect(int a)
 {
-    DoublyLinkedItem<int> *tmp = nodeList->head()->next;
-    while (!tmp->isDummy)
-    {
-        if (tmp->body == a)
-        {
-            return;
-        }
-        tmp = tmp->next;
-    }
+    int flag = 1;
+    nodeList->foreach ([&](int e) {
+        if(e == a)
+            flag = 0;
+    });
+    if(!flag)
+        return;
     nodeList->pushBack(a);
 }
 
