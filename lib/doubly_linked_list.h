@@ -4,6 +4,7 @@
 #include <cassert>
 #include <ostream>
 #include <iostream>
+#include <functional>
 
 template <typename T>
 class DoublyLinkedItem
@@ -183,6 +184,18 @@ public:
     {
         splice(first(), last(), _freeHead);
     };
+
+    void foreach (std::function<void(T)> callback)
+    {
+        if (isEmpty())
+            return;
+        DoublyLinkedItem<T> *tmp = first();
+        while (!tmp->isDummy)
+        {
+            callback(tmp->body);
+            tmp = tmp->next;
+        }
+    }
 };
 
 template <class T>
