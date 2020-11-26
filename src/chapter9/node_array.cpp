@@ -6,7 +6,6 @@ GraphNode::GraphNode()
 GraphNode::GraphNode(int index)
 {
     this->index = index;
-    this->nodeList = new DoublyLinkedList<int>;
 }
 
 GraphNode::GraphNode(const GraphNode &obj)
@@ -24,6 +23,10 @@ GraphNode &GraphNode::operator=(const GraphNode &a)
     index = a.index;
     nodeList = a.nodeList;
     return *this;
+}
+
+GraphNode::~GraphNode()
+{
 }
 
 void GraphNode::connect(int a)
