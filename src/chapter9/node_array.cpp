@@ -26,14 +26,9 @@ GraphNode &GraphNode::operator=(const GraphNode &a)
     return *this;
 }
 
-GraphNode::~GraphNode()
-{
-    delete nodeList;
-}
-
 void GraphNode::connect(int a)
 {
-    DoublyLinkedItem<int> *tmp = nodeList->first();
+    DoublyLinkedItem<int> *tmp = nodeList->head()->next;
     while (!tmp->isDummy)
     {
         if (tmp->body == a)
@@ -47,7 +42,7 @@ void GraphNode::connect(int a)
 
 bool GraphNode::isEdge(int a)
 {
-    DoublyLinkedItem<int> *tmp = nodeList->first();
+    DoublyLinkedItem<int> *tmp = nodeList->head()->next;
     while (!tmp->isDummy)
     {
         if (tmp->body == a)
@@ -62,7 +57,7 @@ bool GraphNode::isEdge(int a)
 UArray<int> GraphNode::next()
 {
     UArray<int> res;
-    DoublyLinkedItem<int> *tmp = nodeList->first();
+    DoublyLinkedItem<int> *tmp = nodeList->head()->next;
     while (!tmp->isDummy)
     {
         res.pushBack(tmp->body);
