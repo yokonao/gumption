@@ -25,49 +25,43 @@ GraphNode &GraphNode::operator=(const GraphNode &a)
     }
     index = a.index;
     nodeList = new DoublyLinkedList<int>;
-    a.nodeList->foreach([&](int e) { nodeList->pushBack(e); });
+    a.nodeList->foreach ([&](int e) { nodeList->pushBack(e); });
     return *this;
 }
 
 GraphNode::~GraphNode()
 {
+    delete nodeList;
 }
 
 void GraphNode::connect(int a)
 {
     int flag = 1;
     nodeList->foreach ([&](int e) {
-        if(e == a)
+        if (e == a)
             flag = 0;
     });
-    if(!flag)
+    if (!flag)
         return;
     nodeList->pushBack(a);
 }
 
 bool GraphNode::isEdge(int a)
 {
-    DoublyLinkedItem<int> *tmp = nodeList->head()->next;
-    while (!tmp->isDummy)
-    {
-        if (tmp->body == a)
-        {
-            return true;
-        }
-        tmp = tmp->next;
-    }
+    int flag = 1;
+    nodeList->foreach ([&](int e) {
+        if (e == a)
+            flag = 0;
+    });
+    if (!flag)
+        return true;
     return false;
 }
 
 UArray<int> GraphNode::next()
 {
     UArray<int> res;
-    DoublyLinkedItem<int> *tmp = nodeList->head()->next;
-    while (!tmp->isDummy)
-    {
-        res.pushBack(tmp->body);
-        tmp = tmp->next;
-    }
+    nodeList->foreach ([&](int e) { res.pushBack(e); });
     return res;
 }
 
