@@ -98,6 +98,12 @@ Graph::Graph(int n)
     }
 }
 
+Graph::Graph(const Graph &obj)
+{
+    this->n = obj.n;
+    this->nodeArray = obj.nodeArray;
+}
+
 int Graph::size()
 {
     return n;

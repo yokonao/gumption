@@ -35,6 +35,8 @@ public:
     UArray<int> next(int a);
     Graph();
     Graph(int n);
+    Graph(const Graph &obj);
+
     void print();
 };
 #endif
