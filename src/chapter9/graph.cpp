@@ -83,6 +83,11 @@ void GraphNode::print()
     std::cout << "]";
 }
 
+Graph::Graph()
+{
+    this->n = 0;
+}
+
 Graph::Graph(int n)
 {
     this->n = n;
