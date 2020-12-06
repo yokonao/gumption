@@ -63,11 +63,20 @@ void testAssignmentOperator()
     expect(a[0]).to_be(1);
 }
 
+void testForEach()
+{
+    Array<int> a{2, 20, 200};
+    a.foreach ([](int e) {
+        std::cout << e << std::endl;
+    });
+}
+
 int main()
 {
     executeTestSuite("コンストラクタのテスト", testConstructor);
     executeTestSuite("初期化リストを用いた初期化のテスト", testInitializerList);
     executeTestSuite("コピーコンストラクタのテスト", testCopyConstructor);
     executeTestSuite("代入演算子のテスト", testAssignmentOperator);
+    executeTestSuite("foreachのテスト", testForEach);
     return 0;
 }

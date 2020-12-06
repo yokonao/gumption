@@ -144,19 +144,16 @@ Array<int> Graph::bfs(int nodeId)
     int l = 1;
     while (attentionLayer.size() != 0)
     {
-        for (int i = 0; i < attentionLayer.size(); i++)
-        {
-            UArray<int> nextNodes = nodeArray[attentionLayer[i]].next();
-            for (int j = 0; j < nextNodes.size(); j++)
-            {
-                if (!searched[nextNodes[j]])
+        attentionLayer.foreach ([&](int target) {
+            nodeArray[target].next().foreach ([&](int next) {
+                if (!searched[next])
                 {
-                    nextLayer.pushBack(nextNodes[j]);
-                    d[nextNodes[j]] = l;
-                    searched[nextNodes[j]] = true;
+                    nextLayer.pushBack(next);
+                    d[next] = l;
+                    searched[next] = true;
                 }
-            }
-        }
+            });
+        });
         attentionLayer = nextLayer;
         nextLayer.clear();
         l++;
