@@ -33,7 +33,10 @@ public:
     void addEdge(int a, int b);
     bool isEdge(int a, int b);
     UArray<int> next(int a);
+    Graph();
     Graph(int n);
+    Graph(const Graph &obj);
+
     void print();
     void bfs(int nodeId);
 };

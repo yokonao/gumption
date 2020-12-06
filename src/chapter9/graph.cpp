@@ -83,6 +83,11 @@ void GraphNode::print()
     std::cout << "]";
 }
 
+Graph::Graph()
+{
+    this->n = 0;
+}
+
 Graph::Graph(int n)
 {
     this->n = n;
@@ -91,6 +96,12 @@ Graph::Graph(int n)
         GraphNode node(i);
         this->nodeArray.pushBack(node);
     }
+}
+
+Graph::Graph(const Graph &obj)
+{
+    this->n = obj.n;
+    this->nodeArray = obj.nodeArray;
 }
 
 int Graph::size()
