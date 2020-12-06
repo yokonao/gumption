@@ -36,12 +36,11 @@ GraphNode::~GraphNode()
 
 void GraphNode::connect(int a)
 {
-    int flag = 1;
+    bool connected = false;
     nodeList->foreach ([&](int e) {
-        if (e == a)
-            flag = 0;
+        connected |= (e == a);
     });
-    if (!flag)
+    if (connected)
         return;
     nodeList->pushBack(a);
 }
