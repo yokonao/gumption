@@ -1,4 +1,5 @@
 #include "graph.h"
+#include <limits.h>
 
 GraphNode::GraphNode()
 {
@@ -25,7 +26,7 @@ GraphNode &GraphNode::operator=(const GraphNode &a)
     }
     index = a.index;
     nodeList = new DoublyLinkedList<int>;
-    a.nodeList->foreach([&](int e) { nodeList->pushBack(e); });
+    a.nodeList->foreach ([&](int e) { nodeList->pushBack(e); });
     return *this;
 }
 
@@ -37,10 +38,10 @@ void GraphNode::connect(int a)
 {
     int flag = 1;
     nodeList->foreach ([&](int e) {
-        if(e == a)
+        if (e == a)
             flag = 0;
     });
-    if(!flag)
+    if (!flag)
         return;
     nodeList->pushBack(a);
 }
@@ -132,4 +133,47 @@ void Graph::print()
             std::cout << ",";
     }
     std::cout << "}}" << std::endl;
+}
+
+void Graph::bfs(int nodeId)
+{
+    Array<int> d(n);
+    for (int i = 0; i < n; i++)
+    {
+        d[i] = INT_MAX;
+    }
+    Array<bool> searched(n);
+
+    d[nodeId] = 0;
+    searched[nodeId] = true;
+    UArray<int> attentionLayer;
+    UArray<int> nextLayer;
+    attentionLayer.pushBack(nodeId);
+
+    int l = 1;
+    while (attentionLayer.size() != 0)
+    {
+        for (int i = 0; i < attentionLayer.size(); i++)
+        {
+            UArray<int> nextNodes = nodeArray[attentionLayer[i]].next();
+            for (int j = 0; j < nextNodes.size(); j++)
+            {
+                if (!searched[nextNodes[j]])
+                {
+                    nextLayer.pushBack(nextNodes[j]);
+                    d[nextNodes[j]] = l;
+                    searched[nextNodes[j]] = true;
+                }
+            }
+        }
+        attentionLayer = nextLayer;
+        nextLayer.clear();
+        l++;
+    }
+
+    std::cout << "start node: " << nodeId << std::endl;
+    for (int i = 0; i < n; i++)
+    {
+        std::cout << i << ": " << d[i] << std::endl;
+    }
 }

@@ -35,5 +35,6 @@ public:
     UArray<int> next(int a);
     Graph(int n);
     void print();
+    void bfs(int nodeId);
 };
 #endif
