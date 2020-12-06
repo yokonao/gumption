@@ -37,7 +37,7 @@ GraphNode::~GraphNode()
 
 void GraphNode::connect(int a)
 {
-    if(isEdge(a))
+    if (isEdge(a))
         return;
     nodeList->pushBack(a);
 }
@@ -138,6 +138,10 @@ Array<int> Graph::bfs(int nodeId)
         d[i] = INT_MAX;
     }
     Array<bool> searched(n);
+    for (int i = 0; i < n; i++)
+    {
+        d[i] = false;
+    }
 
     d[nodeId] = 0;
     searched[nodeId] = true;
