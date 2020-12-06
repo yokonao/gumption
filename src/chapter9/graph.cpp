@@ -1,4 +1,5 @@
 #include "graph.h"
+#include <limits.h>
 
 GraphNode::GraphNode()
 {
@@ -36,26 +37,16 @@ GraphNode::~GraphNode()
 
 void GraphNode::connect(int a)
 {
-    int flag = 1;
-    nodeList->foreach ([&](int e) {
-        if (e == a)
-            flag = 0;
-    });
-    if (!flag)
+    if (isEdge(a))
         return;
     nodeList->pushBack(a);
 }
 
 bool GraphNode::isEdge(int a)
 {
-    int flag = 1;
-    nodeList->foreach ([&](int e) {
-        if (e == a)
-            flag = 0;
-    });
-    if (!flag)
-        return true;
-    return false;
+    bool connected = false;
+    nodeList->foreach ([&](int e) { connected |= (e == a); });
+    return connected;
 }
 
 UArray<int> GraphNode::next()
@@ -137,4 +128,45 @@ void Graph::print()
             std::cout << ",";
     }
     std::cout << "}}" << std::endl;
+}
+
+Array<int> Graph::bfs(int nodeId)
+{
+    Array<int> d(n, INT_MAX);
+    Array<bool> searched(n, false);
+
+    d[nodeId] = 0;
+    searched[nodeId] = true;
+    UArray<int> attentionLayer;
+    UArray<int> nextLayer;
+    attentionLayer.pushBack(nodeId);
+
+    int l = 1;
+    while (attentionLayer.size() != 0)
+    {
+        for (int i = 0; i < attentionLayer.size(); i++)
+        {
+            UArray<int> nextNodes = nodeArray[attentionLayer[i]].next();
+            for (int j = 0; j < nextNodes.size(); j++)
+            {
+                if (!searched[nextNodes[j]])
+                {
+                    nextLayer.pushBack(nextNodes[j]);
+                    d[nextNodes[j]] = l;
+                    searched[nextNodes[j]] = true;
+                }
+            }
+        }
+        attentionLayer = nextLayer;
+        nextLayer.clear();
+        l++;
+    }
+
+    std::cout << "start node: " << nodeId << std::endl;
+    for (int i = 0; i < n; i++)
+    {
+        std::cout << i << ": " << d[i] << std::endl;
+    }
+
+    return d;
 }

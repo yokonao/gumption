@@ -38,5 +38,6 @@ public:
     Graph(const Graph &obj);
 
     void print();
+    Array<int> bfs(int nodeId);
 };
 #endif

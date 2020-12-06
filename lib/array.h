@@ -25,6 +25,16 @@ public:
         content = new T[n];
     }
 
+    Array(int length, T value)
+    {
+        n = length;
+        content = new T[n];
+        for (int i = 0; i < n; i++)
+        {
+            content[i] = value;
+        }
+    }
+
     Array(std::initializer_list<T> init)
     {
         n = init.size();
