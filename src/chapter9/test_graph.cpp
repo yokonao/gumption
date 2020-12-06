@@ -75,7 +75,8 @@ void testBreadthFirstSearch()
     g.addEdge(1, 3);
     g.addEdge(3, 4);
     g.addEdge(2, 4);
-    g.bfs(0);
+    Array<int> d = g.bfs(0);
+    expect(d).to_be_equal_to(Array<int>{0, 1, 1, 2, 2});
 }
 
 int main()

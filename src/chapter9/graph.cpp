@@ -130,7 +130,7 @@ void Graph::print()
     std::cout << "}}" << std::endl;
 }
 
-void Graph::bfs(int nodeId)
+Array<int> Graph::bfs(int nodeId)
 {
     Array<int> d(n);
     for (int i = 0; i < n; i++)
@@ -171,4 +171,6 @@ void Graph::bfs(int nodeId)
     {
         std::cout << i << ": " << d[i] << std::endl;
     }
+
+    return d;
 }
