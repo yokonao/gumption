@@ -132,16 +132,8 @@ void Graph::print()
 
 Array<int> Graph::bfs(int nodeId)
 {
-    Array<int> d(n);
-    for (int i = 0; i < n; i++)
-    {
-        d[i] = INT_MAX;
-    }
-    Array<bool> searched(n);
-    for (int i = 0; i < n; i++)
-    {
-        searched[i] = false;
-    }
+    Array<int> d(n, INT_MAX);
+    Array<bool> searched(n, false);
 
     d[nodeId] = 0;
     searched[nodeId] = true;
