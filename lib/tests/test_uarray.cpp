@@ -71,11 +71,20 @@ void testUArray2D()
     expect(y).to_be_equal_to(UArray<int>{1, 21});
 }
 
+void testForEach()
+{
+    UArray<int> a{2, 20, 200};
+    a.foreach ([](int e) {
+        std::cout << e << std::endl;
+    });
+}
+
 int main()
 {
     executeTestSuite("初期化リストのテスト", testInitializerList);
     executeTestSuite("==演算子のテスト", testEquivalenceOperator);
     executeTestSuite("1次元配列のテスト", testUArray1D);
     executeTestSuite("2次元配列のテスト", testUArray2D);
+    executeTestSuite("foreachのテスト", testForEach);
     return 0;
 }

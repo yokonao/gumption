@@ -4,6 +4,7 @@
 #include <cassert>
 #include <initializer_list>
 #include <iostream>
+#include <functional>
 
 template <class T>
 class Array
@@ -109,6 +110,14 @@ public:
     };
 
     int length() { return n; }
+
+    void foreach (std::function<void(T)> callback)
+    {
+        for (int i = 0; i < n; i++)
+        {
+            callback(content[i]);
+        }
+    }
 };
 
 #endif

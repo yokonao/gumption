@@ -141,6 +141,14 @@ public:
         n = 0;
         b = Array<T>(w);
     };
+
+    void foreach (std::function<void(T)> callback)
+    {
+        for (int i = 0; i < n; i++)
+        {
+            callback(b[i]);
+        }
+    };
 };
 
 template <class T>
