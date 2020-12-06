@@ -37,25 +37,16 @@ GraphNode::~GraphNode()
 
 void GraphNode::connect(int a)
 {
-    bool connected = false;
-    nodeList->foreach ([&](int e) {
-        connected |= (e == a);
-    });
-    if (connected)
+    if(isEdge(a))
         return;
     nodeList->pushBack(a);
 }
 
 bool GraphNode::isEdge(int a)
 {
-    int flag = 1;
-    nodeList->foreach ([&](int e) {
-        if (e == a)
-            flag = 0;
-    });
-    if (!flag)
-        return true;
-    return false;
+    bool connected = false;
+    nodeList->foreach ([&](int e) { connected |= (e == a); });
+    return connected;
 }
 
 UArray<int> GraphNode::next()
