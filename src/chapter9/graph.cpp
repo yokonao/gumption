@@ -140,7 +140,7 @@ Array<int> Graph::bfs(int nodeId)
     Array<bool> searched(n);
     for (int i = 0; i < n; i++)
     {
-        d[i] = false;
+        searched[i] = false;
     }
 
     d[nodeId] = 0;
