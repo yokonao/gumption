@@ -1,0 +1,24 @@
+#!/bin/bash
+
+set -euo pipefail
+
+function testlib() {
+    cd lib/tests && make $1
+}
+
+function testsrc() {
+    case $1 in
+    "3") cd src/chapter3 && make ;;
+    "4") cd src/chapter4 && make ;;
+    "5") cd src/chapter5 && make ;;
+    "6") cd src/chapter6 && make ;;
+    "7") cd src/chapter7 && make ;;
+    "9") cd src/chapter9 && make ;;
+    *) echo unimplemeted ;;
+    esac
+}
+
+case $1 in
+"lib") testlib $2 ;;
+"src") testsrc $2 ;;
+esac
