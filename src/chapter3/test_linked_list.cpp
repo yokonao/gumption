@@ -59,7 +59,7 @@ void testMoveToBack()
     Item *one = ll->insertAfter(1, ll->head());
     Item *two = ll->insertAfter(2, one);
     Item *three = ll->insertAfter(3, two);
-    Item *four = ll->insertAfter(4, three);
+    ll->insertAfter(4, three);
     assert(ll->all() == "1,2,3,4,");
     ll->moveToBack(one);
     assert(ll->all() == "2,3,4,1,");
@@ -72,7 +72,7 @@ void testPopFront()
     Item *one = ll->insertAfter(1, ll->head());
     Item *two = ll->insertAfter(2, one);
     Item *three = ll->insertAfter(3, two);
-    Item *four = ll->insertAfter(4, three);
+    ll->insertAfter(4, three);
     assert(ll->all() == "1,2,3,4,");
     ll->popFront();
     assert(ll->all() == "2,3,4,");
@@ -85,7 +85,7 @@ void testPopBack()
     Item *one = ll->insertAfter(1, ll->head());
     Item *two = ll->insertAfter(2, one);
     Item *three = ll->insertAfter(3, two);
-    Item *four = ll->insertAfter(4, three);
+    ll->insertAfter(4, three);
     assert(ll->all() == "1,2,3,4,");
     ll->popBack();
     assert(ll->all() == "1,2,3,");
@@ -97,7 +97,7 @@ void testInsertBefore()
     LinkedList *ll = new LinkedList();
     Item *one = ll->insertAfter(1, ll->head());
     Item *two = ll->insertAfter(2, one);
-    Item *three = ll->insertAfter(3, two);
+    ll->insertAfter(3, two);
     assert(ll->all() == "1,2,3,");
     ll->insertBefore(100, two);
     assert(ll->all() == "1,100,2,3,");
@@ -109,7 +109,7 @@ void testPushFront()
     LinkedList *ll = new LinkedList();
     Item *one = ll->insertAfter(1, ll->head());
     Item *two = ll->insertAfter(2, one);
-    Item *three = ll->insertAfter(3, two);
+    ll->insertAfter(3, two);
     assert(ll->all() == "1,2,3,");
     ll->pushFront(100);
     assert(ll->all() == "100,1,2,3,");
@@ -121,7 +121,7 @@ void testPushBack()
     LinkedList *ll = new LinkedList();
     Item *one = ll->insertAfter(1, ll->head());
     Item *two = ll->insertAfter(2, one);
-    Item *three = ll->insertAfter(3, two);
+    ll->insertAfter(3, two);
     assert(ll->all() == "1,2,3,");
     ll->pushBack(100);
     assert(ll->all() == "1,2,3,100,");
@@ -133,7 +133,7 @@ void testMakeEmpty()
     LinkedList *ll = new LinkedList();
     Item *one = ll->insertAfter(1, ll->head());
     Item *two = ll->insertAfter(2, one);
-    Item *three = ll->insertAfter(3, two);
+    ll->insertAfter(3, two);
     assert(ll->all() == "1,2,3,");
     ll->makeEmpty();
     assert(ll->all() == "[]");
@@ -146,7 +146,7 @@ void testFindNext()
     Item *one = ll->insertAfter(1, ll->head());
     Item *two = ll->insertAfter(2, one);
     Item *three = ll->insertAfter(3, two);
-    Item *four = ll->insertAfter(4, three);
+    ll->insertAfter(4, three);
     assert(ll->all() == "1,2,3,4,");
     assert(ll->findNext(100, ll->first())->isDummy);
     assert(ll->findNext(3, ll->first()) == three);
