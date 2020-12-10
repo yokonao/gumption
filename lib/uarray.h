@@ -142,6 +142,17 @@ public:
         b = Array<T>(w);
     };
 
+    void fill(int n, const T &e)
+    {
+        this->n = n;
+        this->w = beta * n;
+        reallocate(beta * n);
+        for (int i = 0; i < n; i++)
+        {
+            b[i] = e;
+        }
+    }
+
     void foreach (std::function<void(T)> callback)
     {
         for (int i = 0; i < n; i++)
