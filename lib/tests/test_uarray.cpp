@@ -2,6 +2,12 @@
 #include <expectation.h>
 #include <iostream>
 
+void testUArrayWithSize()
+{
+    UArray<int> x(5);
+    expect(x.size()).to_be_equal_to(5);
+}
+
 void testInitializerList()
 {
     UArray<int> x{1, 10, 100};
@@ -91,6 +97,7 @@ void testForEach()
 
 int main()
 {
+    executeTestSuite("サイズ付きの初期化のテスト", testUArrayWithSize);
     executeTestSuite("初期化リストのテスト", testInitializerList);
     executeTestSuite("==演算子のテスト", testEquivalenceOperator);
     executeTestSuite("1次元配列のテスト", testUArray1D);

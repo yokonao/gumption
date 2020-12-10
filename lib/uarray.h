@@ -23,6 +23,15 @@ public:
         b = Array<T>(1);
     };
 
+    UArray(int n)
+    {
+        alpha = 4;
+        beta = 2;
+        b = Array<T>(beta * n);
+        this->n = n;
+        this->w = beta * n;
+    };
+
     UArray(int al, int be)
     {
         alpha = al;
