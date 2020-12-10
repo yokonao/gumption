@@ -87,7 +87,7 @@ void testBreadthFirstSearchQueue()
     g.addEdge(1, 3);
     g.addEdge(3, 4);
     g.addEdge(2, 4);
-    Array<int> d = g.bfs_queue(0);
+    Array<int> d = g.bfsQueue(0);
     expect(d).to_be_equal_to(Array<int>{0, 1, 1, 2, 2});
 }
 
@@ -99,7 +99,7 @@ void testDepthFirstSearchStack()
     g.addEdge(1, 3);
     g.addEdge(3, 4);
     g.addEdge(2, 4);
-    Array<int> d = g.dfs_stack(0);
+    Array<int> d = g.dfsStack(0);
     expect(d).to_be_equal_to(Array<int>{0, 1, 1, 2, 2});
 }
 
