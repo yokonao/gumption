@@ -26,7 +26,7 @@ public:
 
 class Graph
 {
-private:
+protected:
     int n;
     UArray<GraphNode> nodeArray;
 
@@ -44,4 +44,23 @@ public:
     Array<int> bfsQueue(int nodeId);
     Array<int> dfsStack(int nodeId);
 };
+
+class DfsGraph : public Graph
+{
+private:
+    UArray<bool> mark;
+    int dfsPos;
+    int finishingTime;
+    UArray<int> dfsNum;
+    UArray<int> finishTime;
+    void dfs(int u, int v);
+    void traverseNonTreeEdge(int u, int v);
+    void traverseTreeEdge(int u, int v);
+    void backtrack(int u, int v);
+
+public:
+    using Graph::Graph;
+    void search(int nodeId);
+};
+
 #endif

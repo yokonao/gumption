@@ -246,3 +246,52 @@ Array<int> Graph::dfsStack(int nodeId)
     }
     return d;
 }
+
+void DfsGraph::dfs(int u, int v)
+{
+    std::cout << "start: " << v << std::endl;
+    mark[v] = true;
+    nodeArray[v].next().foreach ([&](int w) {
+        if (mark[w])
+        {
+            traverseNonTreeEdge(v, w);
+        }
+        else
+        {
+            traverseTreeEdge(v, w);
+            mark[w] = true;
+            dfs(v, w);
+        }
+    });
+    finishTime[v] = finishingTime;
+    std::cout << "end: " << v << std::endl;
+    backtrack(u, v);
+}
+
+void DfsGraph::traverseNonTreeEdge(int u, int v)
+{
+}
+
+void DfsGraph::traverseTreeEdge(int u, int v)
+{
+    dfsNum[v] = dfsPos++;
+}
+
+void DfsGraph::backtrack(int u, int w)
+{
+    finishingTime++;
+}
+
+void DfsGraph::search(int nodeId)
+{
+    mark.fill(n, false);
+    std::cout << "hello" << std::endl;
+    dfsPos = 1;
+    finishingTime = 1;
+    dfsNum.fill(n, -1);
+    finishTime.fill(n, -1);
+    dfsNum[nodeId] = dfsPos++;
+    dfs(nodeId, nodeId);
+    std::cout << "到着時間順: " << dfsNum << std::endl;
+    std::cout << "終了時間順: " << finishTime << std::endl;
+}
