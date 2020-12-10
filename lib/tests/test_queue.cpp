@@ -45,11 +45,24 @@ void testQueuePushPop()
     expect(q.popFront()).to_be(5);
 }
 
+void testQueueFind()
+{
+    Queue<int> q;
+    q.pushBack(1);
+    q.pushBack(3);
+    q.pushBack(4);
+    q.pushBack(5);
+    expect(q.find(1)).to_be_truthy();
+    expect(q.find(3)).to_be_truthy();
+    expect(q.find(7)).to_be_falsy();
+}
 int main()
 {
     executeTestSuite("キューの初期化テスト", testQueueConstructer);
     executeTestSuite("キューの挿入テスト", testQueuePushBack);
     executeTestSuite("キューの削除テスト", testQueuePopFront);
     executeTestSuite("キューの挿入and削除テスト", testQueuePushPop);
+    executeTestSuite("キューの検索テスト", testQueueFind);
+
     return 0;
 }
