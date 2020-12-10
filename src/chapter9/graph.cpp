@@ -167,3 +167,82 @@ Array<int> Graph::bfs(int nodeId)
 
     return d;
 }
+
+Array<int> Graph::bfsQueue(int nodeId)
+{
+    Array<int> d(n, INT_MAX);
+    Array<bool> searched(n, false);
+
+    d[nodeId] = 0;
+    searched[nodeId] = true;
+    Queue<int> q;
+    q.pushBack(nodeId);
+    while (not q.isEmpty())
+    {
+        int first = q.popFront();
+        nodeArray[first].next().foreach ([&](int next) {
+            if (!searched[next])
+            {
+                if (!q.find(next))
+                {
+                    q.pushBack(next);
+                    d[next] = d[first] + 1;
+                    searched[next] = true;
+                }
+            }
+            else
+            {
+                if (d[first] + 1 < d[next])
+                {
+                    d[next] = d[first] + 1;
+                }
+            }
+        });
+    }
+    std::cout << "start node: " << nodeId << std::endl;
+    for (int i = 0; i < n; i++)
+    {
+        std::cout << i << ": " << d[i] << std::endl;
+    }
+    return d;
+}
+
+Array<int> Graph::dfsStack(int nodeId)
+{
+    Array<int> d(n, INT_MAX);
+    Array<bool> searched(n, false);
+
+    d[nodeId] = 0;
+    searched[nodeId] = true;
+    Stack<int> s;
+    s.pushBack(nodeId);
+    while (not s.isEmpty())
+    {
+        int last = s.last();
+        s.popBack();
+        nodeArray[last].next().foreach ([&](int next) {
+            if (!searched[next])
+            {
+                if (!s.find(next))
+                {
+                    s.pushBack(next);
+                    d[next] = d[last] + 1;
+                    searched[next] = true;
+                }
+            }
+            else
+            {
+                if (d[last] + 1 < d[next])
+                {
+                    d[next] = d[last] + 1;
+                }
+            }
+        });
+    }
+    std::cout << "start node: " << nodeId << std::endl;
+    for (int i = 0; i < n; i++)
+    {
+        std::cout << i << ": " << d[i] << std::endl;
+    }
+    return d;
+}

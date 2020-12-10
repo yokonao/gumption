@@ -49,12 +49,24 @@ void testStackEqual()
     expect(t.size()).to_be(3);
     expect(t.last()).to_be(4);
 }
+void testStackFind()
+{
+    Stack<int> s;
+    s.pushBack(1);
+    s.pushBack(3);
+    s.pushBack(5);
+    s.pushBack(7);
+    expect(s.find(1)).to_be_truthy();
+    expect(s.find(3)).to_be_truthy();
+    expect(s.find(4)).to_be_falsy();
+}
 int main()
 {
     executeTestSuite("スタックの初期化テスト", testStackConstructer);
     executeTestSuite("スタックの挿入テスト", testStackPushBack);
     executeTestSuite("スタックの削除テスト", testStackPopBack);
     executeTestSuite("スタックの代入テスト", testStackEqual);
+    executeTestSuite("スタックの検索テスト", testStackFind);
 
     return 0;
 }

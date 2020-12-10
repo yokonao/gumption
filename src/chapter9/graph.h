@@ -3,6 +3,8 @@
 
 #include <uarray.h>
 #include <doubly_linked_list.h>
+#include <stack.h>
+#include <queue.h>
 
 class GraphNode
 {
@@ -39,5 +41,7 @@ public:
 
     void print();
     Array<int> bfs(int nodeId);
+    Array<int> bfsQueue(int nodeId);
+    Array<int> dfsStack(int nodeId);
 };
 #endif

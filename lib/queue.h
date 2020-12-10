@@ -51,5 +51,9 @@ public:
 
         return res;
     }
+    bool find(const T &e)
+    {
+        return inbox.find(e) or outbox.find(e);
+    }
 };
 #endif
