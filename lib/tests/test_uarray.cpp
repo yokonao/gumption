@@ -2,6 +2,17 @@
 #include <expectation.h>
 #include <iostream>
 
+void testUArrayWithSize()
+{
+    UArray<int> x(5);
+    expect(x.size()).to_be_equal_to(5);
+
+    UArray<int> y(5, 100);
+    expect(y.size()).to_be_equal_to(5);
+    expect(y[0]).to_be_equal_to(100);
+    expect(y[4]).to_be_equal_to(100);
+}
+
 void testInitializerList()
 {
     UArray<int> x{1, 10, 100};
@@ -71,6 +82,16 @@ void testUArray2D()
     expect(y).to_be_equal_to(UArray<int>{1, 21});
 }
 
+void testFill()
+{
+    UArray<int> a{2, 20, 200};
+    a.fill(5, 3);
+    a.foreach ([](int e) {
+        std::cout << e << std::endl;
+    });
+    expect(a).to_be_equal_to(UArray<int>{3, 3, 3, 3, 3});
+}
+
 void testForEach()
 {
     UArray<int> a{2, 20, 200};
@@ -81,10 +102,12 @@ void testForEach()
 
 int main()
 {
+    executeTestSuite("サイズ付きの初期化のテスト", testUArrayWithSize);
     executeTestSuite("初期化リストのテスト", testInitializerList);
     executeTestSuite("==演算子のテスト", testEquivalenceOperator);
     executeTestSuite("1次元配列のテスト", testUArray1D);
     executeTestSuite("2次元配列のテスト", testUArray2D);
+    executeTestSuite("fillのテスト", testFill);
     executeTestSuite("foreachのテスト", testForEach);
     return 0;
 }

@@ -23,11 +23,22 @@ public:
         b = Array<T>(1);
     };
 
-    UArray(int al, int be)
+    UArray(int n)
     {
-        alpha = al;
-        beta = be;
-        b = Array<T>(1);
+        alpha = 4;
+        beta = 2;
+        b = Array<T>(beta * n);
+        this->n = n;
+        this->w = beta * n;
+    };
+
+    UArray(int n, const T &e)
+    {
+        alpha = 4;
+        beta = 2;
+        b = Array<T>(beta * n, e);
+        this->n = n;
+        this->w = beta * n;
     };
 
     UArray(std::initializer_list<T> init)
@@ -141,6 +152,17 @@ public:
         n = 0;
         b = Array<T>(w);
     };
+
+    void fill(int n, const T &e)
+    {
+        this->n = n;
+        this->w = beta * n;
+        reallocate(beta * n);
+        for (int i = 0; i < n; i++)
+        {
+            b[i] = e;
+        }
+    }
 
     void foreach (std::function<void(T)> callback)
     {
