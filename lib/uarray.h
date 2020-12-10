@@ -32,11 +32,13 @@ public:
         this->w = beta * n;
     };
 
-    UArray(int al, int be)
+    UArray(int n, const T &e)
     {
-        alpha = al;
-        beta = be;
-        b = Array<T>(1);
+        alpha = 4;
+        beta = 2;
+        b = Array<T>(beta * n, e);
+        this->n = n;
+        this->w = beta * n;
     };
 
     UArray(std::initializer_list<T> init)

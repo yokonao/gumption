@@ -6,6 +6,11 @@ void testUArrayWithSize()
 {
     UArray<int> x(5);
     expect(x.size()).to_be_equal_to(5);
+
+    UArray<int> y(5, 100);
+    expect(y.size()).to_be_equal_to(5);
+    expect(y[0]).to_be_equal_to(100);
+    expect(y[4]).to_be_equal_to(100);
 }
 
 void testInitializerList()
