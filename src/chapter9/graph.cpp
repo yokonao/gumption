@@ -168,7 +168,7 @@ Array<int> Graph::bfs(int nodeId)
     return d;
 }
 
-Array<int> Graph::bfs_queue(int nodeId)
+Array<int> Graph::bfsQueue(int nodeId)
 {
     Array<int> d(n, INT_MAX);
     Array<bool> searched(n, false);
@@ -207,7 +207,7 @@ Array<int> Graph::bfs_queue(int nodeId)
     return d;
 }
 
-Array<int> Graph::dfs_stack(int nodeId)
+Array<int> Graph::dfsStack(int nodeId)
 {
     Array<int> d(n, INT_MAX);
     Array<bool> searched(n, false);

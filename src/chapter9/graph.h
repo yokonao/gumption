@@ -41,7 +41,7 @@ public:
 
     void print();
     Array<int> bfs(int nodeId);
-    Array<int> bfs_queue(int nodeId);
-    Array<int> dfs_stack(int nodeId);
+    Array<int> bfsQueue(int nodeId);
+    Array<int> dfsStack(int nodeId);
 };
 #endif
