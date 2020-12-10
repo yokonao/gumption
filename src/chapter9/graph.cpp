@@ -167,3 +167,42 @@ Array<int> Graph::bfs(int nodeId)
 
     return d;
 }
+Array<int> Graph::dfs_stack(int nodeId)
+{
+    Array<int> d(n, INT_MAX);
+    Array<bool> searched(n, false);
+
+    d[nodeId] = 0;
+    searched[nodeId] = true;
+    Stack<int> s;
+    s.pushBack(nodeId);
+    while (not s.isEmpty())
+    {
+        int last = s.last();
+        s.popBack();
+        nodeArray[last].next().foreach ([&](int next) {
+            if (!searched[next])
+            {
+                if (!s.find(next))
+                {
+                    s.pushBack(next);
+                    d[next] = d[last] + 1;
+                    searched[next] = true;
+                }
+            }
+            else
+            {
+                if (d[last] + 1 < d[next])
+                {
+                    d[next] = d[last] + 1;
+                }
+            }
+        });
+    }
+    std::cout << "start node: " << nodeId << std::endl;
+    for (int i = 0; i < n; i++)
+    {
+        std::cout << i << ": " << d[i] << std::endl;
+    }
+    return d;
+}
