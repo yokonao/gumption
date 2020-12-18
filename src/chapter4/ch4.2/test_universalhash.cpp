@@ -1,8 +1,7 @@
 #include <iostream>
 #include <string>
 #include <bitset>
-#include "s_item.h"
-#include "s_free_list.h"
+#include <s_linked_list.h>
 #include <uarray.h>
 #include "universal_hash.h"
 #include <expectation.h>

@@ -3,7 +3,7 @@ CC = g++
 CFLAGS   = -Wall -O2
 
 PROGRAM = exe.out
-MODULES = s_item.cpp s_linked_list.cpp s_free_list.cpp universal_hash.cpp operation.cpp rand_list.cpp
+MODULES = universal_hash.cpp operation.cpp rand_list.cpp
 INCLUDEPATH = $(if $(filter $(origin GUMPTION),undefined),$(error GUMPTION is not set.),$(GUMPTION))/lib
 
 
