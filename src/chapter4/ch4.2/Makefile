@@ -9,9 +9,6 @@ INCLUDEPATH = $(if $(filter $(origin GUMPTION),undefined),$(error GUMPTION is no
 
 univ: test_universalhash.cpp $(MODULES)
 	$(CC) $(CFLAGS) -o $(PROGRAM) test_universalhash.cpp $(MODULES) -I $(INCLUDEPATH)
-
-random: test_random.cpp gen_random.cpp
-	$(CC) $(CFLAGS) -o $(PROGRAM) test_random.cpp  $(MODULES) -I $(INCLUDEPATH)
 operation: test_operation.cpp operation.cpp 
 	$(CC) $(CFLAGS) -o $(PROGRAM) test_operation.cpp $(MODULES) -I $(INCLUDEPATH)
 watch: watch_hash.cpp
