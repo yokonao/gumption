@@ -3,7 +3,7 @@
 
 #include <string>
 #include <uarray.h>
-#include "s_linked_list.h"
+#include <s_linked_list.h>
 
 UArray<UArray<int>> key(std::string e, int w);
 
