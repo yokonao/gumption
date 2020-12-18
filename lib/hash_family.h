@@ -19,15 +19,15 @@ public:
 };
 
 template <class T>
-class HashFamily_OneUniversal : IHashFamily
+class HashFamily : IHashFamily
 {
 };
 
 template <>
-class HashFamily_OneUniversal<int> : IHashFamily
+class HashFamily<int> : IHashFamily
 {
 public:
-    HashFamily_OneUniversal(int m)
+    HashFamily(int m)
     {
         this->m = m;
     }
@@ -39,7 +39,7 @@ public:
 };
 
 template <>
-class HashFamily_OneUniversal<std::string> : IHashFamily
+class HashFamily<std::string> : IHashFamily
 {
     int w;
 
@@ -55,7 +55,7 @@ class HashFamily_OneUniversal<std::string> : IHashFamily
     }
 
 public:
-    HashFamily_OneUniversal(int m)
+    HashFamily(int m)
     {
         this->m = m;
         this->w = floorLog(m);

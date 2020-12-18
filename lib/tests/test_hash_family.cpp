@@ -1,9 +1,9 @@
-#include "hash_family_one_universal.h"
+#include "hash_family.h"
 #include "expectation.h"
 
 void testHashForInt()
 {
-    HashFamily_OneUniversal<int> ou = HashFamily_OneUniversal<int>(257);
+    HashFamily<int> ou = HashFamily<int>(257);
     expect(ou.hash(1)).to_be(1);
     expect(ou.hash(33)).to_be(33);
     expect(ou.hash(260)).to_be(3);
@@ -11,7 +11,7 @@ void testHashForInt()
 
 void testHashForString()
 {
-    HashFamily_OneUniversal<std::string> ou = HashFamily_OneUniversal<std::string>(257);
+    HashFamily<std::string> ou = HashFamily<std::string>(257);
     int tmp;
     tmp = ou.hash("p");
     std::cout << "p → " << tmp << std::endl;
