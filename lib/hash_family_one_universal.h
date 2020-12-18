@@ -13,7 +13,7 @@ class IHashFamily
 protected:
     int m;
 
-public: 
+public:
     virtual ~IHashFamily() {}
 
     virtual int hash(std::string s) = 0;
@@ -22,6 +22,8 @@ public:
 class HashFamily_OneUniversal : IHashFamily
 {
     int w;
+
+    UArray<int> a;
 
     int floorLog(int m)
     {
@@ -37,6 +39,10 @@ public:
     {
         this->m = m;
         this->w = floorLog(m);
+        for (int i = 0; i < 100; i++)
+        {
+            a.pushBack(gen_mt(m));
+        }
     }
 
     int hash(std::string s)
@@ -57,8 +63,8 @@ public:
                 }
                 x_i += x[idx] * pow(2, j);
             }
-            int a_i = gen_mt(m);
-            N += x_i * a_i;
+            // int a_i = gen_mt(m);
+            N += x_i * a[i];
         }
 
         return N % m;
