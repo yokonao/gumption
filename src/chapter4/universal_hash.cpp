@@ -56,7 +56,7 @@ int UniversalHash::findPrime(int k)
 
 UniversalHash::UniversalHash()
 {
-    t = new SLinkedList[m];
+    t = new SLL[m];
     hashFamily = new HashFamily<std::string>(m);
 }
 
@@ -79,7 +79,7 @@ void UniversalHash::insert(std::string s, std::string value)
 void UniversalHash::remove(std::string s)
 {
     int h = hash(s);
-    SItem *tmp = t[h].head();
+    SI *tmp = t[h].head();
     while (!tmp->next->isDummy)
     {
         if (tmp->next->e == s) //右辺はeそのものでは？
@@ -107,7 +107,7 @@ std::string UniversalHash::find(std::string s)
 {
     int h = hash(s);
 
-    SItem *tmp = t[h].head();
+    SI *tmp = t[h].head();
     while (!tmp->next->isDummy)
     {
 
@@ -123,7 +123,7 @@ std::string UniversalHash::find(std::string s)
 std::string UniversalHash::operator[](std::string s)
 {
     int h = hash(s);
-    SItem *tmp = t[h].head();
+    SI *tmp = t[h].head();
     while (!tmp->next->isDummy)
     {
         if (tmp->next->e == s)
@@ -144,10 +144,10 @@ void UniversalHash::reallocate(int mp)
     delete hashFamily;
     hashFamily = new HashFamily<std::string>(mp);
 
-    SLinkedList *tp = new SLinkedList[mp];
+    SLL *tp = new SLL[mp];
     for (int i = 0; i < m; i++)
     {
-        SItem *tmp = t[i].head()->next;
+        SI *tmp = t[i].head()->next;
         while (!tmp->isDummy)
         {
             int h = hash(tmp->e);
