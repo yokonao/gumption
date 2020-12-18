@@ -7,6 +7,7 @@
 #include <stdexcept>
 #include <cmath>
 #include <iostream>
+#include <uarray.h>
 
 class IHashFamily
 {
