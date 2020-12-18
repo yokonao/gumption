@@ -7,12 +7,10 @@
 #include <cmath>
 #include <expectation.h>
 
-#include "s_item.h"
-#include "s_linked_list.h"
-#include "s_free_list.h"
+#include <s_linked_list.h>
 #include <uarray.h>
 #include "operation.h"
-#include "gen_random.h"
+#include <gen_mt.h>
 #include "rand_list.h"
 #include "universal_hash.h"
 
