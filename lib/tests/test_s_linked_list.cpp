@@ -3,16 +3,16 @@
 
 void testSItem()
 {
-    SItem dummy;
+    SItem<std::string, std::string> dummy;
     expect(dummy.isDummy).to_be_truthy();
     expect(dummy.e).to_be("");
     expect(dummy.next).to_be(&dummy);
-    SItem item("a", "", &dummy);
+    SItem<std::string, std::string> item("a", "", &dummy);
     dummy.next = &item;
     expect(item.e).to_be("a");
     expect(item.next).to_be(&dummy);
     expect(dummy.next).to_be(&item);
-    SItem item2("abcd", "", &dummy);
+    SItem<std::string, std::string> item2("abcd", "", &dummy);
     dummy.next = &item;
     expect(item2.e).to_be("abcd");
     expect(item2.next).to_be(&dummy);
@@ -21,7 +21,7 @@ void testSItem()
 
 void testSLinkedListDefaultConstructor()
 {
-    SLinkedList sll;
+    SLinkedList<std::string, std::string> sll;
     expect(sll.isEmpty()).to_be_truthy();
     expect(sll.head()->isDummy).to_be_truthy();
     expect(sll.all()).to_be("[]");
@@ -29,9 +29,9 @@ void testSLinkedListDefaultConstructor()
 
 void testInsertAfter()
 {
-    SLinkedList sll;
+    SLinkedList<std::string, std::string> sll;
     expect(sll.isEmpty()).to_be_truthy();
-    SItem *ruby = sll.insertAfter("Ruby", "", sll.head());
+    SItem<std::string, std::string> *ruby = sll.insertAfter("Ruby", "", sll.head());
     expect(sll.all()).to_be("Ruby,");
     expect(ruby).to_be(sll.head()->next);
     expect(ruby->next).to_be(sll.head());
@@ -43,7 +43,7 @@ void testInsertAfter()
 
 void testPushBack()
 {
-    SLinkedList sll;
+    SLinkedList<std::string, std::string> sll;
     expect(sll.isEmpty()).to_be_truthy();
     sll.pushBack("Java", "");
     expect(sll.all()).to_be("Java,");
@@ -55,9 +55,9 @@ void testPushBack()
 
 void testRemoveAfter()
 {
-    SLinkedList sll;
+    SLinkedList<std::string, std::string> sll;
     expect(sll.isEmpty()).to_be_truthy();
-    SItem *dart = sll.insertAfter("Dart", "", sll.head());
+    SItem<std::string, std::string> *dart = sll.insertAfter("Dart", "", sll.head());
     expect(sll.all()).to_be("Dart,");
     expect(dart).to_be(sll.head()->next);
     expect(dart->next).to_be(sll.head());

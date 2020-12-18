@@ -2,6 +2,23 @@
 
 set -euo pipefail
 
+function testall() {
+    cd lib/tests && make
+    cd ../..
+    cd src/chapter3 && make
+    cd ../..
+    cd src/chapter4 && make
+    cd ../..
+    cd src/chapter5 && make
+    cd ../..
+    cd src/chapter6 && make
+    cd ../..
+    cd src/chapter7 && make
+    cd ../..
+    cd src/chapter9 && make
+    cd ../..
+}
+
 function testlib() {
     cd lib/tests && make $1
 }
@@ -19,6 +36,7 @@ function testsrc() {
 }
 
 case $1 in
+"all") testall ;;
 "lib") testlib $2 ;;
 "src") testsrc $2 ;;
 esac

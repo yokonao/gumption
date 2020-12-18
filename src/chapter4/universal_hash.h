@@ -6,6 +6,9 @@
 #include <s_linked_list.h>
 #include <hash_family.h>
 
+using SLL = SLinkedList<std::string, std::string>;
+using SI = SItem<std::string, std::string>;
+
 class UniversalHash
 {
     const int beta = 2;
@@ -13,7 +16,7 @@ class UniversalHash
     int m = 257;
     int w = 8;
     int n = 0;
-    SLinkedList *t;
+    SLL *t;
     HashFamily<std::string> *hashFamily;
     int hash(std ::string s);
     void reallocate(int mp);

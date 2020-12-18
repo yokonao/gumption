@@ -5,10 +5,11 @@
 #include <cassert>
 #include <iostream>
 
+template<class Key, class Value>
 struct SItem
 {
-    std::string e;
-    std::string value;
+    Key e;
+    Value value;
     SItem *next;
     bool isDummy;
 
@@ -18,7 +19,7 @@ struct SItem
         isDummy = true;
     }
 
-    SItem(std::string e, std::string value, SItem *next)
+    SItem(Key e, Value value, SItem *next)
     {
         this->e = e;
         this->value = value;
@@ -27,16 +28,17 @@ struct SItem
     }
 };
 
+template<class Key, class Value>
 class SLinkedList
 {
-    SItem m_head;
-    SItem *m_last;
-    SItem *freeHead;
+    SItem<Key, Value> m_head;
+    SItem<Key, Value> *m_last;
+    SItem<Key, Value> *freeHead;
 
-    void splice(SItem *ap, SItem *b, SItem *t)
+    void splice(SItem<Key, Value> *ap, SItem<Key, Value> *b, SItem<Key, Value> *t)
     {
         // apがvalidなLinkedListに所属しているか
-        SItem *tmp = ap->next;
+        SItem<Key, Value> *tmp = ap->next;
         while (!tmp->isDummy)
         {
             assert(tmp != ap);
@@ -51,9 +53,9 @@ class SLinkedList
             tmp = tmp->next;
         }
 
-        SItem *a = ap->next;
+        SItem<Key, Value> *a = ap->next;
         ap->next = b->next;
-        SItem *tp = t->next;
+        SItem<Key, Value> *tp = t->next;
         b->next = tp;
         t->next = a;
     };
@@ -62,7 +64,7 @@ class SLinkedList
     {
         if (freeHead->next == freeHead)
         {
-            SItem *next = new SItem("", "", freeHead);
+            SItem<Key, Value> *next = new SItem<Key, Value>("", "", freeHead);
             freeHead->next = next;
         }
     }
@@ -70,20 +72,20 @@ class SLinkedList
 public:
     SLinkedList()
     {
-        freeHead = new SItem();
+        freeHead = new SItem<Key, Value>();
     }
 
-    SItem *head() { return &m_head; }
+    SItem<Key, Value> *head() { return &m_head; }
 
     bool isEmpty() { return &m_head == m_head.next; }
 
-    SItem *first()
+    SItem<Key, Value> *first()
     {
         assert(!isEmpty());
         return m_head.next;
     }
 
-    SItem *last()
+    SItem<Key, Value> *last()
     {
         assert(!isEmpty());
         return m_last;
@@ -98,7 +100,7 @@ public:
         }
         else
         {
-            SItem *tmp = first();
+            SItem<Key, Value> *tmp = first();
             std::string result;
             while (!tmp->isDummy)
             {
@@ -110,10 +112,10 @@ public:
         }
     }
 
-    SItem *insertAfter(std::string e, std::string value, SItem *a)
+    SItem<Key, Value> *insertAfter(Key e, Value value, SItem<Key, Value> *a)
     {
         checkFreeList();
-        SItem *ap = freeHead;
+        SItem<Key, Value> *ap = freeHead;
         splice(ap, ap->next, a);
         a->next->e = e;
         a->next->value = value;
@@ -124,7 +126,7 @@ public:
         return a->next;
     }
 
-    void pushBack(std::string e, std::string value)
+    void pushBack(Key e, Value value)
     {
         if (isEmpty())
         {
@@ -136,9 +138,9 @@ public:
         }
     }
 
-    void removeAfter(SItem *bp)
+    void removeAfter(SItem<Key, Value> *bp)
     {
-        SItem *b = bp->next;
+        SItem<Key, Value> *b = bp->next;
         assert(!b->isDummy);
         splice(bp, b, freeHead);
         if (bp->next->isDummy)
