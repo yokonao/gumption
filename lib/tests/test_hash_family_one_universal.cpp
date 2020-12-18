@@ -4,7 +4,7 @@
 int main()
 {
     std::cout << "TEST START" << std::endl;
-    HashFamily_OneUniversal ou = HashFamily_OneUniversal(257);
+    HashFamily_OneUniversal<std::string> ou = HashFamily_OneUniversal<std::string>(257);
     int tmp;
     tmp = ou.hash("p");
     std::cout << "p → " << tmp << std::endl;

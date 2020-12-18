@@ -20,7 +20,13 @@ public:
     virtual int hash(std::string s) = 0;
 };
 
+template <class T>
 class HashFamily_OneUniversal : IHashFamily
+{
+};
+
+template <>
+class HashFamily_OneUniversal<std::string> : IHashFamily
 {
     int w;
 
