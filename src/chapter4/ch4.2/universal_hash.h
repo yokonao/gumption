@@ -16,6 +16,8 @@ class UniversalHash
     SLinkedList *t;
     HashFamily_OneUniversal *hashFunction;
     void reallocate(int mp);
+    int findK(int m);
+    int findPrime(int k);
 
 public:
     UniversalHash();

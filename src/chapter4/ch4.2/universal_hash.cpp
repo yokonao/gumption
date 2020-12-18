@@ -6,7 +6,7 @@
 #include <gen_mt.h>
 #include "universal_hash.h"
 
-int findK(int m)
+int UniversalHash::findK(int m)
 {
     if (m < 8)
     {
@@ -20,7 +20,7 @@ int findK(int m)
     return k;
 }
 
-int findPrime(int k)
+int UniversalHash::findPrime(int k)
 {
     if (k < 2)
     {
