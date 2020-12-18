@@ -7,7 +7,7 @@
 #include "universal_hash.h"
 #include <expectation.h>
 #include "operation.h"
-#include "gen_random.h"
+#include <gen_mt.h>
 
 void testkeyf()
 {

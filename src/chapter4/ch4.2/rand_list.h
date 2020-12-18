@@ -2,7 +2,7 @@
 #define RAND_LIST_HPP
 
 #include <uarray.h>
-#include "gen_random.h"
+#include <gen_mt.h>
 #include <cassert>
 
 class RandList
