@@ -3,13 +3,9 @@
 
 #include <string>
 #include <uarray.h>
-#include "s_linked_list.h"
+#include <s_linked_list.h>
+#include <hash_family_one_universal.h>
 
-UArray<UArray<int>> key(std::string e, int w);
-
-std::string element(UArray<UArray<int>> k, int w);
-long long hashRand(UArray<UArray<int>> k);
-int hash(UArray<UArray<int>> k, int mod);
 class UniversalHash
 {
     const int beta = 2;
@@ -18,7 +14,11 @@ class UniversalHash
     int w = 8;
     int n = 0;
     SLinkedList *t;
+    HashFamily_OneUniversal *hashFamily;
+    int hash(std ::string s);
     void reallocate(int mp);
+    int findK(int m);
+    int findPrime(int k);
 
 public:
     UniversalHash();
