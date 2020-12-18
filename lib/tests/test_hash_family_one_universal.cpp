@@ -1,7 +1,7 @@
 #include "hash_family_one_universal.h"
 #include "expectation.h"
 
-int main()
+void testHashForString()
 {
     std::cout << "TEST START" << std::endl;
     HashFamily_OneUniversal<std::string> ou = HashFamily_OneUniversal<std::string>(257);
@@ -13,6 +13,10 @@ int main()
     tmp = ou.hash("python");
     std::cout << "python → " << tmp << std::endl;
     std::cout << "ALL GREEN" << std::endl;
+}
 
+int main()
+{
+    executeTestSuite("std::stringのハッシュ関数", testHashForString);
     return 0;
 }
