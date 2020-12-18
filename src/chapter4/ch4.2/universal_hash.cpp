@@ -57,7 +57,12 @@ int UniversalHash::findPrime(int k)
 UniversalHash::UniversalHash()
 {
     t = new SLinkedList[m];
-    hashFunction = new HashFamily_OneUniversal(m);
+    hashFamily = new HashFamily_OneUniversal(m);
+}
+
+int UniversalHash::hash(std::string s)
+{
+    return hashFamily->hash(s);
 }
 
 void UniversalHash::insert(std::string s, std::string value)
@@ -66,14 +71,14 @@ void UniversalHash::insert(std::string s, std::string value)
     {
         reallocate(beta * n);
     }
-    int h = hashFunction->hash(s);
+    int h = hash(s);
     t[h].pushBack(s, value);
     n++;
 }
 
 void UniversalHash::remove(std::string s)
 {
-    int h = hashFunction->hash(s);
+    int h = hash(s);
     SItem *tmp = t[h].head();
     while (!tmp->next->isDummy)
     {
@@ -100,7 +105,7 @@ void UniversalHash::remove(std::string s)
 
 std::string UniversalHash::find(std::string s)
 {
-    int h = hashFunction->hash(s);
+    int h = hash(s);
 
     SItem *tmp = t[h].head();
     while (!tmp->next->isDummy)
@@ -117,7 +122,7 @@ std::string UniversalHash::find(std::string s)
 
 std::string UniversalHash::operator[](std::string s)
 {
-    int h = hashFunction->hash(s);
+    int h = hash(s);
     SItem *tmp = t[h].head();
     while (!tmp->next->isDummy)
     {
@@ -136,8 +141,8 @@ void UniversalHash::reallocate(int mp)
     mp = findPrime(k);
     int wp = int(floor(log2(double(mp))));
     // Hash関数を再計算
-    delete hashFunction;
-    hashFunction = new HashFamily_OneUniversal(mp);
+    delete hashFamily;
+    hashFamily = new HashFamily_OneUniversal(mp);
 
     SLinkedList *tp = new SLinkedList[mp];
     for (int i = 0; i < m; i++)
@@ -145,7 +150,7 @@ void UniversalHash::reallocate(int mp)
         SItem *tmp = t[i].head()->next;
         while (!tmp->isDummy)
         {
-            int h = hashFunction->hash(tmp->e);
+            int h = hash(tmp->e);
             tp[h].pushBack(tmp->e, tmp->value);
             tmp = tmp->next;
         }

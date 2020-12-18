@@ -14,7 +14,8 @@ class UniversalHash
     int w = 8;
     int n = 0;
     SLinkedList *t;
-    HashFamily_OneUniversal *hashFunction;
+    HashFamily_OneUniversal *hashFamily;
+    int hash(std ::string s);
     void reallocate(int mp);
     int findK(int m);
     int findPrime(int k);
