@@ -13,7 +13,7 @@ private:
     int m = 257;
     int w = 8;
     int n = 0;
-    SLinkedList *t;
+    SLinkedList<Key, Value> *t;
     HashFamily<Key> *hashFamily;
 
     int hash(Key key)
@@ -21,7 +21,32 @@ private:
         return hashFamily->hash(key);
     }
 
-    void reallocate(int mp);
+    void reallocate(int mp)
+    {
+        int k = findK(mp);
+        mp = findPrime(k);
+        int wp = int(floor(log2(double(mp))));
+        // Hash関数を再計算
+        delete hashFamily;
+        hashFamily = new HashFamily<Key>(mp);
+
+        SLinkedList<Key, Value> *tp = new SLinkedList<Key,Value>[mp];
+        for (int i = 0; i < m; i++)
+        {
+            SItem<Key,Value> *tmp = t[i].head()->next;
+            while (!tmp->isDummy)
+            {
+                int h = hash(tmp->e);
+                tp[h].pushBack(tmp->e, tmp->value);
+                tmp = tmp->next;
+            }
+        }
+
+        m = mp;
+        w = wp;
+        delete[] t;
+        t = tp;
+    }
 
     int findK(int m)
     {
@@ -37,7 +62,7 @@ private:
         return k;
     }
 
-    int findPrime(int k) int UniversalHash::findPrime(int k)
+    int findPrime(int k)
     {
         if (k < 2)
         {
@@ -72,13 +97,13 @@ private:
     }
 
 public:
-    UniversalHash()
+    ChainingHash()
     {
-        t = new SLinkedList[m];
+        t = new SLinkedList<Key, Value>[m];
         hashFamily = new HashFamily<std::string>(m);
     }
 
-    ~UniversalHash()
+    ~ChainingHash()
     {
         delete[] t;
         delete hashFamily;
@@ -98,7 +123,7 @@ public:
     void remove(Key key)
     {
         int h = hash(key);
-        SItem *tmp = t[h].head();
+        SItem<Key, Value> *tmp = t[h].head();
         while (!tmp->next->isDummy)
         {
             if (tmp->next->e == key) //右辺はeそのものでは？
@@ -120,7 +145,7 @@ public:
     Key find(Key key)
     {
         int h = hash(key);
-        SItem *tmp = t[h].head();
+        SItem<Key, Value> *tmp = t[h].head();
         while (!tmp->next->isDummy)
         {
 
@@ -137,7 +162,7 @@ public:
     Value operator[](Key key)
     {
         int h = hash(key);
-        SItem *tmp = t[h].head();
+        SItem<Key, Value> *tmp = t[h].head();
         while (!tmp->next->isDummy)
         {
             if (tmp->next->e == key)
