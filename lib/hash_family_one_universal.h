@@ -16,13 +16,26 @@ protected:
 
 public:
     virtual ~IHashFamily() {}
-
-    virtual int hash(std::string s) = 0;
 };
 
 template <class T>
 class HashFamily_OneUniversal : IHashFamily
 {
+};
+
+template <>
+class HashFamily_OneUniversal<int> : IHashFamily
+{
+public:
+    HashFamily_OneUniversal(int m)
+    {
+        this->m = m;
+    }
+
+    int hash(int value)
+    {
+        return value % m;
+    }
 };
 
 template <>
