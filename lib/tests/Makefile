@@ -31,6 +31,8 @@ doubly_linked_list: test_doubly_linked_list.cpp
 	$(CC) $(CFLAGS) -o $(PROGRAM) test_doubly_linked_list.cpp -I $(INCLUDEPATH) && ./${PROGRAM}
 string_operation: test_string_operation.cpp
 	$(CC) $(CFLAGS) -o $(PROGRAM) test_string_operation.cpp -I $(INCLUDEPATH) && ./${PROGRAM}
+chaining_hash: test_chaining_hash.cpp
+	$(CC) $(CFLAGS) -o $(PROGRAM) test_chaining_hash.cpp -I $(INCLUDEPATH) && ./${PROGRAM}
 
 .PHONY: clean
 clean:;	rm -f *.o $(PROGRAM)

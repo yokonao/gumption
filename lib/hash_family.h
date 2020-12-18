@@ -21,6 +21,7 @@ public:
 template <class T>
 class HashFamily : IHashFamily
 {
+    int hash(T value);
 };
 
 template <>
