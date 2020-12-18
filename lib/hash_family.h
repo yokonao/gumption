@@ -16,11 +16,30 @@ protected:
 
 public:
     virtual ~IHashFamily() {}
-
-    virtual int hash(std::string s) = 0;
 };
 
-class HashFamily_OneUniversal : IHashFamily
+template <class T>
+class HashFamily : IHashFamily
+{
+};
+
+template <>
+class HashFamily<int> : IHashFamily
+{
+public:
+    HashFamily(int m)
+    {
+        this->m = m;
+    }
+
+    int hash(int value)
+    {
+        return value % m;
+    }
+};
+
+template <>
+class HashFamily<std::string> : IHashFamily
 {
     int w;
 
@@ -36,7 +55,7 @@ class HashFamily_OneUniversal : IHashFamily
     }
 
 public:
-    HashFamily_OneUniversal(int m)
+    HashFamily(int m)
     {
         this->m = m;
         this->w = floorLog(m);

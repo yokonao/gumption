@@ -4,7 +4,7 @@
 #include <string>
 #include <uarray.h>
 #include <s_linked_list.h>
-#include <hash_family_one_universal.h>
+#include <hash_family.h>
 
 class UniversalHash
 {
@@ -14,7 +14,7 @@ class UniversalHash
     int w = 8;
     int n = 0;
     SLinkedList *t;
-    HashFamily_OneUniversal *hashFamily;
+    HashFamily<std::string> *hashFamily;
     int hash(std ::string s);
     void reallocate(int mp);
     int findK(int m);

@@ -57,7 +57,7 @@ int UniversalHash::findPrime(int k)
 UniversalHash::UniversalHash()
 {
     t = new SLinkedList[m];
-    hashFamily = new HashFamily_OneUniversal(m);
+    hashFamily = new HashFamily<std::string>(m);
 }
 
 int UniversalHash::hash(std::string s)
@@ -142,7 +142,7 @@ void UniversalHash::reallocate(int mp)
     int wp = int(floor(log2(double(mp))));
     // Hash関数を再計算
     delete hashFamily;
-    hashFamily = new HashFamily_OneUniversal(mp);
+    hashFamily = new HashFamily<std::string>(mp);
 
     SLinkedList *tp = new SLinkedList[mp];
     for (int i = 0; i < m; i++)
