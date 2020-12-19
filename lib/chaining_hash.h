@@ -3,6 +3,7 @@
 
 #include <s_linked_list.h>
 #include <hash_family.h>
+#include <stdexcept>
 
 template <class Key, class Value>
 class ChainingHash
@@ -155,8 +156,7 @@ public:
             }
             tmp = tmp->next;
         }
-        Key defaultKey;
-        return defaultKey;
+        throw std::runtime_error("指定されたキーは存在しません");
     }
 
     Value operator[](Key key)
@@ -171,8 +171,7 @@ public:
             }
             tmp = tmp->next;
         }
-        Value v;
-        return v;
+        throw std::runtime_error("指定されたキーは存在しません");
     }
 };
 
