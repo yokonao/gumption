@@ -1,4 +1,5 @@
 #include "graph.h"
+#include <stdexcept>
 
 namespace gmp::graph
 {
@@ -19,7 +20,7 @@ namespace gmp::graph
         this->m_to = to;
     }
 
-    StaticGraph::StaticGraph() {}
+    StaticGraph::StaticGraph() { throw std::logic_error("デフォルトコンストラクタは禁止されています"); }
     StaticGraph::~StaticGraph() {}
 
     StaticGraph::StaticGraph(Array<Array<int>> a)
@@ -27,7 +28,7 @@ namespace gmp::graph
         int v_count = a.length();
         int e_count = 0;
         a.foreach ([&](Array<int> array) { e_count += array.length(); });
-        m_V = Array<int>(v_count);
+        m_V = Array<int>(v_count + 1);
         m_E = Array<DirectedEdge>(e_count);
         int count = 0;
         m_V[count] = 0;

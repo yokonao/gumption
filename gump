@@ -31,6 +31,7 @@ function testsrc() {
     "6") cd src/chapter6 && make ;;
     "7") cd src/chapter7 && make ;;
     "9") cd src/chapter9 && make ;;
+    "graph") cd src/graph && make test;;
     *) echo unimplemeted ;;
     esac
 }

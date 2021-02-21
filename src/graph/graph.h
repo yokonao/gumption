@@ -4,7 +4,7 @@ namespace gmp::graph
 {
     class Vertex
     {
-    private:
+    protected:
         int m_index;
 
     public:
@@ -15,7 +15,7 @@ namespace gmp::graph
 
     class DirectedEdge
     {
-    private:
+    protected:
         Vertex m_from;
         Vertex m_to;
 
@@ -27,12 +27,13 @@ namespace gmp::graph
 
     class StaticGraph
     {
-    private:
+    protected:
         Array<DirectedEdge> m_E;
         Array<int> m_V;
 
     public:
         StaticGraph();
         StaticGraph(Array<Array<int>> a);
+        ~StaticGraph();
     };
 }
